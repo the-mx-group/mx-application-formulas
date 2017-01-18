@@ -6,3 +6,6 @@ vagrant-hostmanager:
   cmd.run:
     - name: vagrant plugin install vagrant-hostmanager
     - unless: vagrant plugin list | grep vagrant-hostmanager
+
+Caskroom/cask/virtualbox:
+  pkg.installed
