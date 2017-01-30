@@ -1,4 +1,4 @@
-Install Resolutionator:
+Install Resolution Menu:
   archive.extracted:
     - name: /Applications
     - source: https://github.com/robbertkl/ResolutionMenu/releases/download/v1.1/ResolutionMenu.zip
