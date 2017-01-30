@@ -1,0 +1,2 @@
+ncftp:
+  pkg.installed
