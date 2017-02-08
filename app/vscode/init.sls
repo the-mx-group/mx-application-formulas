@@ -1,3 +1,5 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
+
 Caskroom/cask/visual-studio-code:
   pkg.installed
 
