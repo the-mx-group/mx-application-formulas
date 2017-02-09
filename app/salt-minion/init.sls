@@ -1,6 +1,6 @@
 Install salt using brew:
   pkg.installed:
-    - saltstack
+    - name: saltstack
 
 Deploy salt minion as a service:
   file.managed:
