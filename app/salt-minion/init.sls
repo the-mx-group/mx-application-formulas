@@ -10,8 +10,8 @@ Deploy salt minion service file:
 
 Register the salt minion service:
   cmd.run:
-    - name: "launchctl load /Library/LaunchDaemons/com.saltstack.salt.minion.plist"
-    - unless: "launchctl list | grep salt-minion"
+    - name: "/bin/launchctl load /Library/LaunchDaemons/com.saltstack.salt.minion.plist"
+    - unless: "/bin/launchctl list | grep salt-minion"
 
 Enable the salt service:
   service.enabled:
