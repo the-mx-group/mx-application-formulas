@@ -1,2 +1,2 @@
-Caskroom/versions/meld:
+Caskroom/cask/meld:
   pkg.installed
