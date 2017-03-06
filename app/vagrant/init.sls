@@ -22,6 +22,13 @@ vagrant-hostmanager:
     - name: vagrant plugin install vagrant-hostmanager
     - unless: vagrant plugin list | grep vagrant-hostmanager
 
+Ensure the user owns his vagrant home:
+  file.directory:
+    - name: /Users/{{ user}}/.vagrant.d
+    - user: {{ user }}
+    - recurse:
+      - user
+
 Caskroom/cask/virtualbox:
   pkg.installed
 
