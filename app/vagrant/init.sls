@@ -6,7 +6,7 @@ Make sure the user can sudo with nopasswd:
     - text: |
 
         # Added by salt to facilitate cask install.  Remains commented unless in use.
-        #{{ user}} ALL = NOPASSWD: (ALL) ALL # CASK_INSTALLER
+        #{{ user}} ALL = (ALL) NOPASSWD:ALL # CASK_INSTALLER
 
 Uncomment the sudo stuff:
   file.uncomment:
