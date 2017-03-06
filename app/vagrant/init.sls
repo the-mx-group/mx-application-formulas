@@ -1,3 +1,18 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
+
+# Make sure the user can sudo with nopasswd
+file.append:
+  - name: /etc/sudoers
+  - text: |
+
+      # Added by salt to facilitate cask install.  Remains commented unless in use.
+      # {{ user}} ALL = NOPASSWD: (ALL) ALL # CASK_INSTALLER
+
+
+file.uncomment:
+  - name: /etc/sudoers
+  - regex: CASK_INSTALLER
+
 Caskroom/cask/vagrant:
   pkg.installed
 
@@ -9,3 +24,9 @@ vagrant-hostmanager:
 
 Caskroom/cask/virtualbox:
   pkg.installed
+
+# Comment out the nopasswd sudo
+file.comment:
+  - name: /etc/sudoers
+  - regex: CASK_INSTALLER
+  - backup: False
