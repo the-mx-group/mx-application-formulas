@@ -7,3 +7,4 @@ Add nvm to primary user profile:
   file.append:
     - text: source $(brew --prefix nvm)/nvm.sh
     - name: /Users/{{ user }}/.bash_profile
+    - user: {{ user }}
