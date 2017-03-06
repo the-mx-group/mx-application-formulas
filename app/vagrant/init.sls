@@ -29,8 +29,11 @@ Ensure the user owns his vagrant home:
     - recurse:
       - user
 
-Caskroom/cask/virtualbox:
-  pkg.installed
+Install vbox and extensions:
+  pkg.installed:
+    - pkgs:
+      - Caskroom/cask/virtualbox
+      - Caskroom/cask/virtualbox-extension-pack
 
 Comment out the nopasswd sudo:
   file.comment:
