@@ -21,3 +21,8 @@ Add android build tools:
   cmd.run:
     - name: echo y | android update sdk --no-ui --filter $(android list sdk --all --extended | grep -m1 -o -e "build-tools-\d*.\d*.\d*")
     - unless: ls /usr/local/opt/android-sdk/build-tools
+
+Add API 21:
+  cmd.run:
+    - name: echo y | android update sdk --no-ui --filter 'android-21'
+    - unless: ls /usr/local/opt/android-sdk/platforms/android-21
