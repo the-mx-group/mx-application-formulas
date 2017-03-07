@@ -19,5 +19,5 @@ Add android platform tools:
 
 Add android build tools:
   cmd.run:
-    - name: echo y | android update sdk --no-ui --filter 'build-tools'
+    - name: echo y | android update sdk --no-ui --filter $(android list sdk --all --extended | grep -m1 -o -e "build-tools-\d*.\d*.\d*")
     - unless: ls /usr/local/opt/android-sdk/build-tools
