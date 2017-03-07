@@ -26,3 +26,8 @@ Add API 21:
   cmd.run:
     - name: echo y | android update sdk --no-ui --filter 'android-21'
     - unless: ls /usr/local/opt/android-sdk/platforms/android-21
+
+Add API 25:
+  cmd.run:
+    - name: echo y | android update sdk --no-ui --filter 'android-25'
+    - unless: ls /usr/local/opt/android-sdk/platforms/android-25
