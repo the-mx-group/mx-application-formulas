@@ -31,3 +31,8 @@ Add API 25:
   cmd.run:
     - name: echo y | android update sdk --no-ui --filter 'android-25'
     - unless: ls /usr/local/opt/android-sdk/platforms/android-25
+
+Add android support repository:
+  cmd.run:
+    - name: echo y | android update sdk --no-ui --filter 'extra-android-m2repository'
+    - unless: ls /usr/local/opt/android-sdk/extras/google/m2repository
