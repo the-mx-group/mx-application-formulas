@@ -14,10 +14,10 @@ Add sdk to primary user bash profile:
 
 Add android platform tools:
   cmd.run:
-    - name: android update sdk --no-ui --filter 'platform-tools'
+    - name: echo y | android update sdk --no-ui --filter 'platform-tools'
     - unless: ls /usr/local/opt/android-sdk/platform-tools
 
 Add android build tools:
   cmd.run:
-    - name: android update sdk --no-ui --filter 'build-tools'
+    - name: echo y | android update sdk --no-ui --filter 'build-tools'
     - unless: ls /usr/local/opt/android-sdk/build-tools
