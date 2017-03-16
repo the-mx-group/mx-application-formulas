@@ -1,3 +1,4 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
 
 Make sure the user can sudo with nopasswd:
   file.append:
