@@ -7,7 +7,7 @@ install Eclipse Ivy plugin:
   cmd.run:
     - name: /Applications/Eclipse.app/Contents/MacOS/eclipse -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://www.apache.org/dist/ant/ivyde/updatesite -installIU "org.apache.ivy"
     - runas: {{ user }}
-    - unless: find /Applications/Eclipse.app/Contents/Eclipse/ -name "org.apache.ivy_*") | grep '.*'
+    - unless: find /Applications/Eclipse.app/Contents/Eclipse/ -name "org.apache.ivy_*" | grep '.*'
 
 install Eclipse IvyDE plugin:
   cmd.run:
