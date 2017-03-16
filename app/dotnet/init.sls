@@ -6,6 +6,12 @@ openssl:
 Caskroom/cask/dotnet:
   pkg.installed
 
+Ensure primary user bash_profile exists before adding dotnet:
+  file.managed:
+    - name: /Users/{{ user }}/.bash_profile
+    - user: {{ user }}
+    - replace: false
+
 Add dotnet to primary user bash profile:
   file.append:
     - text: |
