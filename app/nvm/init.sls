@@ -7,6 +7,7 @@ Ensure primary user bash_profile exists:
   file.managed:
     - name: /Users/{{ user }}/.bash_profile
     - user: {{ user }}
+    - replace: false
 
 Add nvm to primary user bash_profile:
   file.append:
