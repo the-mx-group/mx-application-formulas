@@ -13,6 +13,7 @@ Caskroom/cask/vagrant:
 vagrant-hostmanager:
   cmd.run:
     - name: vagrant plugin install vagrant-hostmanager
+    - runas: {{ user }}
     - unless: vagrant plugin list | grep vagrant-hostmanager
 
 Ensure the user owns his vagrant home:
