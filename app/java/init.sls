@@ -2,8 +2,7 @@
 
 include:
   - ..magic-sudo
-  - ..magic-unsudo:
-    - order: last
+  - ..magic-unsudo
 
 #Java 8 by default
 Caskroom/cask/java:
