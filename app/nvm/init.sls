@@ -3,12 +3,13 @@
 nvm:
   pkg.installed
 
-Add nvm to primary user profile:
-  file:
-    - exists:
-      - name: /Users/{{ user }}/.bash_profile
-      - user: {{ user }}
-    - append:
-      - text: source $(brew --prefix nvm)/nvm.sh
-      - name: /Users/{{ user }}/.bash_profile
-      - user: {{ user }}
+Ensure primary user bash_profile exists:
+  file.exists:
+    - name: /Users/{{ user }}/.bash_profile
+    - user: {{ user }}
+
+Add nvm to primary user bash_profile:
+  file.append:
+    - text: source $(brew --prefix nvm)/nvm.sh
+    - name: /Users/{{ user }}/.bash_profile
+    - user: {{ user }}
