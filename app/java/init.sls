@@ -1,14 +1,14 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 
 include:
-  - ..magic-sudo
-  - ..magic-unsudo
+  - .magic-sudo
+  - .magic-unsudo
 
 #Java 8 by default
 Caskroom/cask/java:
   pkg.installed:
     - require:
-      - sls: ..magic-sudo
+      - sls: .magic-sudo
 
 jenv:
   pkg.installed
