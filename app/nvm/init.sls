@@ -11,5 +11,9 @@ Ensure primary user bash_profile exists:
 
 Add nvm to primary user bash_profile:
   file.append:
-    - text: source $(brew --prefix nvm)/nvm.sh
+    - text: |
+
+        # NVM
+        export NVM_DIR = ~/.nvm
+        source $(brew --prefix nvm)/nvm.sh
     - name: /Users/{{ user }}/.bash_profile
