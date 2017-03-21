@@ -14,6 +14,6 @@ Add nvm to primary user bash_profile:
     - text: |
 
         # NVM
-        export NVM_DIR = ~/.nvm
+        export NVM_DIR="~/.nvm"
         source $(brew --prefix nvm)/nvm.sh
     - name: /Users/{{ user }}/.bash_profile
