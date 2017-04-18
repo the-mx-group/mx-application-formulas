@@ -6,6 +6,9 @@ include:
 android-sdk:
   pkg.installed
 
+Caskroom/cask/intel-haxm:
+  pkg.installed
+
 Add sdk to primary user bash profile:
   file.append:
     - text: |
