@@ -9,7 +9,7 @@ android-sdk:
 Add sdk to primary user bash profile:
   file.append:
     - text: |
-        export PATH="$PATH:/usr/local/opt/android-sdk"
+        export PATH="$PATH:/usr/local/opt/android-sdk/bin"
     - name: /Users/{{ user }}/.bash_profile
 
 Add android platform tools:
