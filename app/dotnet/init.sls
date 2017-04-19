@@ -1,6 +1,10 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 
-openssl:
+include:
+  - app/magic-sudo
+  - app/magic-unsudo
+
+Install packages:
   pkg.installed:
     - pkgs:
       - openssl
