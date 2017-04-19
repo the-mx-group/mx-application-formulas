@@ -1,10 +1,13 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 
 openssl:
-  pkg.installed
-
-Caskroom/cask/dotnet:
-  pkg.installed
+  pkg.installed:
+    - pkgs:
+      - openssl
+      - Caskroom/cask/dotnet
+      - Caskroom/cask/dotnet-sdk
+    - require:
+      - sls: app/magic-sudo
 
 Ensure primary user bash_profile exists before adding dotnet:
   file.managed:
