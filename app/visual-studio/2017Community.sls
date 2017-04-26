@@ -1,3 +1,3 @@
 
 VisualStudio2017Community:
-  pkg.installed
+  chocolatey.installed

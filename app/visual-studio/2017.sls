@@ -1,3 +1,3 @@
 
 VisualStudio2017Professional:
-  pkg.installed
+  chocolatey.installed
