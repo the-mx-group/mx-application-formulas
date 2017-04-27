@@ -1,0 +1,22 @@
+{% set nvm = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'nodist',
+        'installer': 'chocolatey.installed',
+        'home': 'C:/Users/'
+    },
+    'MacOS': {
+        'package': 'nvm',
+        'installer': 'pkg.installed',
+        'home': '/Users/',
+        'startup': '
+          # NVM
+          export NVM_DIR=~/.nvm
+          source $(brew --prefix nvm)/nvm.sh
+        '
+    },
+    'Linux': {
+        'package': 'nvm',
+        'installer': 'pkg.installed',
+        'home': '/home/'
+    },
+}, merge=salt['pillar.get']('nvm:lookup')) %}

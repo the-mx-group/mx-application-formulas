@@ -1,19 +1,16 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
+{% from "app/nvm/map.jinja" import nvm with context %}
 
-nvm:
-  pkg.installed
+{{ nvm.package }}:
+  {{ nvm.installer }}
 
 Ensure primary user bash_profile exists:
   file.managed:
-    - name: /Users/{{ user }}/.bash_profile
+    - name: {{nvm.home}}/{{ user }}/.bash_profile
     - user: {{ user }}
     - replace: false
 
 Add nvm to primary user bash_profile:
   file.append:
-    - text: |
-
-        # NVM
-        export NVM_DIR=~/.nvm
-        source $(brew --prefix nvm)/nvm.sh
-    - name: /Users/{{ user }}/.bash_profile
+    - text: {{ nvm.startup }}
+    - name: {{nvm.home}}/{{ user }}/.bash_profile
