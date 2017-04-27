@@ -2,7 +2,8 @@
     'Windows': {
         'package': 'nodist',
         'installer': 'chocolatey.installed',
-        'home': 'C:/Users/'
+        'home': 'C:/Users/',
+        'startup': ''
     },
     'MacOS': {
         'package': 'nvm',
@@ -17,6 +18,7 @@
     'Linux': {
         'package': 'nvm',
         'installer': 'pkg.installed',
-        'home': '/home/'
+        'home': '/home/',
+        'startup': ''
     },
 }, merge=salt['pillar.get']('nvm:lookup')) %}
