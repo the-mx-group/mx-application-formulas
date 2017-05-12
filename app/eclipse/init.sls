@@ -23,6 +23,6 @@ install Eclipse Class Decompiler Core:
 
 install Eclipse MAT:
   cmd.run:
-  - name: /Applications/Eclipse.app/Contents/MacOS/eclipse -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/mat/1.6.1/update-site -installIU "org.eclipse.mat.feature" -installIU "org.eclipse.mat.chart.feature"
+    - name: /Applications/Eclipse.app/Contents/MacOS/eclipse -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/mat/1.6.1/update-site -installIU "org.eclipse.mat.feature" -installIU "org.eclipse.mat.chart.feature"
     - runas: {{ user }}
     - unless: find /Applications/Eclipse.app/Contents/Eclipse/ -name "org.eclipse.mat.*" | grep '.*'
