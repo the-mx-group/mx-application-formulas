@@ -2,6 +2,12 @@ Install salt using brew:
   pkg.installed:
     - name: saltstack
 
+Disable salt verification which causes pinwheel at bootup if joined to AD:
+  file.managed:
+    - name: /etc/salt/minion.d/noverify.conf
+    - contents:
+      - verify_env: False
+
 Deploy salt minion service file:
   file.managed:
     - name: /Library/LaunchDaemons/com.saltstack.salt.minion.plist
