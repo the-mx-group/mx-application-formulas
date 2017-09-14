@@ -1,2 +1,2 @@
-Caskroom/cask/parallels-desktop12:
+Caskroom/cask/parallels-desktop:
   pkg.installed
