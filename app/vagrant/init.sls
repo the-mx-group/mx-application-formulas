@@ -23,10 +23,9 @@ Ensure the user owns his vagrant home:
     - recurse:
       - user
 
-Install vbox and extensions:
+Install vbox:
   pkg.installed:
     - pkgs:
       - Caskroom/cask/virtualbox
-      - Caskroom/cask/virtualbox-extension-pack
     - require:
       - sls: app/magic-sudo
