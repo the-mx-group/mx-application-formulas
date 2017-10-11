@@ -1,6 +1,6 @@
-git:
-  pkg.installed
-
-git-lfs:
-  pkg.installed
-
+Install git and related packages:
+  pkg.installed:
+    - pkgs:
+      - git
+      - git-lfs
+      - git-flow-avh
