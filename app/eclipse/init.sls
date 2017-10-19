@@ -21,6 +21,13 @@ install Eclipse Class Decompiler Core:
     - runas: {{ user }}
     - unless: find /Applications/Eclipse\ JEE.app/Contents/Eclipse/ -name "org.sf.feeling.decompiler_*" | grep '.*'
 
+Install BIRT plugin required for MAT charts:
+  cmd.run:
+    - name: /Applications/Eclipse\ JEE.app/Contents/MacOS/eclipse -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -installIU org.eclipse.birt.feature.group
+    - runas: {{ user }}
+    - unless: find /Applications/Eclipse\ JEE.app/Contents/Eclipse/ -name "org.eclipse.birt*" | grep '.*'
+
+
 install Eclipse MAT:
   cmd.run:
     - name: /Applications/Eclipse\ JEE.app/Contents/MacOS/eclipse -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/mat/1.7/update-site -installIU "org.eclipse.mat.feature.feature.group" -installIU "org.eclipse.mat.chart.feature.feature.group"
