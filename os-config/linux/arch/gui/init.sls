@@ -4,7 +4,7 @@ Install Gnome3 GUI:
 
 Install GDM:
   pkg.installed:
-    pkgs:
+    - pkgs:
       - gdm
 
 Set GDM to start at startup:
