@@ -2,8 +2,8 @@ Install tools:
   pkg.installed:
     - pkgs:
       - openssh
-      - dnsutils
+      - bind-tools
 
 Enable SSH service:
   service.enabled:
-    - name: openssh
+    - name: sshd
