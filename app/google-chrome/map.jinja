@@ -9,6 +9,12 @@
     },
     'Arch': {
         'package': 'google-chrome',
-        'installer': 'pkg.installed'
+        'installer': {
+          'cmd.run': {
+            'unless': 'pacman -Qi google-chrome',
+            'user': 'pacaur-builder',
+            'name': 'pacaur -S google-chrome --noconfirm --noedit'
+          }
+        }
     },
 }, merge=salt['pillar.get']('google-chrome:lookup')) %}
