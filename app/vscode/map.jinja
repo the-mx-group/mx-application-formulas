@@ -1,0 +1,20 @@
+{% set vscode = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'vscode',
+        'installer': 'chocolatey.installed'
+    },
+    'MacOS': {
+        'package': 'Caskroom/cask/visual-studio-code',
+        'installer': 'pkg.installed'
+    },
+    'Arch': {
+        'package': 'visual-studio-code',
+        'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi visual-studio-code'},
+            {'user': 'pacaur-builder'},
+            {'name': 'pacaur -S visual-studio-code --noconfirm --noedit'}
+          ]
+        }
+    },
+}, merge=salt['pillar.get']('visual-studio-code:lookup')) %}

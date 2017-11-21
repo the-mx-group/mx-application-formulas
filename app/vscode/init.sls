@@ -1,7 +1,8 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
+{% from "app/vscode/map.jinja" import vscode with context %}
 
-Caskroom/cask/visual-studio-code:
-  pkg.installed
+{{ vscode.package }}:
+  {{ vscode.installer }}
 
 Install editorconfig extension:
   cmd.run:
