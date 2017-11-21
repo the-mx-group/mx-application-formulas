@@ -12,3 +12,4 @@ Install baseline tools for management:
       - salt
       - networkmanager
       - linux-headers
+      - pkgfile
