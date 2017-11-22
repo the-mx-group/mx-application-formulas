@@ -1,0 +1,14 @@
+{% set salt = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'salt',
+        'installer': 'chocolatey.installed'
+    },
+    'MacOS': {
+        'package': 'saltstack',
+        'installer': 'pkg.installed'
+    },
+    'Arch': {
+        'package': 'salt',
+        'installer': 'pkg.installed'
+    },
+}, merge=salt['pillar.get']('gitkraken:lookup')) %}

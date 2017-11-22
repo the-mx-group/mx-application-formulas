@@ -1,6 +1,10 @@
-Install salt using brew:
-  pkg.installed:
-    - name: saltstack
+{% from "app/salt-minion/map.jinja" import salt with context %}
+
+{{ salt.package }}:
+  {{ salt.installer }}
+
+#Only do the mac-specific stuff if it's a mac
+{% if grains.os in ('MacOS',) %}
 
 Disable salt verification which causes pinwheel at bootup if joined to AD:
   file.managed:
@@ -17,6 +21,9 @@ Register the salt minion service:
   cmd.run:
     - name: "/bin/launchctl load /Library/LaunchDaemons/com.saltstack.salt.minion.plist"
     - unless: "/bin/launchctl list | grep salt-minion"
+
+#done with mac-specific stuff
+{% endif %}
 
 Enable the salt service:
   service.enabled:
