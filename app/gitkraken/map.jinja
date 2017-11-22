@@ -13,7 +13,7 @@
           'cmd.run': [
             {'unless': 'pacman -Qi gitkraken'},
             {'user': 'pacaur-builder'},
-            {'name': 'pacaur -S gitkraken --noconfirm --noedit'}
+            {'name': 'gpg --recv-keys --keyserver hkp://cryptonomicon.mit.edu 5CC908FDB71E12C2 && pacaur -S gitkraken --noconfirm --noedit'}
           ]
         }
     },
