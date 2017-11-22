@@ -6,6 +6,6 @@
 
 Install editorconfig extension:
   cmd.run:
-    - name: /usr/local/bin/code --install-extension EditorConfig.EditorConfig
+    - name: {{ vscode.binary }} --install-extension EditorConfig.EditorConfig
     - runas: {{ user }}
-    - unless: /usr/local/bin/code --list-extensions | grep EditorConfig.EditorConfig
+    - unless: {{ vscode.binary }} --list-extensions | grep EditorConfig.EditorConfig
