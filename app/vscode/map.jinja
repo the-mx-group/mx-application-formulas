@@ -10,9 +10,12 @@
     'Arch': {
         'package': 'visual-studio-code',
         'installer': {
+          'include': [
+            'os-config/linux/arch/aur'
+          ],
           'cmd.run': [
             {'unless': 'pacman -Qi visual-studio-code'},
-            {'user': 'pacaur-builder'},
+            {'runas': 'pacaur-builder'},
             {'name': 'pacaur -S visual-studio-code --noconfirm --noedit'}
           ]
         }

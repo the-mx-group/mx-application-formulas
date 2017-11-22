@@ -12,7 +12,7 @@
         'installer': {
           'cmd.run': [
             {'unless': 'pacman -Qi google-chrome'},
-            {'user': 'pacaur-builder'},
+            {'runas': 'pacaur-builder'},
             {'name': 'pacaur -S google-chrome --noconfirm --noedit'}
           ]
         }

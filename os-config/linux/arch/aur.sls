@@ -16,7 +16,7 @@ Remove existing tmp pacaur:
 Build cower if not present:
   cmd.run:
     - unless: which cower
-    - user: nobody
+    - runas: nobody
     - env:
       - PATH: {{ [current_path, '/usr/bin/core_perl']|join(':') }}
     - name: |
@@ -36,7 +36,7 @@ Install the built cower:
 Build pacaur if not present:
   cmd.run:
     - unless: which pacaur
-    - user: nobody
+    - runas: nobody
     - env:
       - PATH: {{ [current_path, '/usr/bin/core_perl']|join(':') }}
     - name: |
