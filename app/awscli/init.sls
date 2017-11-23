@@ -1,6 +1,13 @@
-awscli:
-  pkg.installed
+{% from "app/awscli/map.jinja" import awscli with context %}
+
+{{ awscli.package }}:
+  {{ awscli.installer }}
+
+#Only do the mac-specific stuff if it's a mac
+{% if grains.os in ('MacOS',) %}
 
 aws-keychain:
   pkg.installed
 
+#done with mac-specific stuff
+{% endif %}
