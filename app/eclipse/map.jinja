@@ -1,0 +1,29 @@
+{% set eclipse = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'eclipse',
+        'installer': 'chocolatey.installed',
+        'binary': 'c:\program files\Eclipse*\eclipse\eclipse.exe',
+        'packageLocation': '~/.eclipse'
+    },
+    'MacOS': {
+        'package': 'Caskroom/cask/eclipse-jee',
+        'installer': 'pkg.installed',
+        'binary': '/Applications/Eclipse\ JEE.app/Contents/MacOS/eclipse',
+        'packageLocation': '/Applications/Eclipse\ JEE.app/Contents/'
+    },
+    'Arch': {
+        'package': 'eclipse-jee',
+        'installer': {
+          'pkg.installed': [
+            {
+              pkgs: [
+                'jdk8-openjdk',
+                'eclipse-jee'
+              ]
+            }
+          ]
+        },
+        'binary': '/usr/bin/eclipse',
+        'packageLocation': '~/.eclipse'
+    },
+}, merge=salt['pillar.get']('eclipse:lookup')) %}
