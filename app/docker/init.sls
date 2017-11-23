@@ -3,7 +3,6 @@ docker:
 
 #Don't need docker-machine etc on linux
 {% if grains.os not in ('Linux','Arch') %}
-{% set user = salt['pillar.get']('users:primary-user') %}
 
 docker-machine:
   pkg.installed
@@ -15,6 +14,8 @@ boot2docker:
   pkg.installed
 
 
+  {% if grains.os in ('MacOS',) %}
+  {% set user = salt['pillar.get']('users:primary-user') %}
 Append docker-machine to users profile:
   file.append:
     - text: |
@@ -26,5 +27,7 @@ Append docker-machine to users profile:
         fi
     - name: /Users/{{ user }}/.bash_profile
 
+
+  {% endif %}
 
 {% endif %}
