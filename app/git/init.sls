@@ -1,6 +1,4 @@
-Install git and related packages:
-  pkg.installed:
-    - pkgs:
-      - git
-      - git-lfs
-      - git-flow-avh
+{% from "app/git/map.jinja" import git with context %}
+
+{{ git.package }}:
+  {{ git.installer }}
