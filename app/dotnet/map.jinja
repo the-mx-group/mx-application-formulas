@@ -1,0 +1,31 @@
+{% set dotnet = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'dotnetcore-sdk',
+        'installer': 'chocolatey.installed'
+    },
+    'MacOS': {
+        'package': 'Caskroom/cask/dotnet-sdk',
+        'installer': {
+          'pkg.installed': [
+            'pkgs': [
+              'openssl',
+              'Caskroom/cask/dotnet',
+              'Caskroom/cask/dotnet-sdk'
+            ],
+            'require': [
+              {'sls': 'magic-sudo'}
+            ]
+          ]
+        }
+    },
+    'Arch': {
+        'package': 'dotnet-sdk-2.0',
+        'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi dotnet-sdk-2.0'},
+            {'runas': 'pacaur-builder'},
+            {'name': 'pacaur -S dotnet-sdk-2.0 --noconfirm --noedit'}
+          ]
+        }
+    },
+}, merge=salt['pillar.get']('dotnet:lookup')) %}
