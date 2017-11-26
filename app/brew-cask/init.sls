@@ -1,6 +1,7 @@
+{% if grains.os in ('MacOS',) %}
 {% set user = salt['pillar.get']('users:primary-user') %}
 
-Ensure cask directory exists for primary user: 
+Ensure cask directory exists for primary user:
   file.directory:
     - name: /usr/local/Caskroom
     - user: {{ user }}
@@ -12,3 +13,4 @@ cask:
     - taps:
       - caskroom/cask
       - buo/cask-upgrade
+{% endif %}

@@ -1,3 +1,5 @@
+{% if grains.os in ('MacOS',) %}
+
 {% set user = salt['pillar.get']('users:primary-user') %}
 
 Caskroom/cask/iterm2:
@@ -10,3 +12,4 @@ Close iterm2 when all windows are closed:
     - domain: "com.googlecode.iterm2"
     - user: {{ user }}
 
+{% endif %}
