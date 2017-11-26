@@ -7,9 +7,11 @@
       'package': 'Caskroom/cask/virtualbox',
       'installer': {
         'pkg.installed': [
-          'require': [
-            {'sls': 'magic-sudo'}
-          ]
+          {
+            'require': [
+              {'sls': 'magic-sudo'}
+            ]
+          }
         ]
       }
     },
