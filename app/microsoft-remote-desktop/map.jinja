@@ -9,6 +9,11 @@
     },
     'Arch': {
         'package': 'remmina',
-        'installer': 'pkg.installed',
-    },
+        'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi remmina-plugin-rdesktop'},
+            {'runas': 'pacaur-builder'},
+            {'name': 'pacaur -S remmina remmina-plugin-rdesktop --noconfirm --noedit'}
+          ]
+        },
 }, merge=salt['pillar.get']('microsoft-remote-desktop:lookup')) %}
