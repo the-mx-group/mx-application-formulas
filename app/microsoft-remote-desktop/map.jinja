@@ -1,0 +1,13 @@
+{% set microsoft-remote-desktop = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'builtin',
+        'installer': 'test.nop'
+    },
+    'MacOS': {
+        'package': 'Caskroom/cask/microsoft-remote-desktop-beta',
+        'installer': 'pkg.installed'
+    },
+    'Arch': {
+        'package': 'remmina',
+        'installer': 'pkg.installed',
+    },salt['pillar.get']('microsoft-remote-desktop:lookup')) %}
