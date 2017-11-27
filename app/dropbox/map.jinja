@@ -8,13 +8,13 @@
       'installer': 'pkg.installed'
   },
   'Arch': {
-      'package': 'dropbox',
-      'installer': {
-        'cmd.run': [
-          {'unless': 'pacman -Qi dropbox'},
-          {'runas': 'pacaur-builder'},
-          {'name': 'pacaur -S dropbox --noconfirm --noedit'}
-        ]
-      },
+    'package': 'dropbox',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi dropbox'},
+        {'runas': 'pacaur-builder'},
+        {'name': 'pacaur -S dropbox --noconfirm --noedit'}
+      ]
+    },
   }
-},salt['pillar.get']('dropbox:lookup')) %}
+}, merge=salt['pillar.get']('dropbox:lookup')) %}
