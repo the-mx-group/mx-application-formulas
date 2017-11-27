@@ -10,4 +10,5 @@
     'Arch': {
         'package': 'remmina',
         'installer': 'pkg.installed',
-    },salt['pillar.get']('microsoft-remote-desktop:lookup')) %}
+    },
+}, merge=salt['pillar.get']('microsoft-remote-desktop:lookup')) %}

@@ -10,4 +10,5 @@
     'Arch': {
         'package': 'RDM does not support Linux',
         'installer': 'test.nop',
-    },salt['pillar.get']('rdm:lookup')) %}
+    },
+}, merge=salt['pillar.get']('rdm:lookup')) %}

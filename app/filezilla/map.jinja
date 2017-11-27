@@ -10,4 +10,5 @@
     'Arch': {
         'package': 'filezilla',
         'installer': 'pkg.installed',
-    },salt['pillar.get']('filezilla:lookup')) %}
+    },
+}, merge=salt['pillar.get']('filezilla:lookup')) %}
