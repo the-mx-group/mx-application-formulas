@@ -4,6 +4,8 @@
 {{ eclipse.package }}:
   {{ eclipse.installer }}
 
+{{ eclipse.extras }}
+
 install Eclipse Ivy plugin:
   cmd.run:
     - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://www.apache.org/dist/ant/ivyde/updatesite -installIU "org.apache.ivy"
