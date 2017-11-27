@@ -2,13 +2,11 @@
     'Windows': {
         'package': 'nodist',
         'installer': 'chocolatey.installed',
-        'home': 'C:/Users/',
         'startup': ''
     },
     'MacOS': {
         'package': 'nvm',
         'installer': 'pkg.installed',
-        'home': '/Users/',
         'startup': '|
           # NVM
           export NVM_DIR=~/.nvm
@@ -17,8 +15,13 @@
     },
     'Linux': {
         'package': 'nvm',
-        'installer': 'pkg.installed',
-        'home': '/home/',
-        'startup': ''
+        'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi nvm'},
+            {'runas': 'pacaur-builder'},
+            {'name': 'pacaur -S nvm --noconfirm --noedit'}
+          ]
+        },
+        'startup': 'source /usr/share/nvm/init-nvm.sh'
     },
 }, merge=salt['pillar.get']('nvm:lookup')) %}
