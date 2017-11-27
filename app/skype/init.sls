@@ -1,2 +1,4 @@
-Caskroom/cask/skype:
-  pkg.installed
+{% from "app/skype/map.jinja" import skype with context %}
+
+{{ skype.package }}:
+  {{ skype.installer }}
