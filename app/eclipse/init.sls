@@ -4,7 +4,8 @@
 {{ eclipse.package }}:
   {{ eclipse.installer }}
 
-{{ eclipse.extras }}
+extras:
+  {{ eclipse.extras }}
 
 install Eclipse Ivy plugin:
   cmd.run:

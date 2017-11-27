@@ -6,14 +6,14 @@
         'installer': 'chocolatey.installed',
         'binary': 'c:\program files\Eclipse*\eclipse\eclipse.exe',
         'packageLocation': userInfo.home + '/.eclipse',
-        'extras': {'none': {'test.nop': []}}
+        'extras': {'test.nop': []}
     },
     'MacOS': {
         'package': 'Caskroom/cask/eclipse-jee',
         'installer': 'pkg.installed',
         'binary': '/Applications/Eclipse\ JEE.app/Contents/MacOS/eclipse',
         'packageLocation': '/Applications/Eclipse\ JEE.app/Contents/',
-        'extras': {'none': {'test.nop': []}}
+        'extras': {'test.nop': []}
     },
     'Arch': {
         'package': 'eclipse-jee',
@@ -28,12 +28,10 @@
           ]
         },
         'extras': {
-          'Default to jdk8': {
-            'cmd.run': [
-              { 'name': 'archlinux-java set java-8-openjdk' },
-              { 'unless': 'archlinux-java get | grep java-8-openjdk' },
-            ]
-          }
+          'cmd.run': [
+            { 'name': 'archlinux-java set java-8-openjdk' },
+            { 'unless': 'archlinux-java get | grep java-8-openjdk' },
+          ]
         },
         'binary': '/usr/bin/eclipse',
         'packageLocation': userInfo.home + '/.eclipse'
