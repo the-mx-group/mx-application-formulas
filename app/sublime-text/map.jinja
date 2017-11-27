@@ -1,0 +1,20 @@
+{% set sublime = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'sublime-text',
+        'installer': 'chocolatey.installed',
+    },
+    'MacOS': {
+        'package': 'Caskroom/cask/sublime-text',
+        'installer': 'pkg.installed',
+    },
+    'Arch': {
+        'package': 'sublime-text-dev',
+        'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi sublime-text-dev'},
+            {'runas': 'pacaur-builder'},
+            {'name': 'pacaur -S sublime-text-dev --noconfirm --noedit'}
+          ]
+        },
+    },
+}, merge=salt['pillar.get']('sublime:lookup')) %}
