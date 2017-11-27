@@ -1,4 +1,4 @@
-{% from "app/microsoft-remote-desktop/map.jinja" import microsoft-remote-desktop with context %}
+{% from "app/microsoft-remote-desktop/map.jinja" import rdp with context %}
 
-{{ microsoft-remote-desktop.package }}:
-  {{ microsoft-remote-desktop.installer }}
+{{ rdp.package }}:
+  {{ rdp.installer }}

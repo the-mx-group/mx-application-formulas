@@ -1,4 +1,4 @@
-{% set microsoft-remote-desktop = salt['grains.filter_by']({
+{% set rdp = salt['grains.filter_by']({
     'Windows': {
         'package': 'builtin',
         'installer': 'test.nop'
