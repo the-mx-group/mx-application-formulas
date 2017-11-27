@@ -1,15 +1,13 @@
-{% set user = salt['pillar.get']('users:primary-user') %}
+{% from "app/vagrant/map.jinja" import vagrant with context %}
 
 include:
   - app/magic-sudo
   - app/magic-unsudo
-  - app/virtualbox
 
-Caskroom/cask/vagrant:
-  pkg.installed:
-    - require:
-      - sls: app/magic-sudo
+{{ vagrant.package }}:
+  {{ vagrant.installer }}
 
+{% set user = salt['pillar.get']('users:primary-user') %}
 # We use the hostmanager plugin
 vagrant-hostmanager:
   cmd.run:
