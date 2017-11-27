@@ -1,2 +1,4 @@
-Caskroom/cask/mysqlworkbench:
-  pkg.installed
+{% from "app/mysql-workbench/map.jinja" import mysqlworkbench with context %}
+
+{{ mysqlworkbench.package }}:
+  {{ mysqlworkbench.installer }}
