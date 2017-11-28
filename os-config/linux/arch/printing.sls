@@ -2,5 +2,5 @@ Install printing utilities:
   pkg.installed:
     - pkgs:
       - cups
-      - cips-pdf
+      - cups-pdf
       - cups-filters
