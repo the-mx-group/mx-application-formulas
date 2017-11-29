@@ -1,3 +1,5 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
+
 docker:
   pkg.installed
 
@@ -15,7 +17,7 @@ boot2docker:
 
 
   {% if grains.os in ('MacOS',) %}
-  {% set user = salt['pillar.get']('users:primary-user') %}
+
 Append docker-machine to users profile:
   file.append:
     - text: |
@@ -29,5 +31,15 @@ Append docker-machine to users profile:
 
 
   {% endif %}
+
+{% else %}
+
+# This is configuration for Linux docker-native platforms
+
+Ensure primary user is in docker group:
+  group.present:
+    - name: docker
+    - addusers:
+      - {{ user }}
 
 {% endif %}
