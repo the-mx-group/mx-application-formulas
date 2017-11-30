@@ -19,6 +19,7 @@ Ensure ownership of SDK:
     - dir_mode: 2775
     - recurse:
       - group
-      - mode
+      - dir_mode
+      - ignore_files
 
 {% endif %}
