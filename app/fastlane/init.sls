@@ -24,10 +24,8 @@ Ensure fastlane is installed and PATHed:
 {% set userinfo = salt['user.info'](user) %}
 
 Append gemfile to bash profile PATH:
-  file.line:
-    - name: {{ userinfo.home }}/.bash_profile
-    - content: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
-    - mode: ensure
-    - user: {{ user }}
+  file.append:
+    - name: {{ userinfo.home }}/.mx_profile
+    - text: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
 
 {% endif %}
