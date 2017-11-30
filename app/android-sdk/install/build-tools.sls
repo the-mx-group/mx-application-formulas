@@ -3,5 +3,5 @@
 
 Install Android build tools:
   cmd.run:
-    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager sdkmanager "build-tools;27.0.1"
+    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager "build-tools;27.0.1"
     - runas: {{ user }}
