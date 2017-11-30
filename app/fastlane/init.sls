@@ -26,7 +26,7 @@ Ensure fastlane is installed and PATHed:
 Append gemfile to bash profile PATH:
   file.line:
     - name: {{ userinfo.home }}/.bash_profile
-    - text: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
+    - content: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
     - mode: ensure
     - user: {{ user }}
 
