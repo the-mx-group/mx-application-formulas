@@ -16,7 +16,7 @@ Ensure ownership of SDK:
   file.directory:
     - name: {{ android.sdkPath }}
     - group: sdkusers
-    - dir_mode: 775
+    - dir_mode: 2775
     - recurse:
       - group
       - mode
