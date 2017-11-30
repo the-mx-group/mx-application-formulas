@@ -22,14 +22,12 @@ Ensure fastlane is installed and PATHed:
 
 #Not MacOS, so let's add the user's local gempath to PATH
 {% set userinfo = salt['user.info'](user) %}
-Ensure bash_profile owned by the right user:
-  file.exists:
-    - name: {{ userinfo.home }}/.bash_profile
-    - user: {{ user }}
 
 Append gemfile to bash profile PATH:
-  file.append:
+  file.line:
     - name: {{ userinfo.home }}/.bash_profile
     - text: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
+    - mode: ensure
+    - user: {{ user }}
 
 {% endif %}
