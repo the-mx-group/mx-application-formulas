@@ -6,13 +6,13 @@
 
 {% if android.setSdkOwnership %}
 
-Create group for SDK users and add primary user:
+Create group for Android SDK users and add primary user:
   group.present:
     - name: sdkusers
     - addusers:
       - {{ user }}
 
-Ensure ownership of SDK:
+Ensure ownership of Android SDK:
   file.directory:
     - name: {{ android.sdkPath }}
     - group: sdkusers
