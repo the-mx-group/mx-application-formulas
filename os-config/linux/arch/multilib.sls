@@ -7,5 +7,6 @@ Enable multilib:
 
 Update pacman with new repo:
   pkg.uptodate:
+    - refresh: true
     - onchanges:
       - file: Enable multilib
