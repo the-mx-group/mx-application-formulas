@@ -19,7 +19,7 @@ Ensure ownership of Android SDK:
     - dir_mode: 2775
     - recurse:
       - group
-      - dir_mode
+      - mode
       - ignore_files
 
 {% endif %}
