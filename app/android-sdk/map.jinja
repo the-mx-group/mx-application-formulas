@@ -1,0 +1,45 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
+{% set userInfo = salt['user.info'](user) %}
+{% set android = salt['grains.filter_by']({
+    'Windows': {
+      'package': 'android-sdk',
+      'installer': 'chocolatey.installed',
+      'sdkPath': '/opt/android-sdk',
+      'setSdkOwnership': false,
+    },
+    'MacOS': {
+      'package': 'Caskroom/cask/android-sdk',
+      'installer': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'Caskroom/cask/android-sdk',
+              'Caskroom/cask/intel-haxm'
+            ]
+          },
+        ],
+      },
+      'sdkPath': '/opt/android-sdk',
+      'setSdkOwnership': false,
+    },
+    'Arch': {
+      'package': 'android-tools',
+      'installer': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'android-tools',
+              'android-udev'
+            ]
+          },
+        ],
+        'cmd.run': [
+          {'unless': 'pacman -Qi android-sdk'},
+          {'runas': 'pacaur-builder'},
+          {'name': 'pacaur -S android-sdk --noconfirm --noedit || (echo "Android-sdk requires multilib on Arch" && false)'}
+        ]
+      },
+      'sdkPath': '/opt/android-sdk',
+      'setSdkOwnership': true,
+    },
+}, merge=salt['pillar.get']('android-sdk:lookup')) %}
