@@ -1,14 +1,15 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
+{% set userinfo = salt['user.info'](user) %}
 {% set fastlane = salt['grains.filter_by']({
   'Windows': {
       'package': 'NoPackageForWindows',
       'installer': 'chocolatey.installed',
-      'home': '~/.fastlane',
+      'home': userinfo.home + '/.fastlane',
   },
   'MacOS': {
       'package': 'Caskroom/cask/fastlane',
       'installer': 'pkg.installed',
-      'home': '~/.fastlane',
+      'home': userinfo.home + '/.fastlane',
   },
   'Arch': {
       'package': 'fastlane',
@@ -19,6 +20,6 @@
           {'name': 'gem install fastlane'}
         ]
       },
-      'home': '~/.fastlane',
+      'home': userinfo.home + '/.fastlane',
   }
 }, merge=salt['pillar.get']('fastlane:lookup')) %}

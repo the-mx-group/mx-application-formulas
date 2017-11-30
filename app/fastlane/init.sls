@@ -18,4 +18,18 @@ Ensure fastlane is installed and PATHed:
     - runas: {{ user }}
     - name: echo y | /usr/local/Caskroom/fastlane/1.7/install -u -b
     - unless: echo $PATH | grep fastlane
+{% else %}
+
+#Not MacOS, so let's add the user's local gempath to PATH
+{% set userinfo = salt['user.info'](user) %}
+Ensure bash_profile owned by the right user:
+  file.exists:
+    - name: {{ userinfo.home }}/.bash_profile
+    - user: {{ user }}
+
+Append gemfile to bash profile PATH:
+  file.append:
+    - name: {{ userinfo.home }}/.bash_profile
+    - text: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
+
 {% endif %}
