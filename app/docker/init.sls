@@ -41,4 +41,8 @@ Ensure primary user is in docker group:
     - addusers:
       - {{ user }}
 
+Ensure docker service is enabled:
+  service.enabled:
+    - name: docker
+
 {% endif %}
