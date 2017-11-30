@@ -3,18 +3,17 @@
 docker:
   pkg.installed
 
+docker-compose:
+  pkg.installed
+
 #Don't need docker-machine etc on linux
 {% if grains.os not in ('Linux','Arch') %}
 
 docker-machine:
   pkg.installed
 
-docker-compose:
-  pkg.installed
-
 boot2docker:
   pkg.installed
-
 
   {% if grains.os in ('MacOS',) %}
 
