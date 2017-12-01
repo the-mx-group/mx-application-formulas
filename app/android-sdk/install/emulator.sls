@@ -5,3 +5,4 @@ Install Android emulator:
   cmd.run:
     - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager emulator
     - runas: {{ user }}
+    - creates: {{ android.sdkPath }}/emulator
