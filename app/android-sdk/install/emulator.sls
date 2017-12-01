@@ -1,4 +1,5 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
+{% set userInfo = salt['user.info'](user) %}
 {% from "app/android-sdk/map.jinja" import android with context %}
 
 Install Android emulator:
