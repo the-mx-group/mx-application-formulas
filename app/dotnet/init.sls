@@ -11,9 +11,9 @@ include:
 {% if grains.os in ('MacOS',) %}
 {% set user = salt['pillar.get']('users:primary-user') %}
 
-Ensure primary user bash_profile exists before adding dotnet:
+Ensure primary user mx_profile exists before adding dotnet:
   file.managed:
-    - name: /Users/{{ user }}/.bash_profile
+    - name: /Users/{{ user }}/.mx_profile
     - user: {{ user }}
     - replace: false
 
@@ -24,7 +24,7 @@ Add dotnet to primary user bash profile:
         #dotnet path
         DOTNET_PATH=`cat /etc/paths.d/dotnet`
         export PATH="$PATH:$DOTNET_PATH"
-    - name: /Users/{{ user }}/.bash_profile
+    - name: /Users/{{ user }}/.mx_profile
 
 #done with mac-specific stuff
 {% endif %}

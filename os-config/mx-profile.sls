@@ -7,5 +7,5 @@ Create MX profile container for things Mx wants to add to user profiles:
 
 Ensure user is running the mx profile content:
   file.append:
-    - name: {{ userinfo.home }}/.bash_profile
+    - name: {{ userinfo.home }}/.bashrc
     - text: source ~/.mx_profile

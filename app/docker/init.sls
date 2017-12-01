@@ -26,7 +26,7 @@ Append docker-machine to users profile:
         then
           eval $(docker-machine env)
         fi
-    - name: /Users/{{ user }}/.bash_profile
+    - name: /Users/{{ user }}/.mx_profile
 
 
   {% endif %}
