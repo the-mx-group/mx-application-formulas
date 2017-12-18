@@ -1,0 +1,15 @@
+{% set ntp = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'builtin',
+        'installer': 'test.nop'
+    },
+    'MacOS': {
+        'package': 'builtin',
+        'installer': 'test.nop'
+      }
+    },
+    'Arch': {
+        'package': 'ntp',
+        'installer': 'pkg.installed',
+    },
+}, merge=salt['pillar.get']('ntp:lookup')) %}
