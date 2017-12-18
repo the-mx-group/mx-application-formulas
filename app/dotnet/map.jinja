@@ -27,8 +27,8 @@
       'installer': {
         'cmd.run': [
           {'unless': 'pacman -Qi dotnet-sdk-2.0'},
-          {'runas': 'pacaur-builder'},
-          {'name': 'pacaur -S dotnet-sdk-2.0 --noconfirm --noedit'}
+          {'runas': 'aur-builder'},
+          {'name': 'yay -S dotnet-sdk-2.0 --noconfirm'}
         ]
       }
     },

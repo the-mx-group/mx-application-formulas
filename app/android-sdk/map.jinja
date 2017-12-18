@@ -36,8 +36,8 @@
         ],
         'cmd.run': [
           {'unless': 'pacman -Qi android-sdk'},
-          {'runas': 'pacaur-builder'},
-          {'name': 'pacaur -S android-sdk --noconfirm --noedit || (echo "Android-sdk requires multilib on Arch" && false)'}
+          {'runas': 'aur-builder'},
+          {'name': 'yay -S android-sdk --noconfirm || (echo "Android-sdk requires multilib on Arch" && false)'}
         ]
       },
       'sdkPath': '/opt/android-sdk',

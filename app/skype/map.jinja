@@ -12,8 +12,8 @@
         'installer': {
           'cmd.run': [
             {'unless': 'pacman -Qi skypeforlinux-bin'},
-            {'runas': 'pacaur-builder'},
-            {'name': 'pacaur -S skypeforlinux-bin --noconfirm --noedit'}
+            {'runas': 'aur-builder'},
+            {'name': 'yay -S skypeforlinux-bin --noconfirm'}
           ]
         },
     },

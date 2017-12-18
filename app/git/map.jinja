@@ -22,8 +22,8 @@
         'installer': {
           'cmd.run': [
             {'unless': 'pacman -Qi git-lfs'},
-            {'runas': 'pacaur-builder'},
-            {'name': 'pacaur -S git git-lfs gitflow-avh --noconfirm --noedit'}
+            {'runas': 'aur-builder'},
+            {'name': 'yay -S git git-lfs gitflow-avh --noconfirm'}
           ]
         }
     },

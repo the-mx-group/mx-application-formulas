@@ -1,69 +1,49 @@
 # {% set current_path = salt['environ.get']('PATH', '/bin:/usr/bin') %}
+{% set aurtool = { cmd: 'yay', pkgname: 'yay-bin' } %}
 
-Packages required by pacaur:
+Packages required by aur tool:
   pkg.installed:
     - pkgs:
-      - expac
-      - yajl
-      - git
+      - pacman
+      - go
 
 # Make sure there iss nothing already there:
-Remove existing tmp pacaur:
+Remove existing tmp aur build:
   file.absent:
-    - name: /tmp/pacaur
+    - name: /tmp/aurbuild
 
 
-Build cower if not present:
+Build AUR tool if not present:
   cmd.run:
-    - unless: which cower
+    - unless: which {{ aurtool.name }}
     - runas: nobody
     - env:
       - PATH: {{ [current_path, '/usr/bin/core_perl']|join(':') }}
     - name: |
-        mkdir -p /tmp/pacaur/cower
-        cd /tmp/pacaur/cower
-        curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=cower
-        makepkg PKGBUILD --skippgpcheck
-
-Install the built cower:
-  cmd.run:
-    - unless: which cower
-    - name: |
-        cd /tmp/pacaur/cower
-        pacman -U *.tar.xz --noconfirm --needed
-
-
-Build pacaur if not present:
-  cmd.run:
-    - unless: which pacaur
-    - runas: nobody
-    - env:
-      - PATH: {{ [current_path, '/usr/bin/core_perl']|join(':') }}
-    - name: |
-        mkdir -p /tmp/pacaur/pacaur
-        cd /tmp/pacaur/pacaur
-        curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h=pacaur
+        mkdir -p /tmp/aurbuild/{{ aurtool.name }}
+        cd /tmp/aurbuild/{{ aurtool.name }}
+        curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h={{ aurtool.pkgname }}
         makepkg PKGBUILD
 
-Install the built pacaur:
+Install the built {{ aurtool.name }}:
   cmd.run:
-    - unless: which pacaur
+    - unless: which {{ aurtool.name }}
     - name: |
-        cd /tmp/pacaur/pacaur
+        cd /tmp/aurbuild/{{ aurtool.name }}
         pacman -U *.tar.xz --noconfirm --needed
 
 
 #Clean up after ourselves:
-/tmp/pacaur:
+/tmp/aurbuild:
   file.absent
 
-#create a user for pacaur to run as
-pacaur-builder:
+#create a user for aur build tools to run as
+aur-builder:
   user.present:
     - createhome: True
-    - fullname: User for salt-pacaur builds
+    - fullname: User for salt-aur builds
 
-# allow it to sudo with no pwd (else, pacaur won't let us install)
-/etc/sudoers.d/pacaur-builder:
+# allow it to sudo with no pwd (else, aur tools won't let us install)
+/etc/sudoers.d/aur-builder:
   file.managed:
-    - contents: "pacaur-builder ALL=(root) NOPASSWD: /usr/bin/pacman"
+    - contents: "aur-builder ALL=(root) NOPASSWD: /usr/bin/pacman"

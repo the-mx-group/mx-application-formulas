@@ -12,8 +12,8 @@
         'installer': {
           'cmd.run': [
             {'unless': 'pacman -Qi gitkraken'},
-            {'runas': 'pacaur-builder'},
-            {'name': 'gpg --recv-keys --keyserver hkp://cryptonomicon.mit.edu 5CC908FDB71E12C2 && pacaur -S gitkraken --noconfirm --noedit'}
+            {'runas': 'aur-builder'},
+            {'name': 'gpg --recv-keys --keyserver hkp://cryptonomicon.mit.edu 5CC908FDB71E12C2 && yay -S gitkraken --noconfirm'}
           ]
         }
     },

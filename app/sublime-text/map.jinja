@@ -12,8 +12,8 @@
         'installer': {
           'cmd.run': [
             {'unless': 'pacman -Qi sublime-text-dev'},
-            {'runas': 'pacaur-builder'},
-            {'name': 'pacaur -S sublime-text-dev --noconfirm --noedit'}
+            {'runas': 'aur-builder'},
+            {'name': 'yay -S sublime-text-dev --noconfirm'}
           ]
         },
     },
