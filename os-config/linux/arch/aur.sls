@@ -29,7 +29,7 @@ Install the built {{ aurtool.name }}:
   cmd.run:
     - unless: which {{ aurtool.name }}
     - name: |
-        cd /tmp/aurbuild/{{ aurtool.name }}
+        cd /tmp/aurbuild/{{ aurtool.pkgname }}
         pacman -U *.tar.xz --noconfirm --needed
 
 
