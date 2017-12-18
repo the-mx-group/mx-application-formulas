@@ -1,5 +1,5 @@
 # {% set current_path = salt['environ.get']('PATH', '/bin:/usr/bin') %}
-{% set aurtool = { cmd: 'yay', pkgname: 'yay-bin' } %}
+{% set aurtool = { 'name': 'yay', 'pkgname': 'yay-bin' } %}
 
 Packages required by aur tool:
   pkg.installed:
@@ -20,8 +20,8 @@ Build AUR tool if not present:
     - env:
       - PATH: {{ [current_path, '/usr/bin/core_perl']|join(':') }}
     - name: |
-        mkdir -p /tmp/aurbuild/{{ aurtool.name }}
-        cd /tmp/aurbuild/{{ aurtool.name }}
+        mkdir -p /tmp/aurbuild/{{ aurtool.pkgname }}
+        cd /tmp/aurbuild/{{ aurtool.pkgname }}
         curl -o PKGBUILD https://aur.archlinux.org/cgit/aur.git/plain/PKGBUILD?h={{ aurtool.pkgname }}
         makepkg PKGBUILD
 
