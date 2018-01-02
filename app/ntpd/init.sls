@@ -1,4 +1,4 @@
-{% from "app/ntp/map.jinja" import ntp with context %}
+{% from "app/ntpd/map.jinja" import ntp with context %}
 
 {{ ntp.package }}:
   {{ ntp.installer }}
