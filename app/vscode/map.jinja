@@ -10,12 +10,12 @@
         'binary': '/usr/local/bin/code',
     },
     'Arch': {
-        'package': 'visual-studio-code',
+        'package': 'visual-studio-code-bin',
         'installer': {
           'cmd.run': [
-            {'unless': 'pacman -Qi visual-studio-code'},
+            {'unless': 'pacman -Qi visual-studio-code-bin'},
             {'runas': 'aur-builder'},
-            {'name': 'yay -S visual-studio-code --noconfirm'}
+            {'name': 'yay -S visual-studio-code-bin --noconfirm'}
           ]
         },
         'binary': '/usr/bin/code',
