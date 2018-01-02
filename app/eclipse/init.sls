@@ -21,7 +21,7 @@ install Eclipse IvyDE plugin:
 
 install Eclipse Class Decompiler Core:
   cmd.run:
-    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://opensource.cpupk.com/decompiler/update -installIU "org.sf.feeling.decompiler.feature.group"
+    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository https://ecd-plugin.github.io/update -installIU "org.sf.feeling.decompiler.feature.group"
     - runas: {{ user }}
     - unless: find {{ eclipse.packageLocation }} -name "org.sf.feeling.decompiler_*" | grep '.*'
 
