@@ -3,7 +3,7 @@
 
 Install Android platform-tools:
   cmd.run:
-    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager "platform-tools"
+    - name: {{ android.sdkPath }}/tools/bin/sdkmanager "platform-tools"
     - runas: {{ user }}
     - creates: {{ android.sdkPath }}/platform-tools
     - onlyif: test -d {{ android.sdkPath }}
@@ -11,14 +11,14 @@ Install Android platform-tools:
 
 Install Android Nougat platform:
   cmd.run:
-    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager "platforms;android-25"
+    - name: {{ android.sdkPath }}/tools/bin/sdkmanager "platforms;android-25"
     - runas: {{ user }}
     - creates: {{ android.sdkPath }}/platforms/android-25
     - onlyif: test -d {{ android.sdkPath }}
 
 Install Android Lollipop platform:
   cmd.run:
-    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager "platforms;android-21"
+    - name: {{ android.sdkPath }}/tools/bin/sdkmanager "platforms;android-21"
     - runas: {{ user }}
     - creates: {{ android.sdkPath }}/platforms/android-21
     - onlyif: test -d {{ android.sdkPath }}

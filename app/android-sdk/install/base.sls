@@ -4,6 +4,13 @@
 {{ android.package }}:
   {{ android.installer }}
 
+Accept SDK manager licenses:
+  cmd.run:
+    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager --licenses
+    - runas: {{ user }}
+    - creates: {{ android.sdkPath }}/licenses/android-sdk-license
+    - onlyif: test -d {{ android.sdkPath }}
+
 {% if android.setSdkOwnership %}
 
 Create group for Android SDK users and add primary user:
