@@ -16,7 +16,7 @@ Ensure local fastlane is owned by the right user:
 Ensure fastlane is installed and PATHed:
   cmd.run:
     - runas: {{ user }}
-    - name: echo y | /usr/local/Caskroom/fastlane/1.7/install -u -b
+    - name: echo y | /usr/local/Caskroom/fastlane/latest/install -u -b
     - unless: echo $PATH | grep fastlane
 {% else %}
 
