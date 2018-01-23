@@ -7,6 +7,7 @@ Install Android build tools:
     - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager "build-tools;27.0.1"
     - runas: {{ user }}
     - creates: {{ android.sdkPath }}/build-tools/27.0.1
+    - onlyif: test -d {{ android.sdkPath }}
 
 Add android build tools to primary user mx profile:
   file.append:
