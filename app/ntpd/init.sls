@@ -7,7 +7,7 @@
 
 Ensure ntp is running:
   service.running:
-    - name:{{ ntp.daemon }}
+    - name: {{ ntp.daemon }}
     - enable: True
 
 {% endif %}
