@@ -10,6 +10,7 @@
     },
     'Arch': {
         'package': 'ntp',
-        'installer': 'pkg.installed'
+        'installer': 'pkg.installed',
+        'daemon': 'ntp'
     },
 }, merge=salt['pillar.get']('ntp:lookup')) %}
