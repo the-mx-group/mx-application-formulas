@@ -2,6 +2,7 @@
 
 include:
   - app/java
+  - app/gradle
   - .install.base
   - .install.build-tools
   - .install.platforms
