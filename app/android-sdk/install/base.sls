@@ -6,7 +6,7 @@
 
 Accept SDK manager licenses:
   cmd.run:
-    - name: echo yes | {{ android.sdkPath }}/tools/bin/sdkmanager --licenses
+    - name: yes | {{ android.sdkPath }}/tools/bin/sdkmanager --licenses
     - runas: {{ user }}
     - creates: {{ android.sdkPath }}/licenses/android-sdk-license
     - onlyif: test -d {{ android.sdkPath }}
