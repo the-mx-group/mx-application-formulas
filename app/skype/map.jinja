@@ -11,9 +11,9 @@
         'package': 'skypeforlinux-bin',
         'installer': {
           'cmd.run': [
-            {'unless': 'pacman -Qi skypeforlinux-bin'},
+            {'unless': 'pacman -Qi skypeforlinux-stable-bin'},
             {'runas': 'aur-builder'},
-            {'name': 'yay -S skypeforlinux-bin --noconfirm'}
+            {'name': 'yay -S skypeforlinux-stable-bin --noconfirm'}
           ]
         },
     },
