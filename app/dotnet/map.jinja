@@ -23,13 +23,7 @@
       }
     },
     'Arch': {
-      'package': 'dotnet-sdk-2.0',
-      'installer': {
-        'cmd.run': [
-          {'unless': 'pacman -Qi dotnet-sdk-2.0'},
-          {'runas': 'aur-builder'},
-          {'name': 'yay -S dotnet-sdk-2.0 --noconfirm'}
-        ]
-      }
+      'package': 'dotnet-sdk',
+      'installer': 'pkg.installed'
     },
 }, merge=salt['pillar.get']('dotnet:lookup')) %}
