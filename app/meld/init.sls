@@ -1,4 +1,4 @@
-{% if grains.os in ('MacOS',) %}
-Caskroom/cask/meld:
-  pkg.installed
-{% endif %}
+{% from "app/meld/map.jinja" import meld with context %}
+
+{{ meld.package }}:
+  {{ meld.installer }}
