@@ -9,6 +9,7 @@ Install printing utilities:
       - foomatic-db-ppds
       - foomatic-db-nonfree-ppds
       - avahi
+      - system-config-printer
 
 Enable the printing service:
   service.enabled:
