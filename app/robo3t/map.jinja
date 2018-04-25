@@ -1,0 +1,20 @@
+{% set robo = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'builtin',
+    'installer': 'test.nop'
+  },
+  'MacOS': {
+    'package': 'Caskroom/cask/robo-3t',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'robo3t-bin',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi robo3t-bin'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S robo3t-bin --noconfirm'}
+      ]
+    }
+  },
+}, merge=salt['pillar.get']('robo3t:lookup')) %}
