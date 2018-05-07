@@ -8,7 +8,7 @@
         'installer': 'pkg.installed',
     },
     'Arch': {
-        'package': '.archlinux',
-        'installer': 'include',
+        'package': 'include',
+        'installer': ['.archlinux'],
     },
 }, merge=salt['pillar.get']('sublime:lookup')) %}
