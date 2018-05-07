@@ -10,6 +10,6 @@ Ensure sublime repo is enabled in pacman:
         [sublime-text]
         Server = https://download.sublimetext.com/arch/stable/x86_64
 
-sublime-text-dev:
+sublime-text:
   pkg.installed
 
