@@ -8,13 +8,7 @@
         'installer': 'pkg.installed',
     },
     'Arch': {
-        'package': 'sublime-text-dev',
-        'installer': {
-          'cmd.run': [
-            {'unless': 'pacman -Qi sublime-text-dev'},
-            {'runas': 'aur-builder'},
-            {'name': 'yay -S sublime-text-dev --noconfirm'}
-          ]
-        },
+        'package': '.archlinux',
+        'installer': 'include',
     },
 }, merge=salt['pillar.get']('sublime:lookup')) %}
