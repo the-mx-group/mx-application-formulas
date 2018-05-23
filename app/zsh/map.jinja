@@ -1,0 +1,14 @@
+{% set skype = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'zsh',
+        'installer': 'chocolatey.installed',
+    },
+    'MacOS': {
+        'package': 'Builtin',
+        'installer': 'test.nop',
+    },
+    'Arch': {
+        'package': 'zsh',
+        'installer': 'pkg.installed,
+    },
+}, merge=salt['pillar.get']('zsh:lookup')) %}
