@@ -6,6 +6,7 @@ Packages required by aur tool:
     - pkgs:
       - pacman
       - go
+      - git
 
 # Make sure there iss nothing already there:
 Remove existing tmp aur build:
