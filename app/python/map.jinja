@@ -10,12 +10,12 @@
     'Arch': {
       'package': 'python',
       'installer': {
-        'pkg.installed': {
+        'pkg.installed': [{
           'pkgs': [
             "python",
             "python-virtualenv"
           ]
-        }
+        }]
       }
     },
 }, merge=salt['pillar.get']('python:lookup')) %}
