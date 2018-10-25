@@ -15,6 +15,12 @@ vagrant-hostmanager:
     - runas: {{ user }}
     - unless: vagrant plugin list | grep vagrant-hostmanager
 
+# and the vbguest plugin
+vagrant-vbguest:
+  cmd.run:
+    - name: vagrant plugin install vagrant-vbguest
+    - runas: {{ user }}
+    - unless: vagrant plugin list | grep vagrant-vbguest
 
 #Only do the mac-specific stuff if it's a mac
 {% if grains.os in ('MacOS',) %}
