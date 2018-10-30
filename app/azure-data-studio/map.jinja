@@ -9,6 +9,12 @@
     },
     'Arch': {
       'package': 'azuredatastudio',
-      'installer': 'pkg.installed'
+      'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi azuredatastudio'},
+            {'runas': 'aur-builder'},
+            {'name': 'yay -S azuredatastudio --noconfirm'}
+          ]
+        }
     },
 }, merge=salt['pillar.get']('azuredatastudio:lookup')) %}
