@@ -1,3 +1,4 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
 {% from "app/azure-data-studio/map.jinja" import azuredatastudio with context %}
 
 {{ azuredatastudio.package }}:
