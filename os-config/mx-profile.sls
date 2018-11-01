@@ -8,12 +8,10 @@ Create MX profile container for things Mx wants to add to user profiles:
     - mode: 0755
     - replace: false
 
-{%
-set rcfile = '.bashrc'
-if grains.os in ('MacOS',)
-  set rcfile = '.bash_profile'
-endif
-%}
+{% set rcfile = '.bashrc' %}
+{% if grains.os in ('MacOS',) %}
+  {% set rcfile = '.bash_profile' %}
+{% endif %}
 Ensure user profile exists:
   file.managed:
     - name: {{ userinfo.home }}/{{ rcfile }}
