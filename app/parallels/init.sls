@@ -1,4 +1,4 @@
 {% if grains.os in ('MacOS',) %}
-Caskroom/cask/parallels-desktop:
+Caskroom/cask/parallels:
   pkg.installed
 {% endif %}

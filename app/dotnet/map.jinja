@@ -9,14 +9,12 @@
         'pkg.installed': [
           {
             'pkgs': [
-              'openssl',
-              'Caskroom/cask/dotnet',
               'Caskroom/cask/dotnet-sdk'
             ],
           },
           {
             'require': [
-              {'sls': 'magic-sudo'}
+              {'sls': 'app/magic-sudo'}
             ]
           },
         ]
