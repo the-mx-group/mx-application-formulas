@@ -14,8 +14,8 @@ Disable salt verification which causes pinwheel at bootup if joined to AD:
 Deploy salt minion service file:
   file.managed:
     - name: /Library/LaunchDaemons/com.saltstack.salt.minion.plist
-    - source: https://raw.githubusercontent.com/saltstack/salt/develop/pkg/darwin/com.saltstack.salt.minion.plist
-    - source_hash: sha256=9a5a0ee8357ee63b38c198dd03e7d101b71ecd9cefb6c2e74803781c4c9290b0
+    - source: https://raw.githubusercontent.com/saltstack/salt/develop/pkg/osx/scripts/com.saltstack.salt.minion.plist
+    - source_hash: sha256=26b33da12e0d8960ee96b488c8352002c22a377c19bf3df3f986a1e49eca8b20
 
 Register the salt minion service:
   cmd.run:
