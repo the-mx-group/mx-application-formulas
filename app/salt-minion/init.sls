@@ -27,8 +27,8 @@ Register the salt minion service:
 
 Enable the salt service:
   service.enabled:
-    - name: salt-minion
+    - name: {{salt.service}}
 
 Start the salt service:
   service.running:
-    - name: salt-minion
+    - name: {{salt.service}}
