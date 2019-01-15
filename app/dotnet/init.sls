@@ -15,7 +15,7 @@ include:
 Ensure primary user mx_profile exists before adding dotnet:
   file.managed:
     - name: {{ userInfo.home }}/.mx_profile
-    - user: {{ user }}
+    - user: root
     - replace: false
 
 Add dotnet to primary user bash profile:
