@@ -1,17 +1,17 @@
 {% set salt = salt['grains.filter_by']({
     'Windows': {
         'package': 'salt',
-        'installer': 'chocolatey.installed'
+        'installer': 'chocolatey.installed',
         'service': 'salt-minion'
     },
     'MacOS': {
         'package': 'salt',
-        'installer': 'pkg.installed'
+        'installer': 'pkg.installed',
         'service': 'com.saltstack.salt.minion'
     },
     'Arch': {
         'package': 'salt',
-        'installer': 'pkg.installed'
+        'installer': 'pkg.installed',
         'service': 'salt-minion'
     },
 }, merge=salt['pillar.get']('salt-minion:lookup')) %}
