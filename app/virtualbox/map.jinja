@@ -16,7 +16,16 @@
       }
     },
     'Arch': {
-        'package': 'virtualbox',
-        'installer': 'pkg.installed'
+      'package': 'virtualbox',
+      'installer': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'virtualbox',
+              'virtualbox-guest-iso',
+            ]
+          },
+        ],
+      }
     },
 }, merge=salt['pillar.get']('virtualbox:lookup')) %}
