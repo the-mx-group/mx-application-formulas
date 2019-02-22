@@ -1,5 +1,4 @@
-mongodb:
-  pkg.installed
+{% from "app/mongodb/map.jinja" import mongodb with context %}
 
-mongodb-tools:
-  pkg.installed
+{{ mongodb.package }}:
+  {{ mongodb.installer }}
