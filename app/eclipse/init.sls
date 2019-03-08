@@ -27,7 +27,7 @@ install Eclipse Class Decompiler Core:
 
 Install BIRT plugin required for MAT charts:
   cmd.run:
-    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/releases/oxygen -installIU org.eclipse.birt.feature.group
+    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/releases/2018-12 -installIU org.eclipse.birt.feature.group
     - runas: {{ user }}
     - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/org.eclipse.birt*" | grep '.*'
 
