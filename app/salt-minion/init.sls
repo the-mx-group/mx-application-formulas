@@ -15,7 +15,7 @@ Deploy salt minion service file:
   file.managed:
     - name: /Library/LaunchDaemons/com.saltstack.salt.minion.plist
     - source: https://raw.githubusercontent.com/saltstack/salt/develop/pkg/darwin/com.saltstack.salt.minion.plist
-    - source_hash: sha256=9a5a0ee8357ee63b38c198dd03e7d101b71ecd9cefb6c2e74803781c4c9290b0
+    - source_hash: sha256=6383d2d336b06802bfdf25a4c21ee25c85ee9fa57d3ef5776321d9c8cd096395
 
 Register the salt minion service:
   cmd.run:
