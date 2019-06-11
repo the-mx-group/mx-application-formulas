@@ -5,15 +5,7 @@
     },
     'MacOS': {
       'package': 'homebrew/cask-versions/java8',
-      'installer': {
-        'pkg.installed': [
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          }
-        ]
-      },
+      'installer': 'test.nop',
       'home': '$(/usr/libexec/java_home)'
     },
     'Arch': {
