@@ -37,4 +37,5 @@ Add android SDK root to primary user mx profile:
     - text: |
         #Android SDK paths
         export ANDROID_SDK={{ android.sdkPath }}
+        export PATH=$PATH:{{ android.sdkPath }}/tools
     - name: {{ userinfo.home }}/.mx_profile

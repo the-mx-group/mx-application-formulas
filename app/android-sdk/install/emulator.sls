@@ -19,3 +19,9 @@ Create symlink to emulator which appears to be required:
   file.symlink:
     - name: {{ userInfo.home}}/.android/avd/emulator
     - target: {{ android.sdkPath }}/emulator
+
+Add android emulator to primary user mx profile:
+  file.append:
+    - text: |
+        export PATH=$PATH:{{ android.sdkPath }}/emulator
+    - name: {{ userinfo.home }}/.mx_profile
