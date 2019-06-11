@@ -1,2 +1,2 @@
-caskroom/cask/bettertouchtool:
+homebrew/cask/bettertouchtool:
   pkg.installed

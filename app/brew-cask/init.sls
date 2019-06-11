@@ -11,6 +11,6 @@ Ensure cask directory exists for primary user:
 cask:
   pkg.installed:
     - taps:
-      - caskroom/cask
+      - homebrew/cask
       - buo/cask-upgrade
 {% endif %}
