@@ -1,2 +1,2 @@
-homebrew/cask/fork:
+caskroom/cask/fork:
   pkg.installed

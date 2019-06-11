@@ -1,2 +1,2 @@
-homebrew/cask/keka:
+caskroom/cask/keka:
   pkg.installed

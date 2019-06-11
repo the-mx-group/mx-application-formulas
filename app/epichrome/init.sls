@@ -1,2 +1,2 @@
-homebrew/cask/epichrome:
+caskroom/cask/epichrome:
   pkg.installed

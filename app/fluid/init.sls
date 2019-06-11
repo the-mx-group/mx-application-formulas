@@ -1,2 +1,2 @@
-homebrew/cask/fluid:
+caskroom/cask/fluid:
   pkg.installed

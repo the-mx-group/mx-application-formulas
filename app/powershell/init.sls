@@ -2,7 +2,7 @@ include:
   - app/magic-sudo
   - app/magic-unsudo
 
-homebrew/cask/powershell:
+caskroom/cask/powershell:
   pkg.installed:
     - require:
       - sls: app/magic-sudo
