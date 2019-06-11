@@ -1,2 +1,2 @@
-caskroom/cask/parallels-desktop12:
+homebrew/cask/parallels-desktop12:
   pkg.installed

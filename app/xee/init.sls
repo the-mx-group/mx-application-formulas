@@ -1,2 +1,2 @@
-caskroom/cask/xee:
+homebrew/cask/xee:
   pkg.installed

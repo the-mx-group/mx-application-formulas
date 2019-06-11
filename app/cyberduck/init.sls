@@ -1,2 +1,2 @@
-caskroom/cask/cyberduck:
+homebrew/cask/cyberduck:
   pkg.installed

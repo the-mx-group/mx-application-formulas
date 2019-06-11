@@ -1,4 +1,4 @@
 {% if grains.os in ('MacOS',) %}
-caskroom/cask/hex-fiend:
+homebrew/cask/hex-fiend:
   pkg.installed
 {% endif %}

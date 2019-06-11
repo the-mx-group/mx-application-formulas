@@ -1,2 +1,2 @@
-caskroom/cask/zipeg:
+homebrew/cask/zipeg:
   pkg.installed

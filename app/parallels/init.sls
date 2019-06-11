@@ -1,4 +1,4 @@
 {% if grains.os in ('MacOS',) %}
-caskroom/cask/parallels:
+homebrew/cask/parallels:
   pkg.installed
 {% endif %}
