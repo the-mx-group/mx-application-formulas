@@ -1,2 +1,2 @@
-Caskroom/cask/epichrome:
+caskroom/cask/epichrome:
   pkg.installed

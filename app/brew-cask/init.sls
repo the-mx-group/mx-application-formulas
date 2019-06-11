@@ -3,7 +3,7 @@
 
 Ensure cask directory exists for primary user:
   file.directory:
-    - name: /usr/local/Caskroom
+    - name: /usr/local/caskroom
     - user: {{ user }}
     - group: admin
     - dir_mode: 775

@@ -1,2 +1,2 @@
-Caskroom/cask/fluid:
+caskroom/cask/fluid:
   pkg.installed

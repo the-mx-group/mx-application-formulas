@@ -1,2 +1,2 @@
-Caskroom/cask/cyberduck:
+caskroom/cask/cyberduck:
   pkg.installed

@@ -1,2 +1,2 @@
-Caskroom/cask/keka:
+caskroom/cask/keka:
   pkg.installed

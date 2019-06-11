@@ -1,2 +1,2 @@
-Caskroom/cask/zipeg:
+caskroom/cask/zipeg:
   pkg.installed

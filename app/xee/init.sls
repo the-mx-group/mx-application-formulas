@@ -1,2 +1,2 @@
-Caskroom/cask/xee:
+caskroom/cask/xee:
   pkg.installed

@@ -2,7 +2,7 @@
 
 {% set user = salt['pillar.get']('users:primary-user') %}
 
-Caskroom/cask/iterm2:
+caskroom/cask/iterm2:
   pkg.installed
 
 Close iterm2 when all windows are closed:
