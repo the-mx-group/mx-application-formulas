@@ -6,3 +6,10 @@ include:
 
 {{ java.package }}:
   {{ java.installer }}
+
+
+Add Java home to primary user mx profile:
+  file.append:
+    - text: |
+        export JAVA_HOME={{java.home}}
+    - name: {{ userinfo.home }}/.mx_profile
