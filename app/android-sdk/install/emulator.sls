@@ -13,7 +13,9 @@ Ensure users avd directory exists:
   file.directory:
     - name: {{ userInfo.home }}/.android/avd
     - user: {{ user }}
+    {% if android.setSdkOwnership %}
     - group: sdkusers
+    {% endif %}
 
 Create symlink to emulator which appears to be required:
   file.symlink:
