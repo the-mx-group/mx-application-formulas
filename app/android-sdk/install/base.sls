@@ -31,3 +31,10 @@ Accept SDK manager licenses:
     - runas: {{ user }}
     - creates: {{ android.sdkPath }}/licenses/android-sdk-license
     - onlyif: test -d {{ android.sdkPath }}
+
+Add android SDK root to primary user mx profile:
+  file.append:
+    - text: |
+        #Android SDK paths
+        export ANDROID_SDK={{ android.sdkPath }}
+    - name: {{ userinfo.home }}/.mx_profile
