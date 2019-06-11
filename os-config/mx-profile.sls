@@ -17,6 +17,7 @@ Ensure user profile exists:
     - name: {{ userinfo.home }}/{{ rcfile }}
     - user: {{ user }}
     - mode: 600
+    - replace: False
 
 Ensure user is running the mx profile content:
   file.append:
