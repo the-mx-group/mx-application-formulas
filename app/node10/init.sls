@@ -1,6 +1,6 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 
-node@6:
+node@10:
   pkg.installed
 
 Ensure primary user bash_profile exists:
@@ -11,5 +11,5 @@ Ensure primary user bash_profile exists:
 
 Add nvm to primary user bash_profile:
   file.append:
-    - text: export PATH="/usr/local/opt/node@6/bin:$PATH"
+    - text: export PATH="/usr/local/opt/node@10/bin:$PATH"
     - name: /Users/{{ user }}/.mx_profile
