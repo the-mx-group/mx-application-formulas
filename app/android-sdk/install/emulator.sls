@@ -24,4 +24,4 @@ Add android emulator to primary user mx profile:
   file.append:
     - text: |
         export PATH=$PATH:{{ android.sdkPath }}/emulator
-    - name: {{ userinfo.home }}/.mx_profile
+    - name: {{ userInfo.home }}/.mx_profile

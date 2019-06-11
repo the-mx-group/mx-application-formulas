@@ -1,4 +1,5 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
+{% set userInfo = salt['user.info'](user) %}
 {% from "app/android-sdk/map.jinja" import android with context %}
 
 {{ android.package }}:
@@ -38,4 +39,4 @@ Add android SDK root to primary user mx profile:
         #Android SDK paths
         export ANDROID_SDK={{ android.sdkPath }}
         export PATH=$PATH:{{ android.sdkPath }}/tools
-    - name: {{ userinfo.home }}/.mx_profile
+    - name: {{ userInfo.home }}/.mx_profile
