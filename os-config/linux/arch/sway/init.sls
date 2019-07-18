@@ -1,4 +1,4 @@
-Install GDM:
+Install sway and related tools:
   pkg.installed:
     - pkgs:
       - sway
@@ -7,7 +7,10 @@ Install GDM:
       - swayidle
       - grim
       - slurp
-      - bemenu
+      - rofi
       - i3status
       - alacritty
       - mako
+      - gnome-keyring
+      - libsecret
+
