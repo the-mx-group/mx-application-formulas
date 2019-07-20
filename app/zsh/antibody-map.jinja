@@ -1,0 +1,20 @@
+{% set antibody = salt['grains.filter_by']({
+    'Windows': {
+        'package': 'Not supported on windows',
+        'installer': 'test.nop',
+    },
+    'MacOS': {
+        'package': 'getantibody/tap/antibody',
+        'installer': 'pkg.installed',
+    },
+    'Arch': {
+        'package': 'antibody',
+        'installer': {
+          'cmd.run': [
+            {'unless': 'pacman -Qi antibody'},
+            {'runas': 'aur-builder'},
+            {'name': 'yay -S antibody --noconfirm'}
+          ]
+        },,
+    },
+}, merge=salt['pillar.get']('antibody:lookup')) %}
