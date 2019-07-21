@@ -11,9 +11,9 @@
         'package': 'antibody',
         'installer': {
           'cmd.run': [
-            {'unless': 'pacman -Qi antibody'},
+            {'unless': 'pacman -Qi antibody-bin'},
             {'runas': 'aur-builder'},
-            {'name': 'yay -S antibody --noconfirm'}
+            {'name': 'yay -S antibody-bin --noconfirm'}
           ]
         },
     },
