@@ -4,6 +4,6 @@ Install various fonts:
       - ttf-inconsolata
       - ttf-croscore
       - ttf-droid
-      - ttf-freefont
+      - gnu-free-fonts
       - ttf-hack
       - ttf-roboto
