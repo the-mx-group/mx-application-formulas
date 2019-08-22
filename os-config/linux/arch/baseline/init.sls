@@ -9,6 +9,7 @@ Install Devel headers:
 Install baseline tools for management:
   pkg.installed:
     - pkgs:
+      - fwupd
       - salt
       - networkmanager
       - linux-headers
