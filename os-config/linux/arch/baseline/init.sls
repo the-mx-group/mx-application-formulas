@@ -21,3 +21,9 @@ Ensure primary user is in adm group:
     - name: adm
     - addusers:
       - {{ user }}
+
+Install common tools that we want everywhere:
+  pkg.installed:
+    - pkgs:
+      - smartmontools
+      - wget
