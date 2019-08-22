@@ -1,4 +1,4 @@
-{% set robo = salt['grains.filter_by']({
+{% set postman = salt['grains.filter_by']({
   'Windows': {
     'package': 'postman',
     'installer': 'chocolatey.installed'
@@ -17,4 +17,4 @@
       ]
     }
   },
-}, merge=salt['pillar.get']('robo3t:lookup')) %}
+}, merge=salt['pillar.get']('postman:lookup')) %}
