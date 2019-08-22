@@ -1,0 +1,28 @@
+{% set powershell = salt['grains.filter_by']({
+    'Windows': {
+      'package': 'already installed by default',
+      'installer': 'test.nop'
+    },
+    'MacOS': {
+      'package': 'homebrew/cask/powershell',
+      'installer': {
+        'pkg.installed': [
+          {
+            'require': [
+              {'sls': 'app/magic-sudo'}
+            ]
+          },
+        ]
+      }
+    },
+    'Arch': {
+      'package': 'powershell-bin',
+      'installer': {
+        'cmd.run': [
+          {'unless': 'pacman -Qi powershell'},
+          {'runas': 'aur-builder'},
+          {'name': 'yay -S powershell-bin --noconfirm'}
+        ]
+      }
+    },
+}, merge=salt['pillar.get']('powershell:lookup')) %}
