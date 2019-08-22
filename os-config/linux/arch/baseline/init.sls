@@ -9,7 +9,6 @@ Install Devel headers:
 Install baseline tools for management:
   pkg.installed:
     - pkgs:
-      - fwupd
       - salt
       - networkmanager
       - linux-headers
@@ -29,6 +28,7 @@ Install common tools that we want everywhere:
       - amd-ucode
       - efibootmgr
       - efivar
+      - fwupd
       - intel-ucode
       - smartmontools
       - wget
