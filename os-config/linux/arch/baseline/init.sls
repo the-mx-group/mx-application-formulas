@@ -25,5 +25,7 @@ Ensure primary user is in adm group:
 Install common tools that we want everywhere:
   pkg.installed:
     - pkgs:
+      - amd-ucode
+      - intel-ucode
       - smartmontools
       - wget
