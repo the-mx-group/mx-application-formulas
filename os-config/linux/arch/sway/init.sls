@@ -10,7 +10,11 @@ Install sway and related tools:
       - rofi
       - i3status
       - alacritty
+      - alacritty-terminfo
+      - termite
+      - termite-terminfo
       - mako
       - gnome-keyring
       - libsecret
+      - ranger
 
