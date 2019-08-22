@@ -17,5 +17,6 @@ Install sway and related tools:
       - swaylock
       - termite
       - termite-terminfo
+      - tmux
       - waybar
 
