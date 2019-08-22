@@ -2,19 +2,20 @@ Install sway and related tools:
   pkg.installed:
     - pkgs:
       - sway
-      - swaylock
-      - waybar
-      - swayidle
-      - grim
-      - slurp
-      - rofi
-      - i3status
       - alacritty
       - alacritty-terminfo
+      - gnome-keyring
+      - grim
+      - i3status
+      - libsecret
+      - mako
+      - pavucontrol
+      - ranger
+      - rofi
+      - slurp
+      - swayidle
+      - swaylock
       - termite
       - termite-terminfo
-      - mako
-      - gnome-keyring
-      - libsecret
-      - ranger
+      - waybar
 
