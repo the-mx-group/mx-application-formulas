@@ -1,3 +1,6 @@
+include:
+  - app/netextender
+
 Install laptop and power related utilities:
   pkg.installed:
     - pkgs:
