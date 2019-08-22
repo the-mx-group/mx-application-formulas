@@ -26,6 +26,8 @@ Install common tools that we want everywhere:
   pkg.installed:
     - pkgs:
       - amd-ucode
+      - efibootmgr
+      - efivar
       - intel-ucode
       - smartmontools
       - wget
