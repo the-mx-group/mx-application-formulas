@@ -12,5 +12,5 @@ cask:
   pkg.installed:
     - taps:
       - homebrew/cask
-      - buo/cask-upgrade
+      - buo/homebrew-cask-upgrade
 {% endif %}

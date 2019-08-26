@@ -4,8 +4,16 @@
         'installer': 'chocolatey.installed'
     },
     'MacOS': {
-      'package': 'homebrew/cask-versions/java8',
-      'installer': 'test.nop',
+      'package': 'homebrew/cask-versions/adoptopenjdk8',
+      'installer': {
+        'pkg.installed': [
+          {
+            'require': [
+              {'sls': 'app/magic-sudo'}
+            ]
+          }
+        ]
+      },
       'home': '$(/usr/libexec/java_home)'
     },
     'Arch': {
