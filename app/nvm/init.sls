@@ -10,6 +10,12 @@ Add nvm to primary user bash_profile:
     - text: {{ nvm.startup }}
     - name: {{ userinfo.home }}/.mx_profile
 
+Create npmrc:
+  file.managed:
+    - name: {{ userinfo.home }}/.npmrc
+    - user: {{ user }}
+    - replace: False
+
 Force NPM save exact mode so that dependencies are not saved with semver ranges:
   file.blockreplace:
     - name: {{ userinfo.home }}/.npmrc
