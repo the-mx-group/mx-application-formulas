@@ -1,10 +1,30 @@
 Install OS baseline:
-  pkg.group_installed:
+  pkg.installed:
     - name: base
 
 Install Devel headers:
   pkg.group_installed:
     - name: base-devel
+
+Install common items that used to be part of base group:
+  pkg.installed:
+    - pkgs:
+      - device-mapper
+      - dhcpcd
+      - e2fsutils
+      - inetutils
+      - less
+      - linux
+      - linux-firmware
+      - logrotate
+      - man-db
+      - man-pages
+      - nano
+      - netctl
+      - sysfsutils
+      - usbutils
+      - which
+
 
 Install baseline tools for management:
   pkg.installed:
