@@ -9,7 +9,7 @@ include:
 {{ java.package }}:
   {{ java.installer }}
 
-{% if userInfo is not None %}
+{% if userInfo != None %}
 Add Java home to primary user mx profile:
   file.append:
     - text: |
