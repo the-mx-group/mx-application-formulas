@@ -11,7 +11,7 @@ Install common items that used to be part of base group:
     - pkgs:
       - device-mapper
       - dhcpcd
-      - e2fsutils
+      - e2fsprogs
       - inetutils
       - less
       - linux
