@@ -2,8 +2,6 @@ Install sway and related tools:
   pkg.installed:
     - pkgs:
       - sway
-      - alacritty
-      - alacritty-terminfo
       - gnome-keyring
       - grim
       - i3status
@@ -17,6 +15,8 @@ Install sway and related tools:
       - swaylock
       - termite
       - termite-terminfo
+      - thunar
+      - thunar-volman
       - tmux
       - waybar
 
