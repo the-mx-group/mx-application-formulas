@@ -24,7 +24,7 @@ Set webkit greeter for lightdm:
   ini.options_present:
     - name: /etc/lightdm/lightdm.conf
     - sections:
-        Seat\:*:
+        Seat:*:
           greeter-session: lightdm-webkit2-greeter
 
 Set litarvan theme for webkit lightdm:
