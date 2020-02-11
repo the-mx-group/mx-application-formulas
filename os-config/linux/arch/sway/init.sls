@@ -33,5 +33,9 @@ Set litarvan theme for webkit lightdm:
     - name: /etc/lightdm/lightdm-webkit2-greeter.conf
     - sections:
         greeter:
-          webkit_theme: litarvan
+          webkit_theme: antergos
 
+Enable lightdm login:
+  service.running:
+    - name: lightdm
+    - enable: True
