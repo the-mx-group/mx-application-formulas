@@ -6,6 +6,8 @@ Install sway and related tools:
       - grim
       - i3status
       - libsecret
+      - lightdm
+      - lightdm-webkit-theme-litarvan
       - mako
       - pavucontrol
       - ranger
@@ -17,4 +19,5 @@ Install sway and related tools:
       - termite-terminfo
       - tmux
       - waybar
+
 
