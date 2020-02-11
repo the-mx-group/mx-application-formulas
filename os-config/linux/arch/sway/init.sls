@@ -19,6 +19,7 @@ Install sway and related tools:
       - termite-terminfo
       - tmux
       - waybar
+      - xorg-server # for lightdm
 
 Set webkit greeter for lightdm:
   ini.options_present:
