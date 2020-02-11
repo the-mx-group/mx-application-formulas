@@ -24,13 +24,13 @@ Set webkit greeter for lightdm:
   ini.options_present:
     - name: /etc/lightdm/lightdm.conf
     - sections:
-      LightDM:
-        greeter-session: lightdm-webkit2-greeter
+        LightDM:
+          greeter-session: lightdm-webkit2-greeter
 
 Set litarvan theme for webkit lightdm:
   ini.options_present:
     - name: /etc/lightdm/lightdm-webkit.conf
     - sections:
-      greeter:
-        webkit_theme: litarvan
+        greeter:
+          webkit_theme: litarvan
 
