@@ -29,7 +29,7 @@ Set webkit greeter for lightdm:
 
 Set litarvan theme for webkit lightdm:
   ini.options_present:
-    - name: /etc/lightdm/lightdm-webkit.conf
+    - name: /etc/lightdm/lightdm-webkit2-greeter.conf
     - sections:
         greeter:
           webkit_theme: litarvan
