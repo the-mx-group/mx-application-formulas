@@ -29,6 +29,8 @@ Install common tools that we want everywhere:
       - efibootmgr
       - efivar
       - fwupd
+      - gptfdisk
       - intel-ucode
+      - parted
       - smartmontools
       - wget
