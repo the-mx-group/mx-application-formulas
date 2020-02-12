@@ -21,14 +21,17 @@ Install sway and related tools:
       - waybar
       - xorg-server # for lightdm
 
-Set webkit greeter for lightdm:
+set-webkit-greeter:
   ini.options_present:
     - name: /etc/lightdm/lightdm.conf
     - sections:
         Seat:*:
           greeter-session: lightdm-webkit2-greeter
+          greeter-show-manual-login: true
 
-Set litarvan theme for webkit lightdm:
+
+
+set-litarvan-theme:
   ini.options_present:
     - name: /etc/lightdm/lightdm-webkit2-greeter.conf
     - sections:
@@ -39,3 +42,6 @@ Enable lightdm login:
   service.running:
     - name: lightdm
     - enable: True
+    - watch:
+      - ini: set-litarvan-theme
+      - ini: set-webkit-greeter
