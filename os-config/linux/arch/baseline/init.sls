@@ -26,6 +26,7 @@ Install common tools that we want everywhere:
   pkg.installed:
     - pkgs:
       - amd-ucode
+      - btrfs-progs
       - efibootmgr
       - efivar
       - fwupd
