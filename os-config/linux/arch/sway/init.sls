@@ -25,6 +25,11 @@ install-luminosity-theme:
     - name: https://github.com/rda0/web-greeter-theme-luminosity.git
     - target: /usr/share/lightdm-webkit/themes/luminosity
 
+configure-luminosity-theme:
+  - file.managed:
+    - name: /usr/share/lightdm-webkit/themes/luminosity/config.json
+    - source: salt://{{slspath}}/luminosity-config.json
+
 set-lightdm-greeter:
   ini.options_present:
     - name: /etc/lightdm/lightdm.conf
