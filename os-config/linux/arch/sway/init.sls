@@ -7,7 +7,6 @@ Install sway and related tools:
       - i3status
       - libsecret
       - lightdm
-      - lightdm-webkit-theme-litarvan
       - mako
       - pavucontrol
       - ranger
@@ -21,7 +20,12 @@ Install sway and related tools:
       - waybar
       - xorg-server # for lightdm
 
-set-webkit-greeter:
+install-luminosity-theme:
+  git.cloned:
+    - name: https://github.com/rda0/web-greeter-theme-luminosity.git
+    - target: /usr/share/lightdm-webkit/themes/luminosity
+
+set-lightdm-greeter:
   ini.options_present:
     - name: /etc/lightdm/lightdm.conf
     - sections:
@@ -29,19 +33,18 @@ set-webkit-greeter:
           greeter-session: lightdm-webkit2-greeter
           greeter-show-manual-login: true
 
-
-
-set-litarvan-theme:
+set-lightdm-theme:
   ini.options_present:
     - name: /etc/lightdm/lightdm-webkit2-greeter.conf
     - sections:
         greeter:
-          webkit_theme: antergos
+          webkit_theme: luminosity
 
 Enable lightdm login:
   service.running:
     - name: lightdm
     - enable: True
     - watch:
-      - ini: set-litarvan-theme
-      - ini: set-webkit-greeter
+      - git: install-luminosity-theme
+      - ini: set-lightdm-theme
+      - ini: set-lightdm-greeter
