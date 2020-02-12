@@ -6,11 +6,11 @@ Install sway and related tools:
       - grim
       - i3status
       - libsecret
-      - lightdm
       - mako
       - pavucontrol
       - ranger
       - rofi
+      - sddm
       - slurp
       - swayidle
       - swaylock
@@ -18,38 +18,17 @@ Install sway and related tools:
       - termite-terminfo
       - tmux
       - waybar
-      - xorg-server # for lightdm
 
-install-luminosity-theme:
-  git.cloned:
-    - name: https://github.com/rda0/web-greeter-theme-luminosity.git
-    - target: /usr/share/lightdm-webkit/themes/luminosity
-
-configure-luminosity-theme:
+configure-sddm-theme:
   file.managed:
-    - name: /usr/share/lightdm-webkit/themes/luminosity/config.json
-    - source: salt://{{slspath}}/luminosity-config.json
+    - name: /etc/sddm.conf.d/theme.conf
+    - contents: |
+        [Theme]
+        Current=maldives
 
-set-lightdm-greeter:
-  ini.options_present:
-    - name: /etc/lightdm/lightdm.conf
-    - sections:
-        Seat:*:
-          greeter-session: lightdm-webkit2-greeter
-          greeter-show-manual-login: true
-
-set-lightdm-theme:
-  ini.options_present:
-    - name: /etc/lightdm/lightdm-webkit2-greeter.conf
-    - sections:
-        greeter:
-          webkit_theme: luminosity
-
-Enable lightdm login:
+enable-sddm-service:
   service.running:
-    - name: lightdm
+    - name: sddm
     - enable: True
     - watch:
-      - git: install-luminosity-theme
-      - ini: set-lightdm-theme
-      - ini: set-lightdm-greeter
+      - file: set-sddm-theme
