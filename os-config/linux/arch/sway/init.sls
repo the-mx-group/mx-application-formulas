@@ -26,7 +26,7 @@ install-luminosity-theme:
     - target: /usr/share/lightdm-webkit/themes/luminosity
 
 configure-luminosity-theme:
-  - file.managed:
+  file.managed:
     - name: /usr/share/lightdm-webkit/themes/luminosity/config.json
     - source: salt://{{slspath}}/luminosity-config.json
 
