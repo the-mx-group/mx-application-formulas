@@ -19,7 +19,7 @@ Install sway and related tools:
       - tmux
       - waybar
 
-configure-sddm-theme:
+set-sddm-theme:
   file.managed:
     - name: /etc/sddm.conf.d/theme.conf
     - contents: |
