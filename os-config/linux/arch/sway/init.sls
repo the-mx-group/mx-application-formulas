@@ -18,6 +18,7 @@ Install sway and related tools:
       - termite-terminfo
       - tmux
       - waybar
+      - xdg-user-dirs
 
 set-sddm-theme:
   file.managed:
