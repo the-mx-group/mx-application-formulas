@@ -1,0 +1,39 @@
+{% set kubetools = salt['grains.filter_by']({
+  'Windows': {
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'kubernetes-cli',
+            'minikube'
+          ]
+        },
+      ],
+    },
+  },
+  'MacOS': {
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'kubectl',
+            'minikube'
+          ]
+        },
+      ],
+    },
+  },
+  'Arch': {
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'kubectl',
+            'kubectx',
+            'minikube'
+          ]
+        },
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('kubetools:lookup')) %}
