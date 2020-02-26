@@ -19,6 +19,7 @@ Install sway and related tools:
       - tmux
       - waybar
       - xdg-user-dirs
+      - xorg-server-xwayland # sadly
 
 set-sddm-theme:
   file.managed:
