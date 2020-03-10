@@ -34,4 +34,5 @@ Install common tools that we want everywhere:
       - intel-ucode
       - parted
       - smartmontools
+      - unzip
       - wget
