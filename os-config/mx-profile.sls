@@ -1,6 +1,8 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% set userinfo = salt['user.info'](user) %}
 
+{% if grains.os not in ('Windows') %}#skip this file if we're on windows
+
 Create MX profile container for things Mx wants to add to user profiles:
   file.managed:
     - name: {{ userinfo.home }}/.mx_profile
@@ -23,3 +25,5 @@ Ensure user is running the mx profile content:
   file.append:
     - name: {{ userinfo.home }}/{{ rcfile }}
     - text: source ~/.mx_profile
+
+{% endif %} #skip this file if we're on windows
