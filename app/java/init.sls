@@ -9,9 +9,10 @@ include:
 {{ java.package }}:
   {{ java.installer }}
 
-
+{% if 'home' in userInfo %}
 Add Java home to primary user mx profile:
   file.append:
     - text: |
         export JAVA_HOME={{java.home}}
     - name: {{ userInfo.home }}/.mx_profile
+{% endif %}

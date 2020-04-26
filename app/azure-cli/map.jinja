@@ -1,0 +1,20 @@
+{% set azurecli = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'azure-cli',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'azure-cli',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'azure-cli',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi azure-cli'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S azure-cli --noconfirm'}
+      ]
+    },
+  },
+}, merge=salt['pillar.get']('azurecli:lookup')) %}

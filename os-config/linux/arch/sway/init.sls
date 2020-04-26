@@ -10,6 +10,7 @@ Install sway and related tools:
       - pavucontrol
       - ranger
       - rofi
+      - sddm
       - slurp
       - swayidle
       - swaylock
@@ -19,4 +20,19 @@ Install sway and related tools:
       - thunar-volman
       - tmux
       - waybar
+      - xdg-user-dirs
+      - xorg-server-xwayland # sadly
 
+set-sddm-theme:
+  file.managed:
+    - name: /etc/sddm.conf.d/theme.conf
+    - contents: |
+        [Theme]
+        Current=maldives
+
+enable-sddm-service:
+  service.running:
+    - name: sddm
+    - enable: True
+    - watch:
+      - file: set-sddm-theme
