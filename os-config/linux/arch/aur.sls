@@ -5,7 +5,7 @@ Packages required by aur tool:
   pkg.installed:
     - pkgs:
       - pacman
-      - go-pie
+      - go
       - git
 
 # Make sure there iss nothing already there:
