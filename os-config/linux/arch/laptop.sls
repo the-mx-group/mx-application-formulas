@@ -1,5 +1,5 @@
 include:
-  - app/netextender
+  - app/openvpn
 
 Install laptop and power related utilities:
   pkg.installed:
