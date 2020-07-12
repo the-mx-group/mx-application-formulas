@@ -43,3 +43,17 @@ install editorconfig for Eclipse:
     - runas: {{ user }}
     - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/editorconfig-eclipse-feature.*" | grep '.*'
 
+
+install SpotBugs for Eclipse:
+  cmd.run:
+    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository https://spotbugs.github.io/eclipse/ -installIU "com.github.spotbugs.plugin.eclipse.feature.group"
+    - runas: {{ user }}
+    - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/com.github.spotbugs.*" | grep '.*'
+
+
+install Checkstyle for Eclipse:
+  cmd.run:
+    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository https://checkstyle.org/eclipse-cs/update -installIU "net.sf.eclipsecs.feature.group"
+    - runas: {{ user }}
+    - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/net.sf.eclipsecs.*" | grep '.*'
+
