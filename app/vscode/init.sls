@@ -19,4 +19,10 @@ Install GitLens extension:
     - runas: {{ user }}
     - unless: {{ vscode.binary }} --list-extensions | grep eamodio.gitlens
 
+Install SonarLint extension:
+  cmd.run:
+    - name: {{ vscode.binary }} --install-extension sonarsource.sonarlint-vscode
+    - runas: {{ user }}
+    - unless: {{ vscode.binary }} --list-extensions | grep sonarsource.sonarlint-vscode
+
 {% endif %}
