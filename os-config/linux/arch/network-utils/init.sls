@@ -2,7 +2,7 @@ Install tools:
   pkg.installed:
     - pkgs:
       - openssh
-      - bind-tools
+      - bind
       - net-tools
 
 Enable SSH service:
