@@ -1,0 +1,14 @@
+{% set firefox = salt['grains.filter_by']({
+    'Windows': {
+      'package': 'firefox',
+      'installer': 'chocolatey.installed'
+    },
+    'MacOS': {
+      'package': 'homebrew/cask/firefox',
+      'installer': 'pkg.installed'
+    },
+    'Arch': {
+      'package': 'firefox',
+      'installer': 'pkg.installed'
+    },
+}, merge=salt['pillar.get']('firefox:lookup')) %}
