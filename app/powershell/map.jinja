@@ -1,7 +1,12 @@
 {% set powershell = salt['grains.filter_by']({
     'Windows': {
-      'package': 'already installed by default',
-      'installer': 'test.nop'
+      'package': 'powershell-core',
+        'installer': {
+          'chocolatey.installed': [
+            {'package_args': '/CleanUpPath'},
+            {'install_args': 'ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 REGISTER_MANIFEST=1'}
+          ]
+        }
     },
     'MacOS': {
       'package': 'homebrew/cask/powershell',
