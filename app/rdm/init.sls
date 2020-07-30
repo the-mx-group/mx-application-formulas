@@ -10,7 +10,7 @@ pin RDM to the correct version on Windows:
   cmd.run:
     - name: choco pin --name rdm --version "13.6.7.0"
     - unless:
-      - fun: cmdmod.powershell
+      - fun: cmd.run
         shell: powershell
         args:
           - choco pin list -n rdm | Select-String -Pattern rdm
