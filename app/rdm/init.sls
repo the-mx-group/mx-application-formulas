@@ -8,7 +8,7 @@
 
 pin RDM to the correct version on Windows:
   cmd.exec:
-    - name: choco pin --name rdm --version {{ rdm.installer.chocolatey.installed.version }}
+    - name: choco pin --name rdm --version "13.6.7.0"
     - unless:
       - fun: cmdmod.powershell
         shell: powershell
