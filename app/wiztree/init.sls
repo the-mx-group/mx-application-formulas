@@ -1,6 +1,6 @@
 {% if grains.os in ('Windows',) %}
 
-install-grepwin:
+install-wiztree:
   chocolatey.installed:
     - name: wiztree
 
