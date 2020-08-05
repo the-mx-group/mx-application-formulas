@@ -21,8 +21,8 @@ Install GitLens extension:
 
 Install SonarLint extension:
   cmd.run:
-    - name: {{ vscode.binary }} --install-extension sonarsource.sonarlint-vscode
+    - name: {{ vscode.binary }} --install-extension SonarSource.sonarlint-vscode
     - runas: {{ user }}
-    - unless: {{ vscode.binary }} --list-extensions | grep sonarsource.sonarlint-vscode
+    - unless: {{ vscode.binary }} --list-extensions | grep -i SonarSource.sonarlint-vscode
 
 {% endif %}
