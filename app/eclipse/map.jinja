@@ -1,39 +1,28 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% set userInfo = salt['user.info'](user) %}
 {% set eclipse = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'eclipse',
-        'installer': 'chocolatey.installed',
-        'binary': 'c:\program files\Eclipse*\eclipse\eclipse.exe',
-        'packageLocation': userInfo.home + '/.eclipse/',
-        'extras': {'test.nop': []}
+  'Windows': {
+    'package': 'eclipse',
+    'installer': 'chocolatey.installed',
+    'binary': 'c:\program files\Eclipse*\eclipse\eclipse.exe',
+    'packageLocation': userInfo.home + '/.eclipse/'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/eclipse-jee',
+    'installer': 'pkg.installed',
+    'binary': '/Applications/Eclipse\ JEE.app/Contents/MacOS/eclipse',
+    'packageLocation': '/Applications/Eclipse\ JEE.app/Contents/'
+  },
+  'Arch': {
+    'package': 'eclipse-jee',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi eclipse-jee'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S eclipse-jee --noconfirm'}
+      ]
     },
-    'MacOS': {
-        'package': 'homebrew/cask/eclipse-jee',
-        'installer': 'pkg.installed',
-        'binary': '/Applications/Eclipse\ JEE.app/Contents/MacOS/eclipse',
-        'packageLocation': '/Applications/Eclipse\ JEE.app/Contents/',
-        'extras': {'test.nop': []}
-    },
-    'Arch': {
-        'package': 'eclipse-jee',
-        'installer': {
-          'pkg.installed': [
-            {
-              'pkgs': [
-                'jdk8-openjdk',
-                'eclipse-jee'
-              ]
-            }
-          ]
-        },
-        'extras': {
-          'cmd.run': [
-            { 'name': 'archlinux-java set java-8-openjdk' },
-            { 'unless': 'archlinux-java get | grep java-8-openjdk' },
-          ]
-        },
-        'binary': '/usr/bin/eclipse',
-        'packageLocation': userInfo.home + '/.eclipse/'
-    },
+    'binary': '/usr/bin/eclipse',
+    'packageLocation': userInfo.home + '/.eclipse/'
+  },
 }, merge=salt['pillar.get']('eclipse:lookup')) %}
