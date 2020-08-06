@@ -1,7 +1,7 @@
 {% if grains.os in ('Windows',) %}
 
 install_sysinternals:
-  chocolatey.upgraded:
+  chocolatey.installed:
     - name: sysinternals
 
 {% endif %}
