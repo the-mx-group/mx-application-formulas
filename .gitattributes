@@ -1,0 +1,13 @@
+# Scripts
+*.sh text eol=lf
+
+# Windows files
+*.ini text eol=crlf
+
+# Do not convert powershell files. EOL may have specific reasons.
+*.ps1 -text
+
+# Exclude files from exporting
+.gitattributes export-ignore
+.gitignore     export-ignore
+
