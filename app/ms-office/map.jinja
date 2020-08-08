@@ -11,8 +11,4 @@
         'package': 'homebrew/cask/microsoft-office',
         'installer': 'pkg.installed'
     },
-    'Arch': {
-        'package': 'none',
-        'installer': 'test.nop',
-    },
 }, merge=salt['pillar.get']('microsoft-office:lookup')) %}
