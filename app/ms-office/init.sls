@@ -1,4 +1,7 @@
-install-microsoft-office:
-  chocolatey.installed:
-    - name: microsoft-office-deployment
-    - package_args: "'/64bit /Product:O365ProPlusRetail'"
+{% if grains.os in ('Windows','MacOS') %}
+{% from "app/microsoft-office/map.jinja" import microsoft-office with context %}
+
+{{ microsoft-office.package }}:
+  {{ microsoft-office.installer }}
+
+{% endif %}
