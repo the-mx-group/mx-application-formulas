@@ -1,4 +1,4 @@
-{% set microsoft-office = salt['grains.filter_by']({
+{% set msoffice = salt['grains.filter_by']({
     'Windows': {
         'package': 'microsoft-office-deployment',
         'installer': {
@@ -11,4 +11,4 @@
         'package': 'homebrew/cask/microsoft-office',
         'installer': 'pkg.installed'
     },
-}, merge=salt['pillar.get']('microsoft-office:lookup')) %}
+}, merge=salt['pillar.get']('msoffice:lookup')) %}

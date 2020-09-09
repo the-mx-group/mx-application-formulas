@@ -1,7 +1,7 @@
 {% if grains.os in ('Windows','MacOS') %}
-{% from "app/ms-office/map.jinja" import microsoft-office with context %}
+{% from "app/ms-office/map.jinja" import msoffice with context %}
 
-{{ microsoft-office.package }}:
-  {{ microsoft-office.installer }}
+{{ msoffice.package }}:
+  {{ msoffice.installer }}
 
 {% endif %}
