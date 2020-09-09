@@ -1,4 +1,4 @@
-{% from "app/7zip/map.jinja" import 7zip with context %}
+{% from "app/7zip/map.jinja" import sevenzip with context %}
 
-{{ 7zip.package }}:
-  {{ 7zip.installer }}
+{{ sevenzip.package }}:
+  {{ sevenzip.installer }}

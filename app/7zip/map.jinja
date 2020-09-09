@@ -1,4 +1,4 @@
-{% set 7zip = salt['grains.filter_by']({
+{% set sevenzip = salt['grains.filter_by']({
     'Windows': {
         'package': '7zip.install',
         'installer': 'chocolatey.installed'
@@ -11,4 +11,4 @@
         'package': 'p7zip',
         'installer': 'pkg.installed'
     },
-}, merge=salt['pillar.get']('7zip:lookup')) %}
+}, merge=salt['pillar.get']('sevenzip:lookup')) %}
