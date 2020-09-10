@@ -1,5 +1,4 @@
-{%- set kubetoolsroot = slspath.split('/')[0] %}
-{%- from kubetoolsroot ~ "/map.jinja" import kubetools with context %}
+{% from tpldir ~ "/map.jinja" import kubetools with context %}
 
 {% if grains.os in ('Windows',) %}
 
