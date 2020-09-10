@@ -1,15 +1,10 @@
 {% set kubetools = salt['grains.filter_by']({
   'Windows': {
-    'installer': {
-      'chocolatey.installed': [
-        {
-          'pkgs': [
-            'kubernetes-cli',
-            'minikube'
-          ]
-        },
-      ],
-    },
+    'installer': 'chocolatey.installed',
+    'pkgs': [
+      'kubernetes-cli',
+      'minikube'
+      ]
   },
   'MacOS': {
     'installer': {
