@@ -1,7 +1,7 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 
 {% if grains.os in ('Windows',) %}
-  {% set userpath = salt['cmd.script']('salt://utils/GetUserHomeDir.ps1', shell='powershell', args=user) %}
+  {% set userpath = salt['cmd.script']('salt://utils/files/GetUserHomeDir.ps1', shell='powershell', args=user) %}
   {% set userhome = userpath['stdout'] %}
 {% else %}
   {% set userinfo = salt['user.info'](user) %}
