@@ -2,7 +2,9 @@
     'Windows': {
         'package': 'nodist',
         'installer': 'chocolatey.installed',
-        'startup': ''
+        'startup': '|
+          # nodist only needs sourcing in cygwin
+          '
     },
     'MacOS': {
         'package': 'nvm',

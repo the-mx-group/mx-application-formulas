@@ -1,5 +1,13 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
-{% set userinfo = salt['user.info'](user) %}
+
+{% if grains.os in ('Windows',) %}
+  {% set userpath = salt['cmd.script']('salt://utils/GetUserHomeDir.ps1', shell='powershell', args=user) %}
+  {% set userhome = userpath['stdout'] %}
+{% else %}
+  {% set userinfo = salt['user.info'](user) %}
+  {% set userhome = userinfo['home'] %}
+{% endif %}
+
 {% from "app/nvm/map.jinja" import nvm with context %}
 
 {{ nvm.package }}:
@@ -8,22 +16,19 @@
 Add nvm to primary user bash_profile:
   file.append:
     - text: {{ nvm.startup }}
-    - name: {{ userinfo.home }}/.mx_profile
+    - name: {{ userhome }}/.mx_profile
 
 Create npmrc:
   file.managed:
-    - name: {{ userinfo.home }}/.npmrc
+    - name: {{ userhome }}/.npmrc
     - user: {{ user }}
     - replace: False
 
 Force NPM save exact mode so that dependencies are not saved with semver ranges:
   file.blockreplace:
-    - name: {{ userinfo.home }}/.npmrc
+    - name: {{ userhome }}/.npmrc
     - marker_start: "# START Mx semver config -DO-NOT-EDIT-"
     - marker_end: "# END Mx semver config"
     - prepend_if_not_found: True
     - append_newline: True
     - content: save-exact=true
-
-
-
