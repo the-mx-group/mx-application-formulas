@@ -5,5 +5,4 @@ enable_telnet:
     - unless:
         - fun: cmd.run
           shell: powershell
-          args:
-            - '(Get-WindowsOptionalFeature -Online -FeatureName TelnetClient).State | Select-String -Pattern Enabled'
+          name: '(Get-WindowsOptionalFeature -Online -FeatureName TelnetClient).State | Select-String -Pattern Enabled'
