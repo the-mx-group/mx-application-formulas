@@ -2,7 +2,7 @@ enable_telnet:
   cmd.run:
     - name: Enable-WindowsOptionalFeature -Online -Featurename TelnetClient
     - shell: powershell
-    - unless:
+    - unless: # This requires >= 3001
       - fun: cmd.run
         shell: powershell
         args:
