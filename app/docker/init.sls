@@ -1,38 +1,15 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
+{% from tpldir ~ "/map.jinja" import config with context %}
 
-docker:
-  pkg.installed
+{{ config.package }}:
+  {{ config.installer }}
 
-docker-compose:
-  pkg.installed
-
-#Don't need docker-machine etc on linux
-{% if grains.os not in ('Linux','Arch') %}
-
-docker-machine:
-  pkg.installed
-
-boot2docker:
-  pkg.installed
-
-  {% if grains.os in ('MacOS',) %}
-
-Append docker-machine to users profile:
-  file.append:
-    - text: |
-        #Docker Machine
-        docker-machine status | grep "Running" > /dev/null
-        if [ $? -eq 0 ]
-        then
-          eval $(docker-machine env)
-        fi
-    - name: /Users/{{ user }}/.mx_profile
+# also install docker-compose
+{{ config.compose.package }}:
+  {{ config.compose.installer }}
 
 
-  {% endif %}
-
-{% else %}
-
+{% if grains.os in ('Linux','Arch') %}
 # This is configuration for Linux docker-native platforms
 
 Ensure primary user is in docker group:
@@ -41,8 +18,10 @@ Ensure primary user is in docker group:
     - addusers:
       - {{ user }}
 
+{% if user != None %}
 Ensure docker service is enabled:
   service.enabled:
     - name: docker
+{% endif %}
 
 {% endif %}
