@@ -1,7 +1,7 @@
 {% set config = salt['grains.filter_by']({
   'Windows': {
     'package': 'docker-desktop',
-    'installer': 'chocolatey.installed'
+    'installer': 'chocolatey.installed',
     'compose': {
       'package': 'docker-compose',
       'installer': 'chocolatey.installed',
@@ -9,7 +9,7 @@
   },
   'MacOS': {
     'package': 'homebrew/cask/docker',
-    'installer': 'pkg.installed'
+    'installer': 'pkg.installed',
     'compose': {
       'package': 'docker-compose',
       'installer': 'pkg.installed',
