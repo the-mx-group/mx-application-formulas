@@ -23,4 +23,17 @@
       'installer': 'pkg.installed',
     },
   },
+  'Raspbian': {
+    'package': 'docker-ce',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'dpkg -s docker-ce'},
+        {'name': 'curl -fsSL https://get.docker.com | sh'}
+      ]
+    },
+    'compose': {
+      'package': 'docker compose must be manually installed with pip3',
+      'installer': 'test.nop',
+    },
+  },
 }, merge=salt['pillar.get']('docker:lookup')) %}
