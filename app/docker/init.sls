@@ -9,7 +9,7 @@
   {{ config.compose.installer }}
 
 
-{% if grains.os in ('Linux','Arch','Raspbian') %}
+{% if grains.os in ('Linux','Arch','Debian') %}
 # This is configuration for Linux docker-native platforms
 
 Ensure primary user is in docker group:
