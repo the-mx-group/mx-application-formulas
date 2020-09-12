@@ -32,8 +32,8 @@
       ]
     },
     'compose': {
-      'package': 'docker compose must be manually installed with pip3',
-      'installer': 'test.nop',
+      'package': 'docker-compose',
+      'installer': 'pkg.installed',
     },
   },
 }, merge=salt['pillar.get']('docker:lookup')) %}
