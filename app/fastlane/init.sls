@@ -19,6 +19,6 @@ Ensure local fastlane is owned by the right user:
 Append gemfile to bash profile PATH:
   file.append:
     - name: {{ userinfo.home }}/.mx_profile
-    - text: export PATH=$PATH:$(gem env gempath | cut -d: -f1)/bin
+    - text: "export PATH=$PATH:$(gem env gempath | cut -d: -f1)/bin"
 
 {% endif %}
