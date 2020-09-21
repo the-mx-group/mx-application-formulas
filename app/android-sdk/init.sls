@@ -1,7 +1,7 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 
 include:
-  - app/java
+  - app/java11
   - app/gradle
   - .install.base
   - .install.build-tools

@@ -1,6 +1,6 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% set userInfo = salt['user.info'](user) %}
-{% from "app/java/map.jinja" import java with context %}
+{% from tpldir ~ "/map.jinja" import java with context %}
 
 include:
   - app/magic-sudo
