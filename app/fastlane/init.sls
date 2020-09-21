@@ -12,20 +12,13 @@ Ensure local fastlane is owned by the right user:
     - recurse:
       - user
 
-{% if grains.os in ('MacOS',) %}
-Ensure fastlane is installed and PATHed:
-  cmd.run:
-    - runas: {{ user }}
-    - name: echo y | /usr/local/caskroom/fastlane/latest/install -u -b
-    - unless: echo $PATH | grep fastlane
-{% else %}
-
+{% if grains.os in ('Arch',) %}
 #Not MacOS, so let's add the user's local gempath to PATH
 {% set userinfo = salt['user.info'](user) %}
 
 Append gemfile to bash profile PATH:
   file.append:
     - name: {{ userinfo.home }}/.mx_profile
-    - text: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/2.4.0/bin
+    - text: export PATH=$PATH:{{ userinfo.home }}/.gem/ruby/$(ruby -e 'print "#{RUBY_VERSION}"')/bin
 
 {% endif %}
