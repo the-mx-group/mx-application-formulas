@@ -34,13 +34,6 @@ install Eclipse MAT:
     - runas: {{ user }}
     - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/org.eclipse.mat.*" | grep '.*'
 
-install editorconfig for Eclipse:
-  cmd.run:
-    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository https://editorconfig-eclipse.github.io/repository -installIU "editorconfig-eclipse-feature.feature.group"
-    - runas: {{ user }}
-    - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/editorconfig-eclipse-feature.*" | grep '.*'
-
-
 install SpotBugs for Eclipse:
   cmd.run:
     - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository https://spotbugs.github.io/eclipse/ -installIU "com.github.spotbugs.plugin.eclipse.feature.group"
