@@ -22,6 +22,15 @@
     },
     'Arch': {
       'package': 'dotnet-sdk',
-      'installer': 'pkg.installed'
+      'installer': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'dotnet-sdk',
+              'aspnet-runtime'
+            ],
+          },
+        ]
+      }
     },
 }, merge=salt['pillar.get']('dotnet:lookup')) %}
