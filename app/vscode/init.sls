@@ -31,5 +31,12 @@ Install tslint extension:
     - runas: {{ user }}
     - unless: {{ vscode.binary }} --list-extensions | grep -i ms-vscode.vscode-typescript-tslint-plugin
 
+Install Better Align extension:
+  cmd.run:
+    - name: {{ vscode.binary }} --install-extension wwm.better-align
+    - runas: {{ user }}
+    - unless: {{ vscode.binary }} --list-extensions | grep -i wwm.better-align
+
+
 
 {% endif %}
