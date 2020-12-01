@@ -1,11 +1,16 @@
 {% set git = salt['grains.filter_by']({
     'Windows': {
-        'package': 'git',
-        'installer': 'chocolatey.installed'
+      'installer': {
+        'git': {
+          'chocolatey.installed'
+        },
+        'git-lfs': {
+          'chocolatey.installed'
+        }
     },
     'MacOS': {
-        'package': 'git',
-        'installer': {
+      'installer': {
+        'git': {
           'pkg.installed': [
             {
               'pkgs': [
@@ -16,15 +21,17 @@
             },
           ]
         }
+      }
     },
     'Arch': {
-        'package': 'git',
-        'installer': {
+      'installer': {
+        'git': {
           'cmd.run': [
             {'unless': 'pacman -Qi git-lfs'},
             {'runas': 'aur-builder'},
             {'name': 'yay -S git git-lfs gitflow-avh --noconfirm'}
           ]
         }
+      }
     },
 }, merge=salt['pillar.get']('git:lookup')) %}
