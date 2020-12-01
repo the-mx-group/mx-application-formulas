@@ -1,12 +1,9 @@
 {% set git = salt['grains.filter_by']({
     'Windows': {
       'installer': {
-        'git': {
-          'chocolatey.installed'
-        },
-        'git-lfs': {
-          'chocolatey.installed'
-        }
+        'git': 'chocolatey.installed',
+        'git-lfs': 'chocolatey.installed'
+      }
     },
     'MacOS': {
       'installer': {
