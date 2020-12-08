@@ -1,14 +1,14 @@
 {% set mysqlworkbench = salt['grains.filter_by']({
     'Windows': {
-        'package': 'mysql-workbench',
-        'installer': 'chocolatey.installed'
-    },
+      'installer': {
+        'mysql.workbench': 'chocolatey.installed'
+      }
     'MacOS': {
-        'package': 'homebrew/cask/mysqlworkbench',
-        'installer': 'pkg.installed'
-    },
+      'installer': {
+        'homebrew/cask/mysqlworkbench': 'pkg.installed'
+      }
     'Arch': {
-        'package': 'mysql-workbench',
-        'installer': 'pkg.installed',
-    },
+      'installer': {
+        'mysql-workbench': 'pkg.installed'
+      }
 }, merge=salt['pillar.get']('mysql-workbench:lookup')) %}
