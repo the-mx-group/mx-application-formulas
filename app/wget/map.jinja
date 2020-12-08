@@ -2,13 +2,13 @@
     'Windows': {
       'installer': {
         'wget': 'chocolatey.installed'
-      }
+      },
     'MacOS': {
       'installer': {
         'wget': 'pkg.installed'
-      }
+      },
     'Arch': {
       'installer': {
         'wget': 'pkg.installed'
-      }
+      },
 }, merge=salt['pillar.get']('wget:lookup')) %}
