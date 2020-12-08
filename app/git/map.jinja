@@ -4,7 +4,7 @@
         'git': 'chocolatey.installed',
         'git-lfs': {
           'cmd.run': [
-            'name': 'git lfs install',
+            {'name': 'git lfs install'},
             'on_changes': [
               {'chocolatey': 'git'}
             ],
