@@ -12,6 +12,7 @@ cygwin_fstab:
     - require:
       - chocolatey: install_cygwin
 
+{#
 # Example state
 #install_rsync:
 #  cyg.installed:
@@ -26,5 +27,5 @@ cygwin_fstab:
 #    - 'http://mirror.steadfast.net/cygwin': ""
 #    - 'http://mirror.cs.vt.edu/pub/cygwin/cygwin': ""
 #    - 'http://cygwin.osuosl.org': ""
-
+#}
 {% endif %}
