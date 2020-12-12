@@ -5,13 +5,6 @@ explorer_expandtocurrentfolder_defaultuser:
     - vdata: 1
     - vtype: REG_DWORD
 
-explorer_allinnavepane_defaultuser:
-  reg.present:
-    - name: HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
-    - vname: NavPaneShowAllFolders
-    - vdata: 1
-    - vtype: REG_DWORD
-
 explorer_opentothispc_defaultuser:
   reg.present:
     - name: HKEY_USERS\.DEFAULT\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced
