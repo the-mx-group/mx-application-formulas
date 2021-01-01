@@ -31,7 +31,7 @@ Install the built {{ aurtool.name }}:
     - unless: which {{ aurtool.name }}
     - name: |
         cd /tmp/aurbuild/{{ aurtool.pkgname }}
-        pacman -U *.tar.xz --noconfirm --needed
+        pacman -U *.tar.zst --noconfirm --needed
 
 
 #Clean up after ourselves:
