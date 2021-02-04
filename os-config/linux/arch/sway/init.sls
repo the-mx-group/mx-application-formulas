@@ -8,6 +8,8 @@ Install sway and related tools:
       - libsecret
       - mako
       - pavucontrol
+      - pipewire # newer audio/video sharing subsystem
+      - pipewire-pulse # replaces pulseaudio
       - ranger
       - rofi
       - sddm
