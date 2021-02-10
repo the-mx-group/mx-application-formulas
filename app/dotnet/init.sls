@@ -45,6 +45,8 @@ Add dotnet to primary user bash profile:
 
         #dotnet sdk path
         export MSBuildSDKsPath=/usr/share/dotnet/sdk/$(dotnet --version)/Sdks
+        # add dotnet tools to path as well
+        export PATH=$PATH:~/.dotnet/tools
     - name: {{ userInfo.home }}/.mx_profile
 
 #done with linux-specific stuff
