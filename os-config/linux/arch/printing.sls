@@ -13,11 +13,11 @@ Install printing utilities:
 
 Enable the printing service:
   service.enabled:
-    - name: org.cups.cupsd
+    - name: cups
 
 Start the printing service:
   service.running:
-    - name: org.cups.cupsd
+    - name: cups
 
 Enable the printer discovery service:
   service.enabled:
