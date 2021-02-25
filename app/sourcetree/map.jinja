@@ -1,0 +1,30 @@
+{% set sourcetree = salt['grains.filter_by']({
+  'Windows': {
+    'installer': 'chocolatey.installed',
+    'pkgs': [
+      'sourcetree',
+      ]
+  },
+  'MacOS': {
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'sourcetree',
+          ]
+        },
+      ],
+    },
+  },
+  'Arch': {
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'sourcetree',
+          ]
+        },
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('sourcetree:lookup')) %}
