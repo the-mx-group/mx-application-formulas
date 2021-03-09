@@ -1,14 +1,20 @@
 {% set chrome = salt['grains.filter_by']({
-    'Windows': {
-      'package': 'GoogleChrome',
-      'installer': 'chocolatey.installed'
+  'Windows': {
+    'package': 'GoogleChrome',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/google-chrome',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'google-chrome',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi google-chrome'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S google-chrome --noconfirm'}
+      ]
     },
-    'MacOS': {
-      'package': 'homebrew/cask/google-chrome',
-      'installer': 'pkg.installed'
-    },
-    'Arch': {
-      'package': 'chromium',
-      'installer': 'pkg.installed'
     },
 }, merge=salt['pillar.get']('google-chrome:lookup')) %}

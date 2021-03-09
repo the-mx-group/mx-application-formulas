@@ -10,6 +10,7 @@ Install sway and related tools:
       - pavucontrol
       - pipewire # newer audio/video sharing subsystem
       - pipewire-pulse # replaces pulseaudio
+      - libpipewire02
       - ranger
       - rofi
       - sddm
