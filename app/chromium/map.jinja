@@ -1,0 +1,22 @@
+{% set config = salt['grains.filter_by']({
+  'Windows': {
+    'installer': {
+      'chromium': 'chocolatey.installed'
+    }
+  },
+  'MacOS': {
+    'installer': {
+      'homebrew/cask/chromium': 'pkg.installed'
+    }
+  },
+  'Arch': {
+    'installer': {
+      'chromium': 'pkg.installed'
+    }
+  },
+  'Debian': {
+    'installer': {
+      'chromium': 'pkg.installed'
+    }
+  },
+}, merge=salt['pillar.get']('chromium:lookup')) %}
