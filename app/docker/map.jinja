@@ -1,39 +1,32 @@
 {% set config = salt['grains.filter_by']({
   'Windows': {
     'package': 'docker-desktop',
-    'installer': 'chocolatey.installed',
-    'compose': {
-      'package': 'docker-compose',
-      'installer': 'chocolatey.installed',
+    'installer': {
+      'docker-desktop': 'chocolatey.installed',
+      'docker-compose': 'chocolatey.installed',
     },
   },
   'MacOS': {
-    'package': 'homebrew/cask/docker',
-    'installer': 'pkg.installed',
-    'compose': {
-      'package': 'docker-compose',
-      'installer': 'pkg.installed',
+    'installer': {
+      'homebrew/cask/docker': 'pkg.installed',
+      'docker-compose': 'pkg.installed',
     },
   },
   'Arch': {
-    'package': 'docker',
-    'installer': 'pkg.installed',
-    'compose': {
-      'package': 'docker-compose',
-      'installer': 'pkg.installed',
+    'installer': {
+      'docker': 'pkg.installed',
+      'docker-compose': 'pkg.installed',
     },
   },
   'Debian': {
-    'package': 'docker-ce',
     'installer': {
-      'cmd.run': [
-        {'unless': 'dpkg -s docker-ce'},
-        {'name': 'curl -fsSL https://get.docker.com | sh'}
-      ]
-    },
-    'compose': {
-      'package': 'docker-compose',
-      'installer': 'pkg.installed',
+      'docker-ce': {
+        'cmd.run': [
+          {'unless': 'dpkg -s docker-ce'},
+          {'name': 'curl -fsSL https://get.docker.com | sh'}
+        ]
+      }.
+      'docker-compose': 'pkg.installed',
     },
   },
 }, merge=salt['pillar.get']('docker:lookup')) %}
