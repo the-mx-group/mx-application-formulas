@@ -14,4 +14,9 @@
         'installer': 'pkg.installed',
         'service': 'salt-minion'
     },
+    'Debian': {
+        'package': 'salt-minion',
+        'installer': 'pkg.installed',
+        'service': 'salt-minion'
+    },
 }, merge=salt['pillar.get']('salt-minion:lookup')) %}
