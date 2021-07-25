@@ -12,16 +12,16 @@
 {% if grains.os in ('Linux','Arch','Debian') %}
 # This is configuration for Linux docker-native platforms
 
+{% if user != None %}
 Ensure primary user is in docker group:
   group.present:
     - name: docker
     - addusers:
       - {{ user }}
+{% endif %}
 
-{% if user != None %}
 Ensure docker service is enabled:
   service.enabled:
     - name: docker
-{% endif %}
 
 {% endif %}
