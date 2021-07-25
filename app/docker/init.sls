@@ -1,7 +1,7 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% from tpldir ~ "/map.jinja" import config with context %}
 
-{{ config.installer }}
+{{ config.installer | yaml(False) }}
 
 {% if grains.os_family in ('Linux','Arch','Debian') %}
 # This is configuration for Linux docker-native platforms
