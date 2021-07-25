@@ -1,6 +1,5 @@
 {% set config = salt['grains.filter_by']({
   'Windows': {
-    'package': 'docker-desktop',
     'installer': {
       'docker-desktop': 'chocolatey.installed',
       'docker-compose': 'chocolatey.installed',
