@@ -3,7 +3,7 @@
 
 {{ config.installer }}
 
-{% if grains.os in ('Linux','Arch','Debian') %}
+{% if grains.os_family in ('Linux','Arch','Debian') %}
 # This is configuration for Linux docker-native platforms
 
 {% if user != None %}
