@@ -17,8 +17,7 @@ Install sway and related tools:
       - slurp
       - swayidle
       - swaylock
-      - termite
-      - termite-terminfo
+      - alacritty
       - thunar
       - thunar-volman
       - tmux
