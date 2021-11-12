@@ -1,14 +1,14 @@
 {% set filezilla = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'filezilla',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'homebrew/cask/filezilla',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'filezilla',
-        'installer': 'pkg.installed',
-    },
+  'Windows': {
+    'package': 'filezilla',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/filezilla',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'filezilla',
+    'installer': 'pkg.installed',
+  },
 }, merge=salt['pillar.get']('filezilla:lookup')) %}

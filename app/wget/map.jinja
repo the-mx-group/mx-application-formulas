@@ -1,17 +1,17 @@
 {% set wget = salt['grains.filter_by']({
-    'Windows': {
-      'installer': {
-        'wget': 'chocolatey.installed'
-      }
-    },
-    'MacOS': {
-      'installer': {
-        'wget': 'pkg.installed'
-      }
-    },
-    'Arch': {
-      'installer': {
-        'wget': 'pkg.installed'
-      }
-    },
+  'Windows': {
+    'installer': {
+      'wget': 'chocolatey.installed'
+    }
+  },
+  'MacOS': {
+    'installer': {
+      'wget': 'pkg.installed'
+    }
+  },
+  'Arch': {
+    'installer': {
+      'wget': 'pkg.installed'
+    }
+  },
 }, merge=salt['pillar.get']('wget:lookup')) %}

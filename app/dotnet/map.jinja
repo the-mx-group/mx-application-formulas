@@ -1,36 +1,36 @@
 {% set dotnet = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'dotnetcore-sdk',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-      'package': 'homebrew/cask/dotnet-sdk',
-      'installer': {
-        'pkg.installed': [
-          {
-            'pkgs': [
-              'homebrew/cask/dotnet-sdk'
-            ],
-          },
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          },
-        ]
-      }
-    },
-    'Arch': {
-      'package': 'dotnet-sdk',
-      'installer': {
-        'pkg.installed': [
-          {
-            'pkgs': [
-              'dotnet-sdk',
-              'aspnet-runtime'
-            ],
-          },
-        ]
-      }
-    },
+  'Windows': {
+    'package': 'dotnetcore-sdk',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/dotnet-sdk',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'homebrew/cask/dotnet-sdk'
+          ],
+        },
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
+          ]
+        },
+      ]
+    }
+  },
+  'Arch': {
+    'package': 'dotnet-sdk',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'dotnet-sdk',
+            'aspnet-runtime'
+          ],
+        },
+      ]
+    }
+  },
 }, merge=salt['pillar.get']('dotnet:lookup')) %}

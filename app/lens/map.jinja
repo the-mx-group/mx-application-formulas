@@ -1,21 +1,21 @@
 {% set lens = salt['grains.filter_by']({
-    'Windows': {
-      'installer': {
-        'lens': 'chocolatey.installed'
-      }
-    },
-    'MacOS': {
-      'installer': {
-        'homebrew/cask/lens': 'pkg.installed'
-      }
-    },
-    'Arch': {
-      'installer': {
-        'cmd.run': [
-          {'unless': 'pacman -Qi lens-bin'},
-          {'runas': 'aur-builder'},
-          {'name': 'yay -S lens-bin --noconfirm'}
-        ]
-      }
-    },
+  'Windows': {
+    'installer': {
+      'lens': 'chocolatey.installed'
+    }
+  },
+  'MacOS': {
+    'installer': {
+      'homebrew/cask/lens': 'pkg.installed'
+    }
+  },
+  'Arch': {
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi lens-bin'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S lens-bin --noconfirm'}
+      ]
+    }
+  },
 }, merge=salt['pillar.get']('lens:lookup')) %}

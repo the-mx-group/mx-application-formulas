@@ -1,33 +1,33 @@
 {% set powershell = salt['grains.filter_by']({
-    'Windows': {
-      'package': 'powershell-core',
-        'installer': {
-          'chocolatey.installed': [
-            {'package_args': '/CleanUpPath'},
-            {'install_args': 'ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 REGISTER_MANIFEST=1'}
+  'Windows': {
+    'package': 'powershell-core',
+      'installer': {
+        'chocolatey.installed': [
+          {'package_args': '/CleanUpPath'},
+          {'install_args': 'ADD_EXPLORER_CONTEXT_MENU_OPENPOWERSHELL=1 REGISTER_MANIFEST=1'}
+        ]
+      }
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/powershell',
+    'installer': {
+      'pkg.installed': [
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
           ]
-        }
-    },
-    'MacOS': {
-      'package': 'homebrew/cask/powershell',
-      'installer': {
-        'pkg.installed': [
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          },
-        ]
-      }
-    },
-    'Arch': {
-      'package': 'powershell-bin',
-      'installer': {
-        'cmd.run': [
-          {'unless': 'pacman -Qi powershell'},
-          {'runas': 'aur-builder'},
-          {'name': 'yay -S powershell-bin --noconfirm'}
-        ]
-      }
-    },
+        },
+      ]
+    }
+  },
+  'Arch': {
+    'package': 'powershell-bin',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi powershell'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S powershell-bin --noconfirm'}
+      ]
+    }
+  },
 }, merge=salt['pillar.get']('powershell:lookup')) %}

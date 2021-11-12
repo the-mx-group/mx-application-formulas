@@ -1,14 +1,14 @@
 {% set gradle = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'gradle',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'gradle',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'gradle',
-        'installer': 'pkg.installed'
-    },
+  'Windows': {
+    'package': 'gradle',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'gradle',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'gradle',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('gradle:lookup')) %}

@@ -1,14 +1,14 @@
 {% set zsh = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'Not supported on Windows',
-        'installer': 'test.nop',
-    },
-    'MacOS': {
-        'package': 'Builtin',
-        'installer': 'test.nop',
-    },
-    'Arch': {
-        'package': 'zsh',
-        'installer': 'pkg.installed',
-    },
+  'Windows': {
+    'package': 'Not supported on Windows',
+    'installer': 'test.nop',
+  },
+  'MacOS': {
+    'package': 'Builtin',
+    'installer': 'test.nop',
+  },
+  'Arch': {
+    'package': 'zsh',
+    'installer': 'pkg.installed',
+  },
 }, merge=salt['pillar.get']('zsh:lookup')) %}

@@ -1,11 +1,11 @@
 {% set dropbox = salt['grains.filter_by']({
   'Windows': {
-      'package': 'dropbox',
-      'installer': 'chocolatey.installed'
+    'package': 'dropbox',
+    'installer': 'chocolatey.installed'
   },
   'MacOS': {
-      'package': 'homebrew/cask/dropbox',
-      'installer': 'pkg.installed'
+    'package': 'homebrew/cask/dropbox',
+    'installer': 'pkg.installed'
   },
   'Arch': {
     'package': 'dropbox',

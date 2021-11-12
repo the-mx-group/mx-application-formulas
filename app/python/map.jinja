@@ -1,22 +1,22 @@
 {% set python = salt['grains.filter_by']({
-    'Windows': {
-      'package': 'python',
-      'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-      'package': 'python',
-      'installer': 'pkg.installed'
-    },
-    'Arch': {
-      'package': 'python',
-      'installer': {
-        'pkg.installed': [{
-          'pkgs': [
-            "python",
-            "python-virtualenv",
-            "python-pip"
-          ]
-        }]
-      }
-    },
+  'Windows': {
+    'package': 'python',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'python',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'python',
+    'installer': {
+      'pkg.installed': [{
+        'pkgs': [
+          "python",
+          "python-virtualenv",
+          "python-pip"
+        ]
+      }]
+    }
+  },
 }, merge=salt['pillar.get']('python:lookup')) %}

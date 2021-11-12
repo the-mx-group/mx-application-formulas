@@ -1,31 +1,31 @@
 {% set virtualbox = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'virtualbox',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-      'package': 'homebrew/cask/virtualbox',
-      'installer': {
-        'pkg.installed': [
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          }
-        ]
-      }
-    },
-    'Arch': {
-      'package': 'virtualbox',
-      'installer': {
-        'pkg.installed': [
-          {
-            'pkgs': [
-              'virtualbox',
-              'virtualbox-guest-iso',
-            ]
-          },
-        ],
-      }
-    },
+  'Windows': {
+    'package': 'virtualbox',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/virtualbox',
+    'installer': {
+      'pkg.installed': [
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
+          ]
+        }
+      ]
+    }
+  },
+  'Arch': {
+    'package': 'virtualbox',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'virtualbox',
+            'virtualbox-guest-iso',
+          ]
+        },
+      ],
+    }
+  },
 }, merge=salt['pillar.get']('virtualbox:lookup')) %}

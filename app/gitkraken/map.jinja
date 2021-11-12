@@ -1,20 +1,20 @@
 {% set kraken = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'gitkraken',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'homebrew/cask/gitkraken',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'gitkraken',
-        'installer': {
-          'cmd.run': [
-            {'unless': 'pacman -Qi gitkraken'},
-            {'runas': 'aur-builder'},
-            {'name': 'gpg --recv-keys --keyserver hkp://cryptonomicon.mit.edu 5CC908FDB71E12C2 && yay -S gitkraken --noconfirm'}
-          ]
-        }
-    },
+  'Windows': {
+    'package': 'gitkraken',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/gitkraken',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'gitkraken',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi gitkraken'},
+        {'runas': 'aur-builder'},
+        {'name': 'gpg --recv-keys --keyserver hkp://cryptonomicon.mit.edu 5CC908FDB71E12C2 && yay -S gitkraken --noconfirm'}
+      ]
+    }
+  },
 }, merge=salt['pillar.get']('gitkraken:lookup')) %}

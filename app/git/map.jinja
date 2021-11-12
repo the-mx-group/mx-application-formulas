@@ -1,48 +1,48 @@
 {% set git = salt['grains.filter_by']({
-    'Windows': {
-      'installer': {
-        'git': 'chocolatey.installed',
-        'git-lfs': {
-          'cmd.run': [
-            {'name': 'git lfs install'},
-            {
-              'onchanges': [
-                {'chocolatey': 'git'}
-              ],
-            },
-            {
-              'require': [
-                {'chocolatey': 'git'}
-              ],
-            },
-          ]
-        }
+  'Windows': {
+    'installer': {
+      'git': 'chocolatey.installed',
+      'git-lfs': {
+        'cmd.run': [
+          {'name': 'git lfs install'},
+          {
+            'onchanges': [
+              {'chocolatey': 'git'}
+            ],
+          },
+          {
+            'require': [
+              {'chocolatey': 'git'}
+            ],
+          },
+        ]
       }
-    },
-    'MacOS': {
-      'installer': {
-        'git': {
-          'pkg.installed': [
-            {
-              'pkgs': [
-                'git',
-                'git-lfs',
-                'git-flow-avh'
-              ],
-            },
-          ]
-        }
+    }
+  },
+  'MacOS': {
+    'installer': {
+      'git': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'git',
+              'git-lfs',
+              'git-flow-avh'
+            ],
+          },
+        ]
       }
-    },
-    'Arch': {
-      'installer': {
-        'git': {
-          'cmd.run': [
-            {'unless': 'pacman -Qi git-lfs'},
-            {'runas': 'aur-builder'},
-            {'name': 'yay -S git git-lfs gitflow-avh --noconfirm'}
-          ]
-        }
+    }
+  },
+  'Arch': {
+    'installer': {
+      'git': {
+        'cmd.run': [
+          {'unless': 'pacman -Qi git-lfs'},
+          {'runas': 'aur-builder'},
+          {'name': 'yay -S git git-lfs gitflow-avh --noconfirm'}
+        ]
       }
-    },
+    }
+  },
 }, merge=salt['pillar.get']('git:lookup')) %}

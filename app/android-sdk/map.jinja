@@ -1,45 +1,45 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% set userInfo = salt['user.info'](user) %}
 {% set android = salt['grains.filter_by']({
-    'Windows': {
-      'package': 'android-sdk',
-      'installer': 'chocolatey.installed',
-      'sdkPath': '/opt/android-sdk',
-      'setSdkOwnership': false,
+  'Windows': {
+    'package': 'android-sdk',
+    'installer': 'chocolatey.installed',
+    'sdkPath': '/opt/android-sdk',
+    'setSdkOwnership': false,
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/android-sdk',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'homebrew/cask/android-sdk'
+          ]
+        },
+      ],
     },
-    'MacOS': {
-      'package': 'homebrew/cask/android-sdk',
-      'installer': {
-        'pkg.installed': [
-          {
-            'pkgs': [
-              'homebrew/cask/android-sdk'
-            ]
-          },
-        ],
-      },
-      'sdkPath': '/usr/local/caskroom/android-sdk/4333796',
-      'setSdkOwnership': false,
+    'sdkPath': '/usr/local/caskroom/android-sdk/4333796',
+    'setSdkOwnership': false,
+  },
+  'Arch': {
+    'package': 'android-tools',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'android-tools',
+            'gradle',
+            'android-udev'
+          ]
+        },
+      ],
+      'cmd.run': [
+        {'unless': 'pacman -Qi android-sdk'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S android-sdk --noconfirm || (echo "Android-sdk requires multilib on Arch" && false)'}
+      ]
     },
-    'Arch': {
-      'package': 'android-tools',
-      'installer': {
-        'pkg.installed': [
-          {
-            'pkgs': [
-              'android-tools',
-              'gradle',
-              'android-udev'
-            ]
-          },
-        ],
-        'cmd.run': [
-          {'unless': 'pacman -Qi android-sdk'},
-          {'runas': 'aur-builder'},
-          {'name': 'yay -S android-sdk --noconfirm || (echo "Android-sdk requires multilib on Arch" && false)'}
-        ]
-      },
-      'sdkPath': '/opt/android-sdk',
-      'setSdkOwnership': true,
-    },
+    'sdkPath': '/opt/android-sdk',
+    'setSdkOwnership': true,
+  },
 }, merge=salt['pillar.get']('android-sdk:lookup')) %}

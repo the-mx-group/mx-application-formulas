@@ -1,24 +1,24 @@
 {% set java = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'jdk8',
-        'installer': 'chocolatey.installed'
+  'Windows': {
+    'package': 'jdk8',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask-versions/adoptopenjdk8',
+    'installer': {
+      'pkg.installed': [
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
+          ]
+        }
+      ]
     },
-    'MacOS': {
-      'package': 'homebrew/cask-versions/adoptopenjdk8',
-      'installer': {
-        'pkg.installed': [
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          }
-        ]
-      },
-      'home': '$(/usr/libexec/java_home)'
-    },
-    'Arch': {
-      'package': 'jdk8-openjdk',
-      'installer': 'pkg.installed',
-      'home': '/usr/lib/jvm/default'
-    },
+    'home': '$(/usr/libexec/java_home)'
+  },
+  'Arch': {
+    'package': 'jdk8-openjdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/default'
+  },
 }, merge=salt['pillar.get']('java:lookup')) %}
