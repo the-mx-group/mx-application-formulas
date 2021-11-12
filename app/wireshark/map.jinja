@@ -11,4 +11,8 @@
     'package': 'wireshark-qt',
     'installer': 'pkg.installed',
   },
+  'Ubuntu': {
+    'package': 'wireshark',
+    'installer': 'pkg.installed',
+  },
 }, merge=salt['pillar.get']('wireshark:lookup')) %}

@@ -21,4 +21,9 @@
     'installer': 'pkg.installed',
     'home': '/usr/lib/jvm/default'
   },
+  'Ubuntu': {
+    'package': 'openjdk-8-jdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/java-8-openjdk-amd64'
+  },
 }, merge=salt['pillar.get']('java:lookup')) %}

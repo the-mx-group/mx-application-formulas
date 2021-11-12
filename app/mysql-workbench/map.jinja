@@ -14,4 +14,9 @@
       'mysql-workbench': 'pkg.installed'
     }
   },
+  'Ubuntu': {
+    'installer': {
+      'mysql-workbench': 'pkg.installed'
+    }
+  },
 }, merge=salt['pillar.get']('mysql-workbench:lookup')) %}

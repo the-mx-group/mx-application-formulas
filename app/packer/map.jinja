@@ -11,4 +11,8 @@
     'package': 'packer',
     'installer': 'pkg.installed'
   },
+  'Ubuntu': {
+    'package': 'packer',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('packer:lookup')) %}

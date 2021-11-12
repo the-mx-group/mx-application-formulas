@@ -18,4 +18,15 @@
       }]
     }
   },
+  'Ubuntu': {
+    'package': 'ruby',
+    'installer': {
+      'pkg.installed': [{
+        'pkgs': [
+          "ruby",
+          "ruby-rubygems"
+        ]
+      }]
+    }
+  },
 }, merge=salt['pillar.get']('ruby:lookup')) %}

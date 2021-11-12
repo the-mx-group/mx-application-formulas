@@ -45,4 +45,19 @@
       }
     }
   },
+  'Ubuntu': {
+    'installer': {
+      'git': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'git',
+              'git-lfs',
+              'git-flow'
+            ],
+          },
+        ]
+      }
+    }
+  },
 }, merge=salt['pillar.get']('git:lookup')) %}

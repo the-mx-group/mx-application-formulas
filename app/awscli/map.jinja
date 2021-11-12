@@ -11,4 +11,8 @@
     'package': 'aws-cli',
     'installer': 'pkg.installed'
   },
+  'Ubuntu': {
+    'package': 'awscli',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('awscli:lookup')) %}

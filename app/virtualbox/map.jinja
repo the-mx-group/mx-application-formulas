@@ -28,4 +28,17 @@
       ],
     }
   },
+  'Ubuntu': {
+    'package': 'virtualbox',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'virtualbox',
+            'virtualbox-guest-additions-iso',
+          ]
+        },
+      ],
+    }
+  },
 }, merge=salt['pillar.get']('virtualbox:lookup')) %}

@@ -14,4 +14,9 @@
       'wget': 'pkg.installed'
     }
   },
+  'Ubuntu': {
+    'installer': {
+      'wget': 'pkg.installed'
+    }
+  },
 }, merge=salt['pillar.get']('wget:lookup')) %}

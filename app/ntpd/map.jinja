@@ -12,4 +12,9 @@
     'installer': 'pkg.installed',
     'daemon': 'ntpd'
   }
+  'Ubuntu': {
+    'package': 'chrony',
+    'installer': 'pkg.installed',
+    'daemon': 'chronyd'
+  }
 }, merge=salt['pillar.get']('ntp:lookup')) %}

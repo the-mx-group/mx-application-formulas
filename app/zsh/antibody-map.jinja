@@ -17,4 +17,8 @@
       ]
     },
   },
+  'Ubuntu': {
+    'package': 'zsh-antigen',
+    'installer': 'pkg.installed',
+  },
 }, merge=salt['pillar.get']('antibody:lookup')) %}
