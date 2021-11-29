@@ -11,11 +11,13 @@
   },
   'Arch': {
     'installer': {
-      'cmd.run': [
-        {'unless': 'pacman -Qi lens-bin'},
-        {'runas': 'aur-builder'},
-        {'name': 'yay -S lens-bin --noconfirm'}
-      ]
+      'lens': {
+        'cmd.run': [
+          {'unless': 'pacman -Qi lens-bin'},
+          {'runas': 'aur-builder'},
+          {'name': 'yay -S lens-bin --noconfirm'}
+        ]
+      }
     }
   },
 }, merge=salt['pillar.get']('lens:lookup')) %}
