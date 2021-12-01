@@ -34,6 +34,7 @@ Install baseline tools for management:
       - linux-headers
       - pkgfile
       - reflector
+      - pacman-contrib
 
 Enable ipv6 privacy extensions:
   file.blockreplace:
