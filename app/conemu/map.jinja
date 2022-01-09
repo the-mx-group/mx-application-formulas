@@ -4,14 +4,9 @@
       'conemu': 'chocolatey.installed'
     }
   },
-  'MacOS': {
+  'Default': {
     'installer': {
       'Conemu is Windows only': 'test.nop'
     }
   },
-  'Arch': {
-    'installer': {
-      'Conemu is Windows only': 'test.nop'
-    }
-  },
-}, merge=salt['pillar.get']('conemu:lookup')) %}
+}, merge=salt['pillar.get']('conemu:lookup'), default='Default') %}
