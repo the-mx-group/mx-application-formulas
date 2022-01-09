@@ -14,9 +14,10 @@
       'mysql-workbench': 'pkg.installed'
     }
   },
+}, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'installer': {
       'mysql-workbench': 'pkg.installed'
     }
   },
-}, merge=salt['pillar.get']('mysql-workbench:lookup')) %}
+}, grain='os', merge=salt['pillar.get']('mysql-workbench:lookup'))) %}

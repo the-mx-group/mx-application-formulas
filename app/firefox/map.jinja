@@ -11,8 +11,9 @@
     'package': 'firefox',
     'installer': 'pkg.installed'
   },
+}, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'package': 'firefox',
     'installer': 'pkg.installed'
   },
-}, merge=salt['pillar.get']('firefox:lookup')) %}
+}, grain='os', merge=salt['pillar.get']('firefox:lookup'))) %}

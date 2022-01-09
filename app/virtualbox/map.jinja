@@ -28,6 +28,7 @@
       ],
     }
   },
+}, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'package': 'virtualbox',
     'installer': {
@@ -41,4 +42,4 @@
       ],
     }
   },
-}, merge=salt['pillar.get']('virtualbox:lookup')) %}
+}, grain='os', merge=salt['pillar.get']('virtualbox:lookup'))) %}

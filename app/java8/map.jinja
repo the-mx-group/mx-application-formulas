@@ -21,9 +21,10 @@
     'installer': 'pkg.installed',
     'home': '/usr/lib/jvm/default'
   },
+}, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'package': 'openjdk-8-jdk',
     'installer': 'pkg.installed',
     'home': '/usr/lib/jvm/java-8-openjdk-amd64'
   },
-}, merge=salt['pillar.get']('java:lookup')) %}
+}, grain='os', merge=salt['pillar.get']('java:lookup'))) %}
