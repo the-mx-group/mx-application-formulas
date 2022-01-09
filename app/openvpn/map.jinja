@@ -1,0 +1,30 @@
+{% set openvpn = salt['grains.filter_by']({
+  'Arch': {
+    'installer': {
+      'openvpn': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'openvpn',
+              'networkmanager-openvpn'
+            ],
+          },
+        ]
+      }
+    }
+  },
+  'Debian': {
+    'installer': {
+      'git': {
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'openvpn',
+              'network-manager-openvpn'
+            ],
+          },
+        ]
+      }
+    }
+  },
+}, merge=salt['pillar.get']('openvpn:lookup')) %}
