@@ -1,3 +1,5 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
+{% set userinfo = salt['user.info'](user) %}
 {% set nvm = salt['grains.filter_by']({
   'Windows': {
     'package': 'nodist',
@@ -26,4 +28,14 @@
     },
     'startup': 'source /usr/share/nvm/init-nvm.sh'
   },
-}, merge=salt['pillar.get']('nvm:lookup')) %}
+  'default': {
+    'package': 'nvm',
+    'installer': {
+      'cmd.script': [
+        {'unless': ''},
+        {'runas': user},
+        {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh' }
+      ]
+    }
+  }
+}, merge=salt['pillar.get']('nvm:lookup'), default='default') %}
