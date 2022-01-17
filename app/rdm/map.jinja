@@ -11,8 +11,8 @@
     'package': 'homebrew/cask/remote-desktop-manager',
     'installer': 'pkg.installed'
   },
-  'Arch': {
+  'default': {
     'package': 'RDM does not support Linux',
     'installer': 'test.nop',
   },
-}, merge=salt['pillar.get']('rdm:lookup')) %}
+}, merge=salt['pillar.get']('rdm:lookup'), default='default') %}

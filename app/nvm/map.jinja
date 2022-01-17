@@ -36,6 +36,6 @@
         {'runas': user},
         {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh' }
       ]
-    }
-  }
+    },
+  },
 }, merge=salt['pillar.get']('nvm:lookup'), default='default') %}
