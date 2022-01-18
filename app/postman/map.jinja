@@ -17,4 +17,8 @@
       ]
     }
   },
-}, merge=salt['pillar.get']('postman:lookup')) %}
+  'default': {
+    'package': 'No target for this system',
+    'installer': 'test.nop'
+  }
+}, merge=salt['pillar.get']('postman:lookup'), default='default') %}
