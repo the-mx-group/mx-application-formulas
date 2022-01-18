@@ -17,4 +17,9 @@
       ]
     },
     },
+  'Debian': {
+    'package': 'google-chrome',
+    'installer': 'pkg.installed',
+    'channel': 'stable'
+  },
 }, merge=salt['pillar.get']('google-chrome:lookup')) %}
