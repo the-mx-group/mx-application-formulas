@@ -30,4 +30,8 @@
       ]
     }
   },
+  'Debian': {
+    'package': 'powershell',
+    'installer': 'pkg.installed',
+  },
 }, merge=salt['pillar.get']('powershell:lookup')) %}
