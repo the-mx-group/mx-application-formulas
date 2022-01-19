@@ -1,4 +1,4 @@
-{% set vscode = salt['grains.filter_by']({
+{% set teams = salt['grains.filter_by']({
   'Windows': {
     'package': 'microsoft-teams',
     'installer': 'chocolatey.installed',
