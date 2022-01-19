@@ -23,6 +23,7 @@
   'Debian': {
     'package': 'code',
     'installer': 'pkg.installed',
-    'channel': 'stable'
+    'channel': 'stable',
+    'binary': '/usr/bin/code',
   },
 }, merge=salt['pillar.get']('visual-studio-code:lookup')) %}
