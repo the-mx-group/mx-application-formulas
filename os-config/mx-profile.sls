@@ -3,6 +3,7 @@
 
 {% if grains.os not in ('Windows') %} #skip this file if we're on windows
 
+{%- if 'home' in userinfo %}
 Create MX profile container for things Mx wants to add to user profiles:
   file.managed:
     - name: {{ userinfo.home }}/.mx_profile
@@ -10,10 +11,10 @@ Create MX profile container for things Mx wants to add to user profiles:
     - mode: 0755
     - replace: false
 
-{% set rcfile = '.bashrc' %}
-{% if grains.os in ('MacOS',) %}
-  {% set rcfile = '.bash_profile' %}
-{% endif %}
+  {% set rcfile = '.bashrc' %}
+  {% if grains.os in ('MacOS',) %}
+    {% set rcfile = '.bash_profile' %}
+  {% endif %}
 Ensure user profile exists:
   file.managed:
     - name: {{ userinfo.home }}/{{ rcfile }}
@@ -26,4 +27,5 @@ Ensure user is running the mx profile content:
     - name: {{ userinfo.home }}/{{ rcfile }}
     - text: source ~/.mx_profile
 
-{% endif %} #skip this file if we're on windows
+  {% endif %} #skip this file if we're on windows
+{%- endif %}
