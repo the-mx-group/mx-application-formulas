@@ -36,6 +36,7 @@
         {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh' }
       ]
     },
-    'startup': '# nvm.sh sourced in .bashrc'
+    'startup': '# nvm.sh sourced in .bashrc',
+    'user': user
   },
 }, merge=salt['pillar.get']('nvm:lookup'), default='default') %}

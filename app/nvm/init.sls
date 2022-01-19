@@ -12,8 +12,10 @@
 
 {% from "app/nvm/map.jinja" import nvm with context %}
 
+{%- if (nvm.user is defined) and salt['user.info'](nvm.user) %}
 {{ nvm.package }}:
   {{ nvm.installer }}
+{%- endif %}
 
 {%- if userhome is defined %}
 Add nvm to primary user bash_profile:
