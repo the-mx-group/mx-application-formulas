@@ -22,6 +22,7 @@
   },
   'default': {
     'package': 'No azure-data-studio target for this system',
-    'installer': 'test.nop'
+    'installer': 'test.nop',
+    'binary': '/usr/bin/true'
   }
 }, merge=salt['pillar.get']('azuredatastudio:lookup'), default='default') %}

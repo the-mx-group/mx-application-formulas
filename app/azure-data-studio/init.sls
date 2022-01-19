@@ -4,7 +4,8 @@
 {{ azuredatastudio.package }}:
   {{ azuredatastudio.installer }}
 
-{% if grains.os not in ('Windows') %} #don't install extensions on windows since we'd need the user pw
+{% if (azuredatastudio.installer != 'test.nop') %}
+  {% if grains.os not in ('Windows') %} #don't install extensions on windows since we'd need the user pw
 
 Install Agent extension:
   cmd.run:
@@ -41,4 +42,5 @@ Install whoisactive extension:
     - runas: {{ user }}
     - unless: {{ azuredatastudio.binary }} --list-extensions | grep -i microsoft.whoisactive
 
+  {% endif %}
 {% endif %}
