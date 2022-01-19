@@ -6,7 +6,7 @@
 {% else %}
   {% set userinfo = salt['user.info'](user) %}
     {% if home in userinfo %}
-  {% set userhome = userinfo['home'] %}
+      {% set userhome = userinfo['home'] %}
     {% endif %}
 {% endif %}
 
