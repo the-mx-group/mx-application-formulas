@@ -1,4 +1,4 @@
-{% from "app/vscode/map.jinja" import teams with context %}
+{% from "app/teams/map.jinja" import teams with context %}
 
 {{ teams.package }}:
   {{ teams.installer }}
