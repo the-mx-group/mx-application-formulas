@@ -1,5 +1,4 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
-{% set userinfo = salt['user.info'](user) %}
 {% set nvm = salt['grains.filter_by']({
   'Windows': {
     'package': 'nodist',
