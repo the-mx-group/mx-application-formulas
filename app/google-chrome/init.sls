@@ -10,6 +10,6 @@ google-chrome-repo:
     - dist: {{ chrome.channel }}
     - file: /etc/apt/sources.list.d/google-chrome.list
     - require_in:
-      - pkg: {{ chrome.package }}
+      - pkg: {{ chrome.package }}-{{ chrome.channel }}
     - key_url: https://dl.google.com/linux/linux_signing_key.pub
 {%- endif %}
