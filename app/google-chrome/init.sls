@@ -1,6 +1,6 @@
 {% from "app/google-chrome/map.jinja" import chrome with context %}
 
-{{ chrome.package }}:
+{{ chrome.package }}-{{ chrome.channel }}:
   {{ chrome.installer }}
 
 {%- if grains['os_family'] in ('Debian',) %}
