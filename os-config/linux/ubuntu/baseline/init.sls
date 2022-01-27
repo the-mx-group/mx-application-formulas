@@ -14,6 +14,13 @@ Ensure primary user is in adm group:
     - addusers:
       - {{ user }}
 
+# Polkit uses this group for admins, since admin group was removed
+Ensure primary user is in sudo group:
+  group.present:
+    - name: sudo
+    - addusers:
+      - {{ user }}
+
 Install common tools that we want everywhere:
   pkg.installed:
     - pkgs:
