@@ -32,9 +32,9 @@
     'installer': {
       'cmd.script': [
         {'unless': [
-          {'fun': 'cmd.run'},
-          {'name': 'command -v nvm'},
-          {'runas': user}
+          {'fun': 'cmd.run',
+          'name': 'command -v nvm',
+          'runas': user}
         ]},
         {'runas': user},
         {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh' }
