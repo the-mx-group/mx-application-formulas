@@ -31,13 +31,9 @@
     'package': 'nvm',
     'installer': {
       'cmd.script': [
-        {'unless': [
-          {'fun': 'cmd.run',
-          'name': 'command -v nvm',
-          'runas': user}
-        ]},
+        {'unless': 'test -f ${HOME}/.nvm/nvm.sh'},
         {'runas': user},
-        {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh' }
+        {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh'}
       ]
     },
     'startup': '# nvm.sh sourced in .bashrc',
