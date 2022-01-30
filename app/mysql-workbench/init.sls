@@ -24,10 +24,10 @@ mysqlworkbench-repo:
       - pkg: {{ mysqlworkbench.package }}
     - require:
       - cmd: mysqlworkbench-repo-key
-    cmd.run:
-      - name: apt-get udpate
-      - onchanges:
-        - file: mysqlworkbench-repo
+  cmd.run:
+    - name: apt-get udpate
+    - onchanges:
+      - file: mysqlworkbench-repo
 
 mysqlworkbench-repo-key:
   cmd.run:
