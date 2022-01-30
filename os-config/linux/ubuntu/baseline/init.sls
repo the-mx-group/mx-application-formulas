@@ -18,7 +18,8 @@ Use MAC as DHCP identifier for all netplan ints:
     - group: root
     - mode: 0644
     - onlyif:
-      - cmd.run: dpkg -l | grep netplan.io
+      - fun: cmd.run
+        - dpkg -l | grep netplan.io
 
 {% set user = salt['pillar.get']('users:primary-user') %}
 Ensure primary user is in adm group:
