@@ -9,7 +9,7 @@ Enable ipv6 privacy extensions:
 
 # Let all interfaces handed off by netplan use MAC
 # This avoids issues with cloned VMs having duplicate IDs,
-# let alone other issues
+# let alone
 Use MAC as DHCP identifier for all netplan ints:
   file.managed:
     - name: /etc/netplan/98-dhcp-use-mac-all.yaml
@@ -18,8 +18,7 @@ Use MAC as DHCP identifier for all netplan ints:
     - group: root
     - mode: 0644
     - onlyif:
-      - fun: cmd.run
-        - dpkg -l | grep netplan.io
+      - dpkg -l | grep netplan.io
 
 {% set user = salt['pillar.get']('users:primary-user') %}
 Ensure primary user is in adm group:
