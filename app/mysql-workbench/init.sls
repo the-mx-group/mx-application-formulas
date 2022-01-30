@@ -7,19 +7,30 @@
   {{ mysqlworkbench.installer }}
 
 
-{%- if grains['os_family'] in ('Debian',) %}
+{%- if grains['os'] in ('Ubuntu',) %}
 mysqlworkbench-repo:
-  pkgrepo.managed:
-    - name: |
-        deb http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-apt-config
-        deb http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-8.0
-        deb http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-tools
-        #deb http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-tools-preview
-        deb-src http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-8.0
-    - dist: {{ oscodename }}
-    - file: /etc/apt/sources.list.d/mysql.list
+  file.managed:
+    - name: /etc/apt/sources.list.d/mysql.list
+    - contents: |
+        deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-apt-config
+        deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-8.0
+        deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-tools
+        #deb [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-tools-preview
+        deb-src [signed-by=/usr/share/keyrings/mysql.gpg] http://repo.mysql.com/apt/{{ os }}/ {{ oscodename }} mysql-8.0
+    - user: root
+    - group: root
+    - mode: 0644
     - require_in:
       - pkg: {{ mysqlworkbench.package }}
-    - keyserver: pgp.mit.edu
-    - keyid: 3A79BD29
+    - require:
+      - cmd: mysqlworkbench-repo-key
+    cmd.run:
+      - name: apt-get udpate
+      - onchanges:
+        - file: mysqlworkbench-repo
+
+mysqlworkbench-repo-key:
+  cmd.run:
+    - name: export GNUPGHOME=$(mktemp -d); gpg --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29 && gpg --export 467B942D3A79BD29 > /usr/share/keyrings/mysql.gpg
+    - unless: gpg -k --no-default-keyring --with-colons --keyring /usr/share/keyrings/mysql.gpg | grep 467B942D3A79BD29
 {%- endif %}
