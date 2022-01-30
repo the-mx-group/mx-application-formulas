@@ -25,7 +25,7 @@ mysqlworkbench-repo:
     - require:
       - cmd: mysqlworkbench-repo-key
   cmd.run:
-    - name: apt-get udpate
+    - name: apt-get update
     - onchanges:
       - file: mysqlworkbench-repo
 
