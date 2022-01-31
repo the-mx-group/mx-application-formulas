@@ -19,11 +19,6 @@
   },
   'Debian': {
     'package': 'azure-cli',
-    'installer': {
-      'cmd.run': [
-        {'unless': 'which az'},
-        {'name': 'curl -sL https://aka.ms/InstallAzureCLIDeb | bash'}
-      ]
-    },
+    'installer': 'pkg.installed'
   },
 }, merge=salt['pillar.get']('azurecli:lookup')) %}
