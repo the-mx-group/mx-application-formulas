@@ -12,6 +12,7 @@
 
 {% from "app/nvm/map.jinja" import nvm with context %}
 
+# https://github.com/saltstack/salt/issues/56329
 {%- if (nvm.user is defined) and salt['user.info'](nvm.user) %}
 {{ nvm.package }}:
   {{ nvm.installer }}
