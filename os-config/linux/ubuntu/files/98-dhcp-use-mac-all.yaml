@@ -1,4 +1,7 @@
 network:
   ethernets:
-    e*:
+    alleths:
+      match:
+        name: e*
+      dhcp4: yes
       dhcp-identifier: mac
