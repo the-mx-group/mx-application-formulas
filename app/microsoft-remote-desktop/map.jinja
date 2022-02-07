@@ -17,4 +17,15 @@
       ]
     },
   },
+  'Debian': {
+    'package': 'remmina',
+    'installer': {
+      'pkg.installed': [{
+        'pkgs': [
+          "remmina",
+          "remmina-plugin-rdp"
+        ]
+      }]
+    }
+  },
 }, merge=salt['pillar.get']('microsoft-remote-desktop:lookup')) %}
