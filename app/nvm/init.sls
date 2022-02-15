@@ -21,7 +21,7 @@
 {%- if userhome is defined %}
 Add nvm to primary user bash_profile:
   file.append:
-    - text: {{ nvm.startup }}
+    - text: "{{ nvm.startup }}"
     - name: {{ userhome }}/.mx_profile
 
 Create npmrc:
