@@ -1,5 +1,3 @@
-openvpn:
-  pkg.installed
+{% from "app/openvpn/map.jinja" import openvpn with context %}
 
-networkmanager-openvpn:
-  pkg.installed
+{{ openvpn.installer }}

@@ -1,14 +1,14 @@
 {% set sublime = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'sublime-text',
-        'installer': 'chocolatey.installed',
-    },
-    'MacOS': {
-        'package': 'homebrew/cask/sublime-text',
-        'installer': 'pkg.installed',
-    },
-    'Arch': {
-        'package': 'include',
-        'installer': ['.archlinux'],
-    },
+  'Windows': {
+    'package': 'sublime-text',
+    'installer': 'chocolatey.installed',
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/sublime-text',
+    'installer': 'pkg.installed',
+  },
+  'Arch': {
+    'package': 'include',
+    'installer': ['.archlinux'],
+  },
 }, merge=salt['pillar.get']('sublime:lookup')) %}

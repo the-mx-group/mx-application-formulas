@@ -1,14 +1,18 @@
 {% set sevenzip = salt['grains.filter_by']({
-    'Windows': {
-        'package': '7zip.install',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'p7zip',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'p7zip',
-        'installer': 'pkg.installed'
-    },
+  'Windows': {
+    'package': '7zip.install',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'p7zip',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'p7zip',
+    'installer': 'pkg.installed'
+  },
+  'Debian': {
+    'package': 'p7zip',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('sevenzip:lookup')) %}

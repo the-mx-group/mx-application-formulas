@@ -1,18 +1,18 @@
 {% set rdm = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'rdm',
-        'installer': {
-          'chocolatey.installed': [
-            {"version":"13.6.7.0"}
-          ]
-        }
-    },
-    'MacOS': {
-        'package': 'homebrew/cask/remote-desktop-manager',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'RDM does not support Linux',
-        'installer': 'test.nop',
-    },
-}, merge=salt['pillar.get']('rdm:lookup')) %}
+  'Windows': {
+    'package': 'rdm',
+    'installer': {
+      'chocolatey.installed': [
+        {"version":"13.6.7.0"}
+      ]
+    }
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/remote-desktop-manager',
+    'installer': 'pkg.installed'
+  },
+  'default': {
+    'package': 'RDM does not support Linux',
+    'installer': 'test.nop',
+  },
+}, merge=salt['pillar.get']('rdm:lookup'), default='default') %}

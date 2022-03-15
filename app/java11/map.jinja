@@ -1,30 +1,35 @@
 {% set java = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'openjdk11',
-        'installer': 'chocolatey.installed'
+  'Windows': {
+    'package': 'openjdk11',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'openjdk@11',
+    'installer': {
+      'pkg.installed': [
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
+          ]
+        }
+      ],
+      'file.symlink': [
+        {
+          'name': '/Library/Java/JavaVirtualMachines/openjdk11.jdk',
+          'target': '/usr/local/opt/openjdk@11/libexec/openjdk.jdk'
+        }
+      ],
     },
-    'MacOS': {
-      'package': 'openjdk@11',
-      'installer': {
-        'pkg.installed': [
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          }
-        ],
-        'file.symlink': [
-          {
-            'name': '/Library/Java/JavaVirtualMachines/openjdk11.jdk',
-            'target': '/usr/local/opt/openjdk@11/libexec/openjdk.jdk'
-          }
-        ],
-      },
-      'home': '$(/usr/libexec/java_home)'
-    },
-    'Arch': {
-      'package': 'jdk11-openjdk',
-      'installer': 'pkg.installed',
-      'home': '/usr/lib/jvm/default'
-    },
+    'home': '$(/usr/libexec/java_home)'
+  },
+  'Arch': {
+    'package': 'jdk11-openjdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/default'
+  },
+  'Debian': {
+    'package': 'openjdk-11-jdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/java-11-openjdk-amd64'
+  },
 }, merge=salt['pillar.get']('java:lookup')) %}

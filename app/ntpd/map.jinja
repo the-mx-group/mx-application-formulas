@@ -11,5 +11,10 @@
     'package': 'ntp',
     'installer': 'pkg.installed',
     'daemon': 'ntpd'
+  },
+  'Debian': {
+    'package': 'chrony',
+    'installer': 'pkg.installed',
+    'daemon': 'chronyd'
   }
 }, merge=salt['pillar.get']('ntp:lookup')) %}

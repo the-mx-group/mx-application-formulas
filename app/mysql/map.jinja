@@ -1,14 +1,14 @@
 {% set mysql = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'mysql',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'mysql',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'mariadb',
-        'installer': 'pkg.installed',
-    },
+  'Windows': {
+    'package': 'mysql',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'mysql',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'mariadb',
+    'installer': 'pkg.installed',
+  },
 }, merge=salt['pillar.get']('mysql:lookup')) %}

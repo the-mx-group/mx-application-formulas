@@ -16,5 +16,10 @@
         {'name': 'yay -S google-chrome --noconfirm'}
       ]
     },
-    },
+  },
+  'Debian': {
+    'package': 'google-chrome-stable',
+    'installer': 'pkg.installed',
+    'channel': 'stable'
+  },
 }, merge=salt['pillar.get']('google-chrome:lookup')) %}

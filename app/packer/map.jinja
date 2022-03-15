@@ -1,14 +1,18 @@
 {% set packer = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'packer',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'packer',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'packer',
-        'installer': 'pkg.installed'
-    },
+  'Windows': {
+    'package': 'packer',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'packer',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'packer',
+    'installer': 'pkg.installed'
+  },
+  'Debian': {
+    'package': 'packer',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('packer:lookup')) %}

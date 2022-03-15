@@ -17,4 +17,8 @@
       ]
     },
   },
+  'Debian': {
+    'package': 'azure-cli',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('azurecli:lookup')) %}

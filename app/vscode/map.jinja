@@ -1,23 +1,29 @@
 {% set vscode = salt['grains.filter_by']({
-    'Windows': {
-      'package': 'vscode',
-      'installer': 'chocolatey.installed',
-      'binary': 'code',
+  'Windows': {
+    'package': 'vscode',
+    'installer': 'chocolatey.installed',
+    'binary': 'code',
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/visual-studio-code',
+    'installer': 'pkg.installed',
+    'binary': '/usr/local/bin/code',
+  },
+  'Arch': {
+    'package': 'visual-studio-code-bin',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi visual-studio-code-bin'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S visual-studio-code-bin --noconfirm'}
+      ]
     },
-    'MacOS': {
-      'package': 'homebrew/cask/visual-studio-code',
-      'installer': 'pkg.installed',
-      'binary': '/usr/local/bin/code',
-    },
-    'Arch': {
-      'package': 'visual-studio-code-bin',
-      'installer': {
-        'cmd.run': [
-          {'unless': 'pacman -Qi visual-studio-code-bin'},
-          {'runas': 'aur-builder'},
-          {'name': 'yay -S visual-studio-code-bin --noconfirm'}
-        ]
-      },
-      'binary': '/usr/bin/code',
-    },
+    'binary': '/usr/bin/code',
+  },
+  'Debian': {
+    'package': 'code',
+    'installer': 'pkg.installed',
+    'channel': 'stable',
+    'binary': '/usr/bin/code',
+  },
 }, merge=salt['pillar.get']('visual-studio-code:lookup')) %}

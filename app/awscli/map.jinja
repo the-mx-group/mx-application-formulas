@@ -1,14 +1,18 @@
 {% set awscli = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'awscli',
-        'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-        'package': 'awscli',
-        'installer': 'pkg.installed'
-    },
-    'Arch': {
-        'package': 'aws-cli',
-        'installer': 'pkg.installed'
-    },
+  'Windows': {
+    'package': 'awscli',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'awscli',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'aws-cli',
+    'installer': 'pkg.installed'
+  },
+  'Debian': {
+    'package': 'awscli',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('awscli:lookup')) %}

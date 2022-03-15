@@ -1,14 +1,18 @@
 {% set clementine = salt['grains.filter_by']({
-    'Windows': {
-      'package': 'clementine',
-      'installer': 'chocolatey.installed'
-    },
-    'MacOS': {
-      'package': 'homebrew/cask/clementine',
-      'installer': 'pkg.installed'
-    },
-    'Arch': {
-      'package': 'clementine',
-      'installer': 'pkg.installed'
-    },
+  'Windows': {
+    'package': 'clementine',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/clementine',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'clementine',
+    'installer': 'pkg.installed'
+  },
+  'Debian': {
+    'package': 'clementine',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('clementine:lookup')) %}

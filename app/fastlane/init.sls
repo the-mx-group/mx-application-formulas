@@ -1,6 +1,9 @@
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% from "app/fastlane/map.jinja" import fastlane with context %}
 
+include:
+  - app/ruby
+
 {{ fastlane.package }}:
   {{ fastlane.installer }}
 

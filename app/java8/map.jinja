@@ -1,24 +1,30 @@
 {% set java = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'jdk8',
-        'installer': 'chocolatey.installed'
+  'Windows': {
+    'package': 'jdk8',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask-versions/adoptopenjdk8',
+    'installer': {
+      'pkg.installed': [
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
+          ]
+        }
+      ]
     },
-    'MacOS': {
-      'package': 'homebrew/cask-versions/adoptopenjdk8',
-      'installer': {
-        'pkg.installed': [
-          {
-            'require': [
-              {'sls': 'app/magic-sudo'}
-            ]
-          }
-        ]
-      },
-      'home': '$(/usr/libexec/java_home)'
-    },
-    'Arch': {
-      'package': 'jdk8-openjdk',
-      'installer': 'pkg.installed',
-      'home': '/usr/lib/jvm/default'
-    },
-}, merge=salt['pillar.get']('java:lookup')) %}
+    'home': '$(/usr/libexec/java_home)'
+  },
+  'Arch': {
+    'package': 'jdk8-openjdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/default'
+  },
+}, grain='os_family', merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': 'openjdk-8-jdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/java-8-openjdk-amd64'
+  },
+}, grain='os', merge=salt['pillar.get']('java:lookup'))) %}

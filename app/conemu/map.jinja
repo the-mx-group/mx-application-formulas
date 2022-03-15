@@ -1,17 +1,12 @@
 {% set conemu = salt['grains.filter_by']({
-    'Windows': {
-      'installer': {
-        'conemu': 'chocolatey.installed'
-      }
-    },
-    'MacOS': {
-      'installer': {
-        'Conemu is Windows only': 'test.nop'
-      }
-    },
-    'Arch': {
-      'installer': {
-        'Conemu is Windows only': 'test.nop'
-      }
-    },
-}, merge=salt['pillar.get']('conemu:lookup')) %}
+  'Windows': {
+    'installer': {
+      'conemu': 'chocolatey.installed'
+    }
+  },
+  'Default': {
+    'installer': {
+      'Conemu is Windows only': 'test.nop'
+    }
+  },
+}, merge=salt['pillar.get']('conemu:lookup'), default='Default') %}

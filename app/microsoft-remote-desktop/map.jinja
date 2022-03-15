@@ -1,20 +1,31 @@
 {% set rdp = salt['grains.filter_by']({
   'Windows': {
-      'package': 'builtin',
-      'installer': 'test.nop'
+    'package': 'builtin',
+    'installer': 'test.nop'
   },
   'MacOS': {
-      'package': 'homebrew/cask-versions/microsoft-remote-desktop-beta',
-      'installer': 'test.nop'
+    'package': 'homebrew/cask-versions/microsoft-remote-desktop',
+    'installer': 'pkg.installed'
   },
   'Arch': {
-      'package': 'remmina',
-      'installer': {
-        'cmd.run': [
-          {'unless': 'pacman -Qi remmina-plugin-rdesktop'},
-          {'runas': 'aur-builder'},
-          {'name': 'yay -S remmina remmina-plugin-rdesktop freerdp --noconfirm'}
+    'package': 'remmina',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi remmina-plugin-rdesktop'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S remmina remmina-plugin-rdesktop freerdp --noconfirm'}
+      ]
+    },
+  },
+  'Debian': {
+    'package': 'remmina',
+    'installer': {
+      'pkg.installed': [{
+        'pkgs': [
+          "remmina",
+          "remmina-plugin-rdp"
         ]
-      },
+      }]
+    }
   },
 }, merge=salt['pillar.get']('microsoft-remote-desktop:lookup')) %}

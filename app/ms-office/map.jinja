@@ -1,14 +1,14 @@
 {% set msoffice = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'microsoft-office-deployment',
-        'installer': {
-          'chocolatey.installed': [
-            {'package_args': '/64bit /Product:O365ProPlusRetail'}
-          ]
-        }
-    },
-    'MacOS': {
-        'package': 'homebrew/cask/microsoft-office',
-        'installer': 'pkg.installed'
-    },
+  'Windows': {
+    'package': 'microsoft-office-deployment',
+    'installer': {
+      'chocolatey.installed': [
+        {'package_args': '/64bit /Product:O365ProPlusRetail'}
+      ]
+    }
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/microsoft-office',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('msoffice:lookup')) %}

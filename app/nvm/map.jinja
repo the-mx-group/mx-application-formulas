@@ -1,29 +1,42 @@
+{% set user = salt['pillar.get']('users:primary-user') %}
 {% set nvm = salt['grains.filter_by']({
-    'Windows': {
-        'package': 'nodist',
-        'installer': 'chocolatey.installed',
-        'startup': '|
-          # nodist only needs sourcing in cygwin
-          '
+  'Windows': {
+    'package': 'nodist',
+    'installer': 'chocolatey.installed',
+    'startup': '|
+      # nodist only needs sourcing in cygwin
+      '
+  },
+  'MacOS': {
+    'package': 'nvm',
+    'installer': 'pkg.installed',
+    'startup': '|
+      # NVM
+      export NVM_DIR=~/.nvm
+      source $(brew --prefix nvm)/nvm.sh
+      '
+  },
+  'Arch': {
+    'package': 'nvm',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'pacman -Qi nvm'},
+        {'runas': 'aur-builder'},
+        {'name': 'yay -S nvm --noconfirm'}
+      ]
     },
-    'MacOS': {
-        'package': 'nvm',
-        'installer': 'pkg.installed',
-        'startup': '|
-          # NVM
-          export NVM_DIR=~/.nvm
-          source $(brew --prefix nvm)/nvm.sh
-          '
+    'startup': 'source /usr/share/nvm/init-nvm.sh'
+  },
+  'default': {
+    'package': 'nvm',
+    'installer': {
+      'cmd.script': [
+        {'unless': 'test -f ${HOME}/.nvm/nvm.sh'},
+        {'runas': user},
+        {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh'}
+      ]
     },
-    'Arch': {
-        'package': 'nvm',
-        'installer': {
-          'cmd.run': [
-            {'unless': 'pacman -Qi nvm'},
-            {'runas': 'aur-builder'},
-            {'name': 'yay -S nvm --noconfirm'}
-          ]
-        },
-        'startup': 'source /usr/share/nvm/init-nvm.sh'
-    },
-}, merge=salt['pillar.get']('nvm:lookup')) %}
+    'startup': '# nvm.sh sourced in .bashrc',
+    'user': user
+  },
+}, merge=salt['pillar.get']('nvm:lookup'), default='default') %}

@@ -3,12 +3,8 @@
     'package': 'wsl',
     'installer': 'chocolatey.installed'
   },
-  'MacOS': {
-    'package': 'WSL does not exist for MacOS',
+  'default': {
+    'package': 'WSL is Windows only',
     'installer': 'test.nop'
   },
-  'Arch': {
-      'package': 'Linux is already linux',
-      'installer': 'test.nop',
-  },
-}, merge=salt['pillar.get']('wsl:lookup')) %}
+}, merge=salt['pillar.get']('wsl:lookup'), default='default') %}

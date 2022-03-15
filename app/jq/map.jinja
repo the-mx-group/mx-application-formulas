@@ -11,4 +11,8 @@
     'package': 'jq',
     'installer': 'pkg.installed'
   },
+  'Debian': {
+    'package': 'jq',
+    'installer': 'pkg.installed'
+  },
 }, merge=salt['pillar.get']('jq:lookup')) %}
