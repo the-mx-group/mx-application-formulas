@@ -8,12 +8,12 @@
     'installer': 'pkg.installed'
   },
   'Arch': {
-    'package': 'gitahead-bin',
+    'package': 'gittyup',
     'installer': {
       'cmd.run': [
-        {'unless': 'pacman -Qi gitahead-bin'},
+        {'unless': 'pacman -Qi gittyup'},
         {'runas': 'aur-builder'},
-        {'name': 'yay -S gitahead-bin --noconfirm'}
+        {'name': 'yay -S gittyup --noconfirm'}
       ]
     }
   },
