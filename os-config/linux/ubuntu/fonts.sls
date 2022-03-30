@@ -20,5 +20,5 @@ Stop-KDE-breaking-Roboto:
             <edit name="hintstyle" mode="assign"><const>hintfull</const></edit>
             <edit name="antialias" mode="assign"><bool>true</bool></edit>
           </match>
-          --!>
+          -->
     - backup: False
