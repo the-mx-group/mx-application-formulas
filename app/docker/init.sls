@@ -1,10 +1,7 @@
+{% from "app/docker/map.jinja" import docker with context %}
 {% set user = salt['pillar.get']('users:primary-user') %}
 
-docker:
-  pkg.installed
-
-docker-compose:
-  pkg.installed
+{{ docker.installer }}
 
 #Don't need docker-machine etc on linux
 {% if grains.kernel in ('Linux',) %}
