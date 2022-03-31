@@ -1,18 +1,11 @@
 {% set docker = salt['grains.filter_by']({
   'Windows': {
-    'installer': {
-      'docker-desktop': 'chocolatey.installed'
-    }
-  },
-  'MacOS': {
-    'installer': {
-      'docker': 'pkg.installed',
-      'docker-compose': 'pkg.installed'
-    }
+    'package': 'docker-desktop',
+    'installer': 'chocolatey.installed'
   },
   'default': {
+    'package': 'docker',
     'installer': {
-      'docker': {
         'pkg.installed': [
           {
             'pkgs': [
@@ -22,6 +15,5 @@
           },
         ]
       }
-    }
   },
 }, merge=salt['pillar.get']('docker:lookup'), default='default') %}
