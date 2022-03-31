@@ -7,7 +7,7 @@ docker-compose:
   pkg.installed
 
 #Don't need docker-machine etc on linux
-{% if grains.os in ('Linux','Arch') %}
+{% if grains.kernel in ('Linux',) %}
 
 # This is configuration for Linux docker-native platforms
 
