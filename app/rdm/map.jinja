@@ -1,11 +1,7 @@
 {% set rdm = salt['grains.filter_by']({
   'Windows': {
     'package': 'rdm',
-    'installer': {
-      'chocolatey.installed': [
-        {"version":"13.6.7.0"}
-      ]
-    }
+    'installer': 'chocolatey.installed'
   },
   'MacOS': {
     'package': 'homebrew/cask/remote-desktop-manager',
