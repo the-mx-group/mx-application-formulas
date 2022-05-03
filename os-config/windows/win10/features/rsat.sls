@@ -1,7 +1,7 @@
 {% if "Server" in grains.osfullname %}
 enable_rsat:
   cmd.run:
-    - name: Get-WindowsFeature |? {$_.Name -like "*RSAT*" -and $_.InstallState -eq "Available"} | Install-WindowsFeature -Online
+    - name: Get-WindowsFeature |? {$_.Name -like "*RSAT*" -and $_.InstallState -eq "Available"} | Install-WindowsFeature
     - shell: powershell
     - unless: # This requires >= 3001
       - fun: cmd.run
