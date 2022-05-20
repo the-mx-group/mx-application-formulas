@@ -1,0 +1,18 @@
+{% set pre-commit = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'pre-commit',
+    'installer': 'pip.installed'
+  },
+  'MacOS': {
+    'package': 'pre-commit',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'python-pre-commit',
+    'installer': 'pkg.installed'
+  },
+  'default': {
+    'package': 'No pre-commit target for this system',
+    'installer': 'test.nop'
+  }
+}, merge=salt['pillar.get']('pre-commit:lookup'), default='default') %}
