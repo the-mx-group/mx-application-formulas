@@ -13,9 +13,9 @@
     'package': 'azuredatastudio',
     'installer': {
       'cmd.run': [
-        {'unless': 'pacman -Qi azuredatastudio'},
+        {'unless': 'pacman -Qi azuredatastudio-bin'},
         {'runas': 'aur-builder'},
-        {'name': 'yay -S azuredatastudio --noconfirm'}
+        {'name': 'yay -S azuredatastudio-bin --noconfirm'}
       ]
     },
     'binary': '/usr/bin/azuredatastudio',
