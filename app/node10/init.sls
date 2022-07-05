@@ -9,7 +9,7 @@ Ensure primary user bash_profile exists:
     - user: {{ user }}
     - replace: false
 
-Add nvm to primary user bash_profile:
+Add node10 to primary user bash_profile:
   file.append:
     - text: export PATH="/usr/local/opt/node@10/bin:$PATH"
     - name: /Users/{{ user }}/.mx_profile
