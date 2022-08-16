@@ -30,7 +30,7 @@ Install BIRT plugin required for MAT charts:
 
 install Eclipse MAT:
   cmd.run:
-    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/mat/1.9.0/update-site -installIU "org.eclipse.mat.feature.feature.group"
+    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://download.eclipse.org/mat/1.12.0/update-site -installIU "org.eclipse.mat.feature.feature.group"
     - runas: {{ user }}
     - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/org.eclipse.mat.*" | grep '.*'
 
