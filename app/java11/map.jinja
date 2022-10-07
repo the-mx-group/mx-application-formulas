@@ -1,6 +1,6 @@
 {% set java = salt['grains.filter_by']({
   'Windows': {
-    'package': 'openjdk11',
+    'package': 'temurin11',
     'installer': 'chocolatey.installed'
   },
   'MacOS': {
