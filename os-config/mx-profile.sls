@@ -25,7 +25,11 @@ Ensure user profile exists:
 Ensure user is running the mx profile content:
   file.append:
     - name: {{ userinfo.home }}/{{ rcfile }}
-    - text: source ~/.mx_profile
+    - text:
+      {%- if grains.os in ('MacOS',) %}
+      - source ~/.profile
+      {% endif -%}
+      - source ~/.mx_profile
 
   {% endif %} #skip this file if we're on windows
 {%- endif %}
