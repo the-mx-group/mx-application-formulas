@@ -13,9 +13,9 @@
     'installer': {
       'lens': {
         'cmd.run': [
-          {'unless': 'pacman -Qi lens-bin'},
+          {'unless': 'pacman -Qi lens'},
           {'runas': 'aur-builder'},
-          {'name': 'yay -S lens-bin --noconfirm'}
+          {'name': 'yay -S lens --noconfirm'}
         ]
       }
     }
