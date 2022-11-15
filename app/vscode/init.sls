@@ -26,11 +26,11 @@ Install SonarLint extension:
     - runas: {{ user }}
     - unless: {{ vscode.binary }} --list-extensions | grep -i SonarSource.sonarlint-vscode
 
-Install tslint extension:
+Install eslint extension:
   cmd.run:
-    - name: {{ vscode.binary }} --install-extension ms-vscode.vscode-typescript-tslint-plugin
+    - name: {{ vscode.binary }} --install-extension dbaeumer.vscode-eslint
     - runas: {{ user }}
-    - unless: {{ vscode.binary }} --list-extensions | grep -i ms-vscode.vscode-typescript-tslint-plugin
+    - unless: {{ vscode.binary }} --list-extensions | grep -i dbaeumer.vscode-eslint
 
 Install Better Align extension:
   cmd.run:
