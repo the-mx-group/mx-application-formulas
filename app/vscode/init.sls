@@ -34,9 +34,9 @@ Install eslint extension:
 
 Install Better Align extension:
   cmd.run:
-    - name: {{ vscode.binary }} --install-extension wwm.better-align
+    - name: {{ vscode.binary }} --install-extension chouzz.vscode-better-align
     - runas: {{ user }}
-    - unless: {{ vscode.binary }} --list-extensions | grep -i wwm.better-align
+    - unless: {{ vscode.binary }} --list-extensions | grep -i chouzz.vscode-better-align
 
 
   {% endif %}
