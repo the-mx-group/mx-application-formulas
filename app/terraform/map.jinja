@@ -1,0 +1,18 @@
+{% set terraform = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'This needs to be built and tested',
+    'installer': 'test.nop'
+  },
+  'MacOS': {
+    'package': 'This needs to be built and tested',
+    'installer': 'test.nop'
+  },
+  'Arch': {
+    'package': 'This needs to be built and tested',
+    'installer': 'test.nop'
+  },
+  'Debian': {
+    'package': 'terraform',
+    'installer': 'pkg.installed'
+  },
+}, merge=salt['pillar.get']('terraform:lookup')) %}

@@ -1,0 +1,18 @@
+{% set firejail = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'No firejail target for this system',
+    'installer': 'test.nop'
+  },
+  'MacOS': {
+    'package': 'No firejail target for this system',
+    'installer': 'test.nop'
+  },
+  'Arch': {
+    'package': 'This needs to be built and tested',
+    'installer': 'test.nop'
+  },
+  'Debian': {
+    'package': 'firejail',
+    'installer': 'pkg.installed'
+  },
+}, merge=salt['pillar.get']('terraform:lookup')) %}
