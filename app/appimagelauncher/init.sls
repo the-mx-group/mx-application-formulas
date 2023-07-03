@@ -7,7 +7,7 @@
 {%- if grains['os_family'] in ('Debian',) %}
 appimagelauncher-ppa-repo:
   file.managed:
-    - name: /etc/apt/sources.list.d/appimagelauncher-team-ubuntu-stable.list
+    - name: /etc/apt/sources.list.d/appimagelauncher-team-ubuntu-stable-ppa.list
     - contents: |
         deb [signed-by=/etc/apt/keyrings/appimagelauncher-team-ubuntu-stable-keyring.gpg] https://ppa.launchpadcontent.net/appimagelauncher-team/stable/ubuntu {{ oscodename }} main
     - user: root
