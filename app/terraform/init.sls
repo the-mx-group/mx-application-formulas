@@ -9,7 +9,7 @@
 {%- if grains['os_family'] in ('Debian',) %}
 hashicorp-repo:
   file.managed:
-    - name: /etc/apt/sources.list.d/hashicorp-{{ oscodename }}.list
+    - name: /etc/apt/sources.list.d/hashicorp.list
     - contents: |
         deb [arch={{ osarch }} signed-by=/etc/apt/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com {{ oscodename }} main
     - user: root
