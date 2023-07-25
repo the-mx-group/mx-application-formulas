@@ -5,7 +5,6 @@ Install sway and related tools:
       - gnome-keyring
       - grim
       - i3status
-      - libsecret
       - mako-notifier
       - pavucontrol
       - pipewire # newer audio/video sharing subsystem
