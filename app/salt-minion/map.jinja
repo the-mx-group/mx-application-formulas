@@ -7,7 +7,9 @@
   'MacOS': {
     'package': 'salt',
     'installer': 'pkg.installed',
-    'service': 'com.saltstack.salt.minion'
+    'service': 'com.saltstack.salt.minion',
+    'plist_source': 'https://raw.githubusercontent.com/saltstack/salt/develop/pkg/darwin/com.saltstack.salt.minion.plist',
+    'plist_hash': 'sha256=6383d2d336b06802bfdf25a4c21ee25c85ee9fa57d3ef5776321d9c8cd096395'
   },
   'Arch': {
     'package': 'salt',
