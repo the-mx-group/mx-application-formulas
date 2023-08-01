@@ -11,16 +11,18 @@ Disable salt verification which causes pinwheel at bootup if joined to AD:
     - name: /etc/salt/minion.d/noverify.conf
     - contents: "verify_env: False"
 
+  {% if not salt['pillar.get']('salt:useformula', False) %}
 Deploy salt minion service file:
   file.managed:
     - name: /Library/LaunchDaemons/com.saltstack.salt.minion.plist
-    - source: https://raw.githubusercontent.com/saltstack/salt/develop/pkg/darwin/com.saltstack.salt.minion.plist
-    - source_hash: sha256=6383d2d336b06802bfdf25a4c21ee25c85ee9fa57d3ef5776321d9c8cd096395
+    - source: {{ salt.plist_source }}
+    - source_hash: {{ salt.plist_hash }}
 
 Register the salt minion service:
   cmd.run:
     - name: "/bin/launchctl load /Library/LaunchDaemons/com.saltstack.salt.minion.plist"
     - unless: "/bin/launchctl list | grep salt-minion"
+  {% endif %}
 
 #done with mac-specific stuff
 {% endif %}

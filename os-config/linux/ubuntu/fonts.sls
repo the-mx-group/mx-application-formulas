@@ -22,3 +22,5 @@ Stop-KDE-breaking-Roboto:
           </match>
           -->
     - backup: False
+    - onlyif:
+      - test -f /etc/fonts/conf.avail/56-kubuntu-noto.conf
