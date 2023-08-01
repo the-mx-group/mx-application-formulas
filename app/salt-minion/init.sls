@@ -1,7 +1,12 @@
-{% from "app/salt-minion/map.jinja" import salt with context %}
+{% from "testminion/map.jinja" import saltminion with context %}
+{% if salt['pillar.get']('salt', None) != None %}
+{%  set useformula = salt['pillar.get']('salt:useformula', False) %}
+{% else %}
+{%  set useformula = False %}
+{% endif %}
 
-{{ salt.package }}:
-  {{ salt.installer }}
+{{ saltminion.package }}:
+  {{ saltminion.installer }}
 
 #Only do the mac-specific stuff if it's a mac
 {% if grains.os in ('MacOS',) %}
@@ -11,12 +16,12 @@ Disable salt verification which causes pinwheel at bootup if joined to AD:
     - name: /etc/salt/minion.d/noverify.conf
     - contents: "verify_env: False"
 
-  {% if not salt['pillar.get']('salt:useformula', False) %}
+  {% if not useformula %}
 Deploy salt minion service file:
   file.managed:
     - name: /Library/LaunchDaemons/com.saltstack.salt.minion.plist
-    - source: {{ salt.plist_source }}
-    - source_hash: {{ salt.plist_hash }}
+    - source: {{ saltminion.plist_source }}
+    - source_hash: {{ saltminion.plist_hash }}
 
 Register the salt minion service:
   cmd.run:
@@ -29,8 +34,9 @@ Register the salt minion service:
 
 Enable the salt service:
   service.enabled:
-    - name: {{salt.service}}
+    - name: {{saltminion.service}}
 
 Start the salt service:
   service.running:
-    - name: {{salt.service}}
+    - name: {{saltminion.service}}
+

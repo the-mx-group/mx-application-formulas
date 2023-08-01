@@ -1,4 +1,4 @@
-{% set salt = salt['grains.filter_by']({
+{% set saltminion = salt['grains.filter_by']({
   'Windows': {
     'package': 'saltminion',
     'installer': 'chocolatey.installed',
