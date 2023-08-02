@@ -1,4 +1,4 @@
-{% from "testminion/map.jinja" import saltminion with context %}
+{% from "app/salt-minion/map.jinja" import saltminion with context %}
 {% if salt['pillar.get']('salt', None) != None %}
 {%  set useformula = salt['pillar.get']('salt:useformula', False) %}
 {% else %}
