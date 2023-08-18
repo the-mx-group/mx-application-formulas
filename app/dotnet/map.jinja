@@ -37,7 +37,7 @@
       ]
     }
   },
-  'Debian': {
+  'Ubuntu': {
     'package': 'dotnet-sdk',
     'installer': {
       'pkg.installed': [
@@ -52,4 +52,4 @@
       ]
     }
   },
-}, merge=salt['pillar.get']('dotnet:lookup')) %}
+}, grain=['os','os_family'] merge=salt['pillar.get']('dotnet:lookup')) %}
