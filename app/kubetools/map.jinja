@@ -31,4 +31,23 @@
       ],
     },
   },
+  'Debian': {
+    'installer': {
+      'pkgrepo.managed': [{
+        'name': 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.k8s.io/core:/stable:/v1.28/deb/ /'
+        'file': '/etc/apt/sources.list.d/kubernetes.list'
+        'key_url': 'https://pkgs.k8s.io/core:/stable:/v1.28/deb/Release.key'
+        'aptkey': False
+      }],
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'kubectl',
+            'kubectx',
+            'minikube'
+          ]
+        },
+      ],
+    },
+  },
 }, merge=salt['pillar.get']('kubetools:lookup')) %}
