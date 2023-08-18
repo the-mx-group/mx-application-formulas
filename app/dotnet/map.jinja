@@ -37,4 +37,19 @@
       ]
     }
   },
+  'Debian': {
+    'package': 'dotnet-sdk',
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'dotnet-sdk-7.0',
+            'aspnet-aspnetcore-runtime-7.0',
+            'dotnet-sdk-6.0',
+            'aspnet-aspnetcore-runtime-6.0',
+          ],
+        },
+      ]
+    }
+  },
 }, merge=salt['pillar.get']('dotnet:lookup')) %}
