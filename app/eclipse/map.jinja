@@ -37,4 +37,4 @@
     'binary': '/snap/bin/eclipse',
     'packageLocation': userInfo.home + '/.eclipse/'
   },
-}, merge=salt['pillar.get']('eclipse:lookup'))) %}
+}, grain='os', merge=salt['pillar.get']('eclipse:lookup'))) %}

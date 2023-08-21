@@ -53,4 +53,4 @@
       ]
     }
   },
-}, merge=salt['pillar.get']('dotnet:lookup'))) %}
+}, grain='os', merge=salt['pillar.get']('dotnet:lookup'))) %}
