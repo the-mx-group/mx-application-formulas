@@ -43,10 +43,12 @@
         {
           'pkgs': [
             'kubectl',
-            'kubectx',
-            'minikube'
           ]
         },
+      ],
+      'cmd.run': [
+        {'unless': 'which kubectx'},
+        {'name': 'snap install kubectx --classic'}
       ],
     },
   },
