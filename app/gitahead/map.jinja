@@ -23,4 +23,4 @@
     'installer': 'test.nop'
   },
 
-}, merge=salt['pillar.get']('gitahead:lookup'))) %}
+}, grain='os', merge=salt['pillar.get']('gitahead:lookup'))) %}
