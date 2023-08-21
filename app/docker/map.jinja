@@ -18,24 +18,10 @@
   },
 }, grain="os_family", default='default', merge=salt['grains.filter_by']({
   'Ubuntu': {
-    'installer': {
-      'pkgrepo.managed': [{
-        'name': 'deb [signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu ' ~ salt.grains.get('oscodename') ~ ' stable',
-        'file': '/etc/apt/sources.list.d/docker.list',
-        'key_url': 'https://download.docker.com/linux/ubuntu/gpg',
-        'aptkey': False
-      }],
-      'pkg.installed': [
-        {
-          'pkgs': [
-            'docker-ce',
-            'docker-ce-cli',
-            'containerd.io',
-            'docker-buildx-plugin',
-            'docker-compose-plugin',
-          ]
-        },
-      ],
-    },
+    "notes": "Use the formula instead of manual package management",
+    'package': 'include',
+    'installer': [
+      "docker",
+    ]
   },
 }, grain='os', merge=salt['pillar.get']('docker:lookup'))) %}
