@@ -17,4 +17,11 @@
       ]
     },
   },
-}, merge=salt['pillar.get']('android-studio:lookup')) %}
+}, grain='os_family', merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': 'android-studio',
+    'installer': {
+      'test.nop'
+    },
+  },
+}, grain='os', merge=salt['pillar.get']('android-studio:lookup'))) %}
