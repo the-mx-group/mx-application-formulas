@@ -32,11 +32,11 @@
         {'runas': user},
         {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh'},
         {'env': [
-          { 'PROFILE': '${HOME}/.mx_profile' },
+          { 'PROFILE': '/dev/null' },
         ]}
       ]
     },
-    'startup': '# nvm.sh added by nvm installer script',
+    'startup': 'source ~/.nvm/nvm.sh',
     'user': user
   },
 }, merge=salt['pillar.get']('nvm:lookup'), default='default') %}
