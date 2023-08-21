@@ -21,4 +21,14 @@
     'package': 'No postman target for this system',
     'installer': 'test.nop'
   }
-}, merge=salt['pillar.get']('postman:lookup'), default='default') %}
+}, grain='os_family', merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': 'postman',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'snap list postman'},
+        {'name': 'snap install postman'}
+      ]
+    }
+  },
+}, grain='os', merge=salt['pillar.get']('postman:lookup'), default='default')) %}
