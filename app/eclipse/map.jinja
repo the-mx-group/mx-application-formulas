@@ -25,6 +25,7 @@
     'binary': '/usr/bin/eclipse',
     'packageLocation': userInfo.home + '/.eclipse/'
   },
+}, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'package': 'eclipse',
     'installer': {
@@ -36,4 +37,4 @@
     'binary': '/snap/bin/eclipse',
     'packageLocation': userInfo.home + '/.eclipse/'
   },
-}, grain=['os','os_family'], merge=salt['pillar.get']('eclipse:lookup')) %}
+}, merge=salt['pillar.get']('eclipse:lookup'))) %}

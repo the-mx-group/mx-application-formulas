@@ -37,6 +37,7 @@
       ]
     }
   },
+}, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'package': 'dotnet-sdk',
     'installer': {
@@ -52,4 +53,4 @@
       ]
     }
   },
-}, grain=['os','os_family'], merge=salt['pillar.get']('dotnet:lookup')) %}
+}, merge=salt['pillar.get']('dotnet:lookup'))) %}
