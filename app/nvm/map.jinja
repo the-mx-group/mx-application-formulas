@@ -32,7 +32,7 @@
         {'runas': user},
         {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh'},
         {'env': [
-          'PROFILE': '${HOME}/.mx_profile',
+          { 'PROFILE': '${HOME}/.mx_profile' },
         ]}
       ]
     },
