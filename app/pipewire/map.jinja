@@ -1,0 +1,46 @@
+{% set kubetools = salt['grains.filter_by']({
+  'default': {
+    'main': {
+      'installer': 'test.nop'
+    },
+    'wireplumber': {
+      'installer': 'test.nop'
+    },
+  },
+
+  'Debian': {
+    'main': {
+      'installer': {
+        'pkgrepo.managed': [{
+          'ppa': 'pipewire-debian/pipewire-upstream',
+        }],
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'pipewire',
+              'pipewire-bin',
+              'pipewire-pulse',
+              'pipewire-v4l2',
+              'pipewire-libcamera',
+              'pipewire-audio-client-libraries',
+            ]
+          },
+        ],
+      },
+    },
+    'wireplumber': {
+      'installer': {
+        'pkgrepo.managed': [{
+          'ppa': 'pipewire-debian/wireplumber-upstream',
+        }],
+        'pkg.installed': [
+          {
+            'pkgs': [
+              'wireplumber',
+            ]
+          },
+        ],
+      },
+    },
+  },
+}, merge=salt['pillar.get']('pipewire:lookup')), default='default' %}
