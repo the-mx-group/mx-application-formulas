@@ -30,10 +30,13 @@
       'cmd.script': [
         {'unless': 'test -f ${HOME}/.nvm/nvm.sh'},
         {'runas': user},
-        {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh'}
+        {'source': 'salt://app/nvm/nvm_dl_and_run_installer.sh'},
+        {'env': [
+          'PROFILE': '${HOME}/.mx_profile',
+        ]}
       ]
     },
-    'startup': '# nvm.sh sourced in .bashrc',
+    'startup': '# nvm.sh added by nvm installer script',
     'user': user
   },
 }, merge=salt['pillar.get']('nvm:lookup'), default='default') %}
