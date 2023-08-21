@@ -1,0 +1,24 @@
+{% set awscli = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'awscliv2-tbd',
+    'installer': 'test.nop'
+  },
+  'MacOS': {
+    'package': 'awscliv2-tbd',
+    'installer': 'test.nop'
+  },
+  'Arch': {
+    'package': 'aws-cli-v2',
+    'installer': 'pkg.installed'
+  }
+}, grain="os_family", merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': 'awscli',
+    'installer': {
+      'cmd.run': [
+        {'unless': 'snap list aws-cli'},
+        {'name': 'snap install aws-cli --classic'}
+      ]
+    }
+  },
+}, grain='os', merge=salt['pillar.get']('awscli:lookup'))) %}
