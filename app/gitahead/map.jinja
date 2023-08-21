@@ -17,4 +17,10 @@
       ]
     }
   },
-}, merge=salt['pillar.get']('gitahead:lookup')) %}
+}, grain="os_family", merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': 'gitahead',
+    'installer': 'test.nop'
+  },
+
+}, merge=salt['pillar.get']('gitahead:lookup'))) %}
