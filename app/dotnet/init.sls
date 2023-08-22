@@ -6,9 +6,9 @@
 include:
   - app/magic-sudo
   - app/magic-unsudo
-{% if grains.os in ('Ubuntu') %}
   - repo/microsoft-prod
 
+{% if grains.os in ('Ubuntu') %}
 Deprioritize builtin Ubuntu dotnet packages:
   file.managed:
     - name: /etc/apt/preferences.d/dotnet
