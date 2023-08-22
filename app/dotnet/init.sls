@@ -1,5 +1,4 @@
 {% from "app/dotnet/map.jinja" import dotnet with context %}
-{% set oscodename = salt['grains.get']('oscodename') %}
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% set userInfo = salt['user.info'](user) %}
 
@@ -15,8 +14,8 @@ Deprioritize builtin Ubuntu dotnet packages:
     - user: root
     - contents: |
         Package: dotnet* aspnet* netstandard*
-        Pin: origin {{ oscodename }}
-        Pin-Priority: -10
+        Pin: origin packages.microsoft.com
+        Pin-Priority: 1001
 {% endif %}
 
 {{ dotnet.package }}:
