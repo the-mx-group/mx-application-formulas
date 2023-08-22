@@ -1,10 +1,23 @@
 {% from "app/dotnet/map.jinja" import dotnet with context %}
+{% set oscodename = salt['grains.get']('oscodename') %}
 {% set user = salt['pillar.get']('users:primary-user') %}
 {% set userInfo = salt['user.info'](user) %}
 
 include:
   - app/magic-sudo
   - app/magic-unsudo
+{% if grains.os in ('Ubuntu') %}
+  - repo/microsoft-prod
+
+Deprioritize builtin Ubuntu dotnet packages:
+  file.managed:
+    - name: /etc/apt/preferences.d/dotnet
+    - user: root
+    - contents: |
+        Package: dotnet* aspnet* netstandard*
+        Pin: origin {{ oscodename }}
+        Pin-Priority: -10
+{% endif %}
 
 {{ dotnet.package }}:
   {{ dotnet.installer }}
