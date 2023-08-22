@@ -43,6 +43,7 @@
     'installer': {
       'pkg.installed': [
         {
+          'fromrepo': salt.grains.get('oscodename'),
           'pkgs': [
             'dotnet-sdk-7.0',
             'aspnetcore-runtime-7.0',
