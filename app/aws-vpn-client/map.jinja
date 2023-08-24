@@ -1,0 +1,19 @@
+{% set awsvpnclient = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'awsvpnclient-tbd',
+    'installer': 'test.nop'
+  },
+  'MacOS': {
+    'package': 'awsvpnclient-tbd',
+    'installer': 'test.nop'
+  },
+  'Arch': {
+    'package': 'awsvpnclient',
+    'installer': 'test.nop'
+  }
+}, grain="os_family", merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': 'awsvpnclient',
+    'installer': 'pkg.installed'
+  },
+}, grain='os', merge=salt['pillar.get']('awsvpnclient:lookup'))) %}
