@@ -1,0 +1,35 @@
+{% set java = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'temurin17',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'openjdk@17',
+    'installer': {
+      'pkg.installed': [
+        {
+          'require': [
+            {'sls': 'app/magic-sudo'}
+          ]
+        }
+      ],
+      'file.symlink': [
+        {
+          'name': '/Library/Java/JavaVirtualMachines/openjdk17.jdk',
+          'target': '/usr/local/opt/openjdk@17/libexec/openjdk.jdk'
+        }
+      ],
+    },
+    'home': '$(/usr/libexec/java_home)'
+  },
+  'Arch': {
+    'package': 'jdk17-openjdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/default'
+  },
+  'Debian': {
+    'package': 'openjdk-17-jdk',
+    'installer': 'pkg.installed',
+    'home': '/usr/lib/jvm/java-17-openjdk-amd64'
+  },
+}, merge=salt['pillar.get']('java:lookup')) %}
