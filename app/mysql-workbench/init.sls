@@ -31,6 +31,6 @@ mysqlworkbench-repo:
 
 mysqlworkbench-repo-key:
   cmd.run:
-    - name: export GNUPGHOME=$(mktemp -d); gpg --keyserver keyserver.ubuntu.com --recv-keys 467B942D3A79BD29 && gpg --export 467B942D3A79BD29 > /usr/share/keyrings/mysql.gpg && chmod 644 /usr/share/keyrings/mysql.gpg
-    - unless: gpg -k --no-default-keyring --with-colons --keyring /usr/share/keyrings/mysql.gpg | grep 467B942D3A79BD29
+    - name: export GNUPGHOME=$(mktemp -d); gpg --keyserver keyserver.ubuntu.com --recv-keys B7B3B788A8D3785C && gpg --export B7B3B788A8D3785C > /usr/share/keyrings/mysql.gpg && chmod 644 /usr/share/keyrings/mysql.gpg
+    - unless: gpg -k --no-default-keyring --with-colons --keyring /usr/share/keyrings/mysql.gpg | grep B7B3B788A8D3785C
 {%- endif %}
