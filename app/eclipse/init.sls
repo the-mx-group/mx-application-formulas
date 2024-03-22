@@ -12,7 +12,7 @@ install Eclipse Ivy plugin:
 
 install Eclipse IvyDE plugin:
   cmd.run:
-    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://www.apache.org/dist/ant/ivyde/updatesite -installIU "org.apache.ivyde.eclipse"
+    - name: {{ eclipse.binary }} -clean -purgeHistory -application org.eclipse.equinox.p2.director -noSplash -repository http://archive.apache.org/dist/ant/ivyde/updatesite -installIU "org.apache.ivyde.eclipse"
     - runas: {{ user }}
     - unless: find {{ eclipse.packageLocation }} -wholename "*plugins/org.apache.ivyde.eclipse_*" | grep '.*'
 
