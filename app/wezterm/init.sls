@@ -8,6 +8,6 @@
 {%- endfor %}
 
 {% else %}
-Install Kubernetes packages:
+Install wezterm packages:
   {{ wezterm.installer }}
 {% endif %}
