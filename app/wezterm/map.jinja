@@ -1,0 +1,31 @@
+{% set wezterm = salt['grains.filter_by']({
+  'Windows': {
+    'package': 'wezterm',
+    'installer': 'chocolatey.installed'
+  },
+  'MacOS': {
+    'package': 'homebrew/cask/wezterm',
+    'installer': 'pkg.installed'
+  },
+  'Arch': {
+    'package': 'wezterm',
+    'installer': 'pkg.installed'
+  },
+  'Debian': {
+    'installer': {
+      'pkgrepo.managed': [{
+        'name': 'deb [signed-by=/etc/apt/keyrings/wezterm-fury.gpg] https://apt.fury.io/wez/ * *',
+        'file': '/etc/apt/sources.list.d/wezterm.list',
+        'key_url': 'https://apt.fury.io/wez/gpg.key',
+        'aptkey': False
+      }],
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'wezterm',
+          ]
+        },
+      ],
+    },
+  },
+}, merge=salt['pillar.get']('wezterm:lookup')) %}
