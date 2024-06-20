@@ -1,15 +1,32 @@
 {% set wezterm = salt['grains.filter_by']({
   'Windows': {
-    'package': 'wezterm',
-    'installer': 'chocolatey.installed'
+    'installer': 'chocolatey.installed',
+    'pkgs': [
+      'wezterm'
+      ]
   },
   'MacOS': {
-    'package': 'homebrew/cask/wezterm',
-    'installer': 'pkg.installed'
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'wezterm'
+          ]
+        },
+      ],
+    },
   },
   'Arch': {
-    'package': 'wezterm',
-    'installer': 'pkg.installed'
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'wezterm',
+            'ttf-nerd-fonts-symbols-mono'
+          ]
+        },
+      ],
+    },
   },
   'Debian': {
     'installer': {
@@ -22,7 +39,7 @@
       'pkg.installed': [
         {
           'pkgs': [
-            'wezterm',
+            'wezterm'
           ]
         },
       ],

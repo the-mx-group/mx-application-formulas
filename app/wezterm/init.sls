@@ -1,11 +1,13 @@
 {% from tpldir ~ "/map.jinja" import wezterm with context %}
 
-{{ wezterm.package }}:
+{% if grains.os in ('Windows',) %}
+
+{%- for package in wezterm.pkgs %}
+{{ package }}:
   {{ wezterm.installer }}
+{%- endfor %}
 
-{%- if grains['os_family'] in ('Arch',) %}
-
-ttf-nerd-fonts-symbols-mono:
-  pkg.installed
-
-{%- endif %}
+{% else %}
+Install Kubernetes packages:
+  {{ wezterm.installer }}
+{% endif %}
