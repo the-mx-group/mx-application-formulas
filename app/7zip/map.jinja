@@ -12,7 +12,26 @@
     'installer': 'pkg.installed'
   },
   'Debian': {
-    'package': 'p7zip',
+    'package': salt['grains.filter_by']({
+      'default': '7zip',
+      'lenny': 'p7zip',
+      'squeeze': 'p7zip',
+      'wheezy': 'p7zip',
+      'jessie': 'p7zip',
+      'stretch': 'p7zip',
+      'buster': 'p7zip',
+      'bullseye': 'p7zip'
+    }, grain='oscodename', default='default'),
     'installer': 'pkg.installed'
+    },
+}, grain='os_family', merge=salt['grains.filter_by']({
+  'Ubuntu': {
+    'package': salt['grains.filter_by']({
+      'default': '7zip',
+      'jammy': 'p7zip',
+      'focal': 'p7zip',
+      'bionic': 'p7zip',
+    }, grain='oscodename', default='default'),
+    'installer': 'pkg.installed',
   },
-}, merge=salt['pillar.get']('sevenzip:lookup')) %}
+}, grain='os', merge=salt['pillar.get']('sevenzip:lookup'))) %}
