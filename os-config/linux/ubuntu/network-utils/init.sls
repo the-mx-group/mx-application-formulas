@@ -9,4 +9,8 @@ Install tools:
 
 Enable SSH service:
   service.enabled:
+{%- if grains.os in ("Ubuntu") and grains.osrelease >= "24.04" %}
+    - name: ssh
+{%- else %}
     - name: sshd
+{%- endif %}
