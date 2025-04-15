@@ -23,5 +23,5 @@ google-chrome-repo:
 google-chrome-repo-key:
   cmd.run:
     - name: wget -qO- https://dl.google.com/linux/linux_signing_key.pub | gpg --dearmor > /usr/share/keyrings/google-chrome.gpg && chmod 0644 /usr/share/keyrings/google-chrome.gpg
-    - unless: gpg -k --no-default-keyring --with-colons --keyring /usr/share/keyrings/google-chrome.gpg | grep 7721F63BD38B4796
+    - unless: gpg -k --no-default-keyring --with-colons --keyring /usr/share/keyrings/google-chrome.gpg | grep 32EE5355A6BC6E42
 {%- endif %}
