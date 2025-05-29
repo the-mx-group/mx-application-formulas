@@ -1,7 +1,7 @@
 {% from "app/terraform/map.jinja" import terraform with context %}
 
 include:
-  - repo/microsoft-prod
+  - repo/hashicorp
 
 {{ terraform.package }}:
   {{ terraform.installer }}
