@@ -10,6 +10,7 @@ Add HashiCorp repo:
     - file: '/etc/apt/sources.list.d/hashicorp.list'
     - key_url: 'https://apt.releases.hashicorp.com/gpg'
     - aptkey: False
+    - clean_file: True
 
 {%- endif %}
 
