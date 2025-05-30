@@ -1,6 +1,6 @@
-{% set oscodename = salt['grains.get']('oscodename') %}
+{% set oscodename = salt['pillar.get']('overrideoscodename', salt['grains.get']('oscodename')) %}
 {% set os = salt['grains.get']('os')|lower %}
-{% set osrelease =  salt['grains.get']('osrelease')%}
+{% set osrelease =  salt['pillar.get']('overrideosrelease', salt['grains.get']('osrelease'))%}
 
 {%- if grains['os_family'] in ('Debian',) %}
 
