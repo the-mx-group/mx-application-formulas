@@ -14,6 +14,16 @@
 }, grain='os_family', merge=salt['grains.filter_by']({
   'Ubuntu': {
     'package': 'firefox',
-    'installer': 'pkg.installed'
+    'installer': {
+      'pkg.installed': [
+        {
+          'pkgs': [
+            'firefox', # now forced to a snap, which requires the following packages to handle file uploads etc
+            'xdg-desktop-portal',
+            'xdg-desktop-portal-gtk'
+          ]
+        },
+      ],
+    }
   },
 }, grain='os', merge=salt['pillar.get']('firefox:lookup'))) %}
