@@ -54,6 +54,8 @@ vscode-repo:
       - pkg: {{ vscode.package }}
     - require:
       - cmd: vscode-repo-key
+    - unless:
+      - test -f /etc/apt/sources.list.d/vscode.sources
   cmd.run:
     - name: apt-get update
     - onchanges:
