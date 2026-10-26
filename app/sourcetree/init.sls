@@ -1,13 +1,4 @@
-{% from tpldir ~ "/map.jinja" import sourcetree with context %}
+{% from "app/sourcetree/map.jinja" import sourcetree with context %}
 
-{% if grains.os in ('Windows',) %}
-
-{%- for package in sourcetree.pkgs %}
-{{ package }}:
+{{ sourcetree.package }}:
   {{ sourcetree.installer }}
-{%- endfor %}
-
-{% else %}
-Install Sourcetree packages:
-  {{ sourcetree.installer }}
-{% endif %}
